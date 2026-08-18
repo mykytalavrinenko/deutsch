@@ -1,0 +1,1075 @@
+<meta charset="utf-8" />
+<title>Deutsch A2 — Verben für die Konversation</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+  :root{
+    --bg:#F5F6F8;
+    --surface:#FFFFFF;
+    --surface-2:#EDEFF3;
+    --border:#DCE0E7;
+    --ink:#1C222E;
+    --ink-muted:#5B6472;
+    --accent:#3457A6;
+    --accent-soft:#E4EAF7;
+    --accent-ink:#25407F;
+    --good:#3F8F5F;
+    --good-soft:#E3F3E8;
+    --bad:#C1503A;
+    --bad-soft:#FBE8E3;
+    --amber:#B8863A;
+    --amber-soft:#F5EBD8;
+    --shadow: 0 1px 2px rgba(28,34,46,.04), 0 8px 24px -12px rgba(28,34,46,.18);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#12151C;
+      --surface:#191D26;
+      --surface-2:#232837;
+      --border:#2E3444;
+      --ink:#E7E9EE;
+      --ink-muted:#9AA3B2;
+      --accent:#8CA9EC;
+      --accent-soft:#233152;
+      --accent-ink:#C4D3F5;
+      --good:#6FBF8B;
+      --good-soft:#1D3327;
+      --bad:#E38A75;
+      --bad-soft:#3A2420;
+      --amber:#E0B871;
+      --amber-soft:#3A2F19;
+      --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px -12px rgba(0,0,0,.5);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#12151C;
+    --surface:#191D26;
+    --surface-2:#232837;
+    --border:#2E3444;
+    --ink:#E7E9EE;
+    --ink-muted:#9AA3B2;
+    --accent:#8CA9EC;
+    --accent-soft:#233152;
+    --accent-ink:#C4D3F5;
+    --good:#6FBF8B;
+    --good-soft:#1D3327;
+    --bad:#E38A75;
+    --bad-soft:#3A2420;
+    --amber:#E0B871;
+    --amber-soft:#3A2F19;
+    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px -12px rgba(0,0,0,.5);
+  }
+
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased;
+    min-height:100%;
+  }
+  .serif{
+    font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+  }
+  .wrap{
+    max-width:680px;
+    margin:0 auto;
+    padding:28px 20px 64px;
+  }
+  header.top{
+    position:sticky; top:0; z-index:5;
+    background:color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter:blur(8px);
+    -webkit-backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--border);
+    padding:14px 20px 12px;
+    margin:0 0 22px;
+  }
+  header.top .inner{max-width:680px;margin:0 auto;}
+  h1{
+    font-size:22px;
+    line-height:1.2;
+    margin:0 0 2px;
+    letter-spacing:.2px;
+    text-wrap:balance;
+  }
+  .sub{
+    font-size:13px;
+    color:var(--ink-muted);
+    margin:0 0 14px;
+  }
+  .sub b{color:var(--ink);font-weight:600;}
+
+  nav.tabs{
+    display:flex;
+    gap:4px;
+    background:var(--surface-2);
+    padding:4px;
+    border-radius:12px;
+    border:1px solid var(--border);
+  }
+  nav.tabs button{
+    flex:1;
+    appearance:none;
+    border:none;
+    background:transparent;
+    color:var(--ink-muted);
+    font-size:13.5px;
+    font-weight:600;
+    padding:9px 6px;
+    border-radius:9px;
+    cursor:pointer;
+    font-family:inherit;
+    transition:background .15s ease, color .15s ease;
+  }
+  nav.tabs button.active{
+    background:var(--surface);
+    color:var(--accent-ink);
+    box-shadow:var(--shadow);
+  }
+  nav.tabs button:hover:not(.active){color:var(--ink);}
+  nav.tabs button:focus-visible, .chip:focus-visible, .opt:focus-visible, button:focus-visible, input:focus-visible{
+    outline:2px solid var(--accent);
+    outline-offset:2px;
+  }
+
+  .chips{
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px;
+    margin:12px 0 0;
+  }
+  .chip{
+    appearance:none;
+    border:1px solid var(--border);
+    background:var(--surface);
+    color:var(--ink-muted);
+    font-size:12.5px;
+    font-weight:600;
+    padding:6px 11px;
+    border-radius:999px;
+    cursor:pointer;
+    font-family:inherit;
+    transition:all .15s ease;
+    white-space:nowrap;
+  }
+  .chip.active{
+    background:var(--accent);
+    border-color:var(--accent);
+    color:#fff;
+  }
+  :root[data-theme="dark"] .chip.active, @media (prefers-color-scheme: dark){ .chip.active{color:#111420;} }
+
+  main{max-width:680px;margin:0 auto;}
+  .view{display:none;}
+  .view.active{display:block;}
+
+  /* ---- Flashcards ---- */
+  .deck-meta{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-size:12.5px;
+    color:var(--ink-muted);
+    margin:0 0 10px;
+  }
+  .progress-track{
+    height:5px;
+    background:var(--surface-2);
+    border-radius:99px;
+    overflow:hidden;
+    flex:1;
+    margin:0 12px;
+  }
+  .progress-fill{
+    height:100%;
+    background:var(--accent);
+    border-radius:99px;
+    transition:width .3s ease;
+  }
+
+  .card-scene{
+    perspective:1400px;
+    margin-bottom:16px;
+  }
+  .card{
+    position:relative;
+    min-height:400px;
+    width:100%;
+    transform-style:preserve-3d;
+    transition:transform .5s cubic-bezier(.4,.2,.2,1);
+    cursor:pointer;
+  }
+  .card.flipped{transform:rotateY(180deg);}
+  .face{
+    position:absolute;
+    inset:0;
+    backface-visibility:hidden;
+    -webkit-backface-visibility:hidden;
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:18px;
+    box-shadow:var(--shadow);
+    padding:26px 24px;
+    display:flex;
+    flex-direction:column;
+  }
+  .face.back{transform:rotateY(180deg);overflow-y:auto;}
+
+  .badges{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:auto;}
+  .badge{
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:.4px;
+    text-transform:uppercase;
+    padding:3px 8px;
+    border-radius:6px;
+    background:var(--accent-soft);
+    color:var(--accent-ink);
+  }
+  .badge.sep{background:var(--amber-soft);color:var(--amber);}
+
+  .inf-word{
+    font-size:15px;
+  }
+  .card-front-center{
+    flex:1;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+  }
+  .big-inf{
+    font-size:42px;
+    font-weight:500;
+    letter-spacing:.2px;
+  }
+  .hint-tap{
+    text-align:center;
+    font-size:12px;
+    color:var(--ink-muted);
+  }
+
+  .back-inf{
+    font-size:20px;
+    font-weight:600;
+    margin-bottom:2px;
+  }
+  .back-ru{
+    font-size:16px;
+    color:var(--accent-ink);
+    margin-bottom:14px;
+  }
+  .example{
+    background:var(--surface-2);
+    border-radius:10px;
+    padding:10px 12px;
+    font-size:13.5px;
+    margin-bottom:14px;
+  }
+  .example .de{margin-bottom:3px;}
+  .example .ru{color:var(--ink-muted);}
+
+  table.conj{
+    width:100%;
+    border-collapse:collapse;
+    font-size:13.5px;
+    font-variant-numeric:tabular-nums;
+    margin-bottom:10px;
+  }
+  table.conj td{
+    padding:3px 4px;
+    border-bottom:1px solid var(--border);
+  }
+  table.conj td.pron{color:var(--ink-muted);width:38%;}
+  table.conj tr:last-child td{border-bottom:none;}
+  .perf-line{
+    font-size:12.5px;
+    color:var(--ink-muted);
+  }
+  .perf-line b{color:var(--ink);font-weight:600;}
+
+  .deck-actions{
+    display:flex;
+    gap:8px;
+  }
+  .deck-actions button, .drill-actions button, .quiz-next{
+    flex:1;
+    border:1px solid var(--border);
+    background:var(--surface);
+    color:var(--ink);
+    font-family:inherit;
+    font-size:13.5px;
+    font-weight:600;
+    padding:11px 10px;
+    border-radius:11px;
+    cursor:pointer;
+    transition:background .15s ease, border-color .15s ease, transform .05s ease;
+  }
+  .deck-actions button:active, .drill-actions button:active{transform:scale(.98);}
+  .deck-actions .shuffle{flex:0 0 44px;}
+  .deck-actions .again{color:var(--bad);}
+  .deck-actions .again:hover{background:var(--bad-soft);border-color:var(--bad);}
+  .deck-actions .know{color:var(--good);}
+  .deck-actions .know:hover{background:var(--good-soft);border-color:var(--good);}
+
+  /* ---- Drill ---- */
+  .panel{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:18px;
+    box-shadow:var(--shadow);
+    padding:26px 24px;
+  }
+  .score-row{
+    display:flex;
+    justify-content:space-between;
+    font-size:12.5px;
+    color:var(--ink-muted);
+    margin-bottom:16px;
+  }
+  .score-row b{color:var(--ink);}
+  .prompt{
+    text-align:center;
+    margin-bottom:20px;
+  }
+  .prompt .verb{
+    font-size:30px;
+    font-weight:500;
+  }
+  .prompt .pronoun{
+    color:var(--accent-ink);
+    font-weight:600;
+  }
+  .prompt .gloss{
+    font-size:13px;
+    color:var(--ink-muted);
+    margin-top:4px;
+  }
+  input.answer{
+    width:100%;
+    font-family:inherit;
+    font-size:18px;
+    text-align:center;
+    padding:12px 14px;
+    border-radius:11px;
+    border:2px solid var(--border);
+    background:var(--bg);
+    color:var(--ink);
+    margin-bottom:12px;
+  }
+  input.answer:focus{outline:none;border-color:var(--accent);}
+  input.answer.correct{border-color:var(--good);background:var(--good-soft);}
+  input.answer.wrong{border-color:var(--bad);background:var(--bad-soft);}
+  .feedback{
+    min-height:20px;
+    text-align:center;
+    font-size:13.5px;
+    margin-bottom:12px;
+  }
+  .feedback.correct{color:var(--good);}
+  .feedback.wrong{color:var(--bad);}
+  .drill-actions{display:flex;gap:8px;}
+
+  /* ---- Quiz ---- */
+  .quiz-verb{
+    text-align:center;
+    margin-bottom:18px;
+  }
+  .quiz-verb .verb{font-size:32px;font-weight:500;}
+  .options{
+    display:grid;
+    gap:8px;
+    margin-bottom:14px;
+  }
+  .opt{
+    text-align:left;
+    border:1px solid var(--border);
+    background:var(--surface);
+    color:var(--ink);
+    font-family:inherit;
+    font-size:14.5px;
+    padding:12px 14px;
+    border-radius:11px;
+    cursor:pointer;
+  }
+  .opt:hover:not(:disabled){border-color:var(--accent);}
+  .opt.correct{background:var(--good-soft);border-color:var(--good);color:var(--good);font-weight:600;}
+  .opt.wrong{background:var(--bad-soft);border-color:var(--bad);color:var(--bad);}
+  .opt:disabled{cursor:default;}
+  .quiz-next{display:none;}
+  .quiz-next.show{display:block;}
+
+  /* ---- List ---- */
+  .search{
+    width:100%;
+    font-family:inherit;
+    font-size:14px;
+    padding:10px 13px;
+    border-radius:11px;
+    border:1px solid var(--border);
+    background:var(--surface);
+    color:var(--ink);
+    margin:12px 0 12px;
+  }
+  .search:focus{outline:none;border-color:var(--accent);}
+  .table-scroll{
+    overflow-x:auto;
+    border:1px solid var(--border);
+    border-radius:14px;
+    background:var(--surface);
+  }
+  table.list{
+    width:100%;
+    border-collapse:collapse;
+    font-size:13px;
+    min-width:560px;
+  }
+  table.list th{
+    text-align:left;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:.4px;
+    color:var(--ink-muted);
+    padding:10px 10px;
+    border-bottom:1px solid var(--border);
+    position:sticky;
+    top:0;
+    background:var(--surface);
+  }
+  table.list td{
+    padding:9px 10px;
+    border-bottom:1px solid var(--border);
+    vertical-align:top;
+  }
+  table.list tr:last-child td{border-bottom:none;}
+  table.list td.inf{font-weight:600;}
+  table.list td.inf .sep-dot{color:var(--amber);font-weight:700;}
+  table.list td.ru{color:var(--ink-muted);}
+  table.list td.known{width:18px;text-align:center;}
+  .dot-known{color:var(--good);font-size:14px;}
+
+  .empty{
+    text-align:center;
+    color:var(--ink-muted);
+    font-size:13.5px;
+    padding:30px 0;
+  }
+
+  footer{
+    text-align:center;
+    font-size:11.5px;
+    color:var(--ink-muted);
+    margin-top:26px;
+  }
+  footer button{
+    background:none;border:none;color:var(--ink-muted);
+    text-decoration:underline;cursor:pointer;font-size:11.5px;font-family:inherit;
+    padding:0;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .card{transition:none;}
+  }
+</style>
+
+<header class="top">
+  <div class="inner">
+    <h1 class="serif">Deutsch A2 — Verben für die Konversation</h1>
+    <p class="sub">46 самых нужных глаголов для устной речи · <b id="knownCount">0</b>/46 отмечены как «знаю»</p>
+    <nav class="tabs" role="tablist">
+      <button class="active" data-view="cards">Karten</button>
+      <button data-view="drill">Konjugation</button>
+      <button data-view="quiz">Quiz</button>
+      <button data-view="list">Liste</button>
+    </nav>
+    <div class="chips" id="chips"></div>
+  </div>
+</header>
+
+<main class="wrap" style="padding-top:0;">
+
+  <!-- CARDS -->
+  <section class="view active" id="view-cards">
+    <div class="deck-meta">
+      <span id="cardsPos">1 / 47</span>
+      <div class="progress-track"><div class="progress-fill" id="cardsProgress" style="width:0%"></div></div>
+      <span id="cardsKnown">0 знаю</span>
+    </div>
+    <div class="card-scene">
+      <div class="card" id="card">
+        <div class="face front">
+          <div class="badges" id="frontBadges"></div>
+          <div class="card-front-center">
+            <div class="big-inf serif" id="frontWord">—</div>
+          </div>
+          <div class="hint-tap">нажми на карточку, чтобы перевернуть</div>
+        </div>
+        <div class="face back">
+          <div class="back-inf serif" id="backWord">—</div>
+          <div class="back-ru" id="backRu">—</div>
+          <div class="example">
+            <div class="de" id="backEx">—</div>
+            <div class="ru" id="backExRu">—</div>
+          </div>
+          <table class="conj" id="backConj"></table>
+          <div class="perf-line" id="backPerf"></div>
+        </div>
+      </div>
+    </div>
+    <div class="deck-actions">
+      <button class="shuffle" id="btnShuffle" title="Neu mischen">🔀</button>
+      <button class="again" id="btnAgain">✗ Nochmal üben</button>
+      <button class="know" id="btnKnow">✓ Kann ich</button>
+    </div>
+  </section>
+
+  <!-- DRILL -->
+  <section class="view" id="view-drill">
+    <div class="panel">
+      <div class="score-row">
+        <span>Konjugation üben — Präsens</span>
+        <span>Punkte: <b id="drillScore">0/0</b></span>
+      </div>
+      <div class="prompt">
+        <div class="verb serif" id="drillVerb">—</div>
+        <div class="gloss" id="drillGloss">—</div>
+      </div>
+      <input class="answer" id="drillInput" placeholder="Form eingeben, z. B. „mache“" autocomplete="off" autocapitalize="off" spellcheck="false" />
+      <div class="feedback" id="drillFeedback"></div>
+      <div class="drill-actions">
+        <button id="drillCheck">Prüfen</button>
+        <button id="drillNext" style="display:none;">Weiter →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUIZ -->
+  <section class="view" id="view-quiz">
+    <div class="panel">
+      <div class="score-row">
+        <span>Übersetzung erraten</span>
+        <span>Punkte: <b id="quizScore">0/0</b></span>
+      </div>
+      <div class="quiz-verb">
+        <div class="verb serif" id="quizVerb">—</div>
+      </div>
+      <div class="options" id="quizOptions"></div>
+      <button class="quiz-next" id="quizNext">Weiter →</button>
+    </div>
+  </section>
+
+  <!-- LIST -->
+  <section class="view" id="view-list">
+    <input class="search" id="listSearch" placeholder="Suchen … (Deutsch oder Russisch)" autocomplete="off" />
+    <div class="table-scroll">
+      <table class="list">
+        <thead>
+          <tr><th></th><th>Verb</th><th>Übersetzung</th><th>ich</th><th>du</th><th>er/sie/es</th><th>Perfekt</th></tr>
+        </thead>
+        <tbody id="listBody"></tbody>
+      </table>
+    </div>
+    <div class="empty" id="listEmpty" style="display:none;">Nichts gefunden.</div>
+  </section>
+
+  <footer>
+    <span id="footerNote">Fortschritt wird lokal in diesem Browser gespeichert.</span>
+    · <button id="resetProgress">Fortschritt zurücksetzen</button>
+  </footer>
+</main>
+
+<script>
+(function(){
+"use strict";
+
+// inf, ru, cat(grund|modal|unreg|reg|trenn), sep(bool),
+// ich,du,er,wir,ihr,sie — Präsens; perf: [Hilfsverb, Partizip] or null
+const VERBS = [
+  {inf:"sein", ru:"быть", cat:"grund", sep:false,
+   ich:"bin", du:"bist", er:"ist", wir:"sind", ihr:"seid", sie:"sind",
+   perf:["ist","gewesen"], ex:"Ich bin müde.", exRu:"Я устал(а)."},
+  {inf:"haben", ru:"иметь", cat:"grund", sep:false,
+   ich:"habe", du:"hast", er:"hat", wir:"haben", ihr:"habt", sie:"haben",
+   perf:["hat","gehabt"], ex:"Ich habe eine Frage.", exRu:"У меня есть вопрос."},
+  {inf:"werden", ru:"становиться", cat:"grund", sep:false,
+   ich:"werde", du:"wirst", er:"wird", wir:"werden", ihr:"werdet", sie:"werden",
+   perf:["ist","geworden"], ex:"Es wird kalt.", exRu:"Становится холодно."},
+
+  {inf:"können", ru:"мочь, уметь", cat:"modal", sep:false,
+   ich:"kann", du:"kannst", er:"kann", wir:"können", ihr:"könnt", sie:"können",
+   perf:["hat","gekonnt"], ex:"Kannst du mir helfen?", exRu:"Ты можешь мне помочь?"},
+  {inf:"müssen", ru:"быть должным", cat:"modal", sep:false,
+   ich:"muss", du:"musst", er:"muss", wir:"müssen", ihr:"müsst", sie:"müssen",
+   perf:["hat","gemusst"], ex:"Ich muss jetzt gehen.", exRu:"Мне нужно идти."},
+  {inf:"dürfen", ru:"иметь разрешение", cat:"modal", sep:false,
+   ich:"darf", du:"darfst", er:"darf", wir:"dürfen", ihr:"dürft", sie:"dürfen",
+   perf:["hat","gedurft"], ex:"Darf ich hier rauchen?", exRu:"Можно мне здесь курить?"},
+  {inf:"wollen", ru:"хотеть", cat:"modal", sep:false,
+   ich:"will", du:"willst", er:"will", wir:"wollen", ihr:"wollt", sie:"wollen",
+   perf:["hat","gewollt"], ex:"Ich will das nicht.", exRu:"Я не хочу этого."},
+  {inf:"sollen", ru:"быть должным (по чьей-то воле)", cat:"modal", sep:false,
+   ich:"soll", du:"sollst", er:"soll", wir:"sollen", ihr:"sollt", sie:"sollen",
+   perf:["hat","gesollt"], ex:"Was soll ich tun?", exRu:"Что мне делать?"},
+  {inf:"mögen", ru:"нравиться", cat:"modal", sep:false,
+   ich:"mag", du:"magst", er:"mag", wir:"mögen", ihr:"mögt", sie:"mögen",
+   perf:["hat","gemocht"], ex:"Ich mag klassische Musik.", exRu:"Мне нравится классическая музыка."},
+  {inf:"möchten", ru:"хотел(а) бы", cat:"modal", sep:false,
+   ich:"möchte", du:"möchtest", er:"möchte", wir:"möchten", ihr:"möchtet", sie:"möchten",
+   perf:null, ex:"Ich möchte einen Kaffee, bitte.", exRu:"Я хотел(а) бы кофе, пожалуйста."},
+
+  {inf:"gehen", ru:"идти", cat:"unreg", sep:false,
+   ich:"gehe", du:"gehst", er:"geht", wir:"gehen", ihr:"geht", sie:"gehen",
+   perf:["ist","gegangen"], ex:"Wir gehen ins Kino.", exRu:"Мы идём в кино."},
+  {inf:"kommen", ru:"приходить", cat:"unreg", sep:false,
+   ich:"komme", du:"kommst", er:"kommt", wir:"kommen", ihr:"kommt", sie:"kommen",
+   perf:["ist","gekommen"], ex:"Er kommt später.", exRu:"Он придёт позже."},
+  {inf:"sehen", ru:"видеть", cat:"unreg", sep:false,
+   ich:"sehe", du:"siehst", er:"sieht", wir:"sehen", ihr:"seht", sie:"sehen",
+   perf:["hat","gesehen"], ex:"Ich sehe dich.", exRu:"Я тебя вижу."},
+  {inf:"wissen", ru:"знать (факт)", cat:"unreg", sep:false,
+   ich:"weiß", du:"weißt", er:"weiß", wir:"wissen", ihr:"wisst", sie:"wissen",
+   perf:["hat","gewusst"], ex:"Ich weiß es nicht.", exRu:"Я не знаю."},
+  {inf:"kennen", ru:"быть знакомым", cat:"unreg", sep:false,
+   ich:"kenne", du:"kennst", er:"kennt", wir:"kennen", ihr:"kennt", sie:"kennen",
+   perf:["hat","gekannt"], ex:"Kennst du ihn?", exRu:"Ты его знаешь?"},
+  {inf:"finden", ru:"находить, считать", cat:"unreg", sep:false,
+   ich:"finde", du:"findest", er:"findet", wir:"finden", ihr:"findet", sie:"finden",
+   perf:["hat","gefunden"], ex:"Ich finde das gut.", exRu:"Я считаю, что это хорошо."},
+  {inf:"geben", ru:"давать", cat:"unreg", sep:false,
+   ich:"gebe", du:"gibst", er:"gibt", wir:"geben", ihr:"gebt", sie:"geben",
+   perf:["hat","gegeben"], ex:"Gib mir das Buch, bitte.", exRu:"Дай мне книгу, пожалуйста."},
+  {inf:"nehmen", ru:"брать", cat:"unreg", sep:false,
+   ich:"nehme", du:"nimmst", er:"nimmt", wir:"nehmen", ihr:"nehmt", sie:"nehmen",
+   perf:["hat","genommen"], ex:"Ich nehme den Bus.", exRu:"Я поеду на автобусе."},
+  {inf:"sprechen", ru:"говорить (на языке)", cat:"unreg", sep:false,
+   ich:"spreche", du:"sprichst", er:"spricht", wir:"sprechen", ihr:"sprecht", sie:"sprechen",
+   perf:["hat","gesprochen"], ex:"Sprichst du Deutsch?", exRu:"Ты говоришь по-немецки?"},
+  {inf:"essen", ru:"есть, кушать", cat:"unreg", sep:false,
+   ich:"esse", du:"isst", er:"isst", wir:"essen", ihr:"esst", sie:"essen",
+   perf:["hat","gegessen"], ex:"Wir essen zusammen.", exRu:"Мы едим вместе."},
+  {inf:"trinken", ru:"пить", cat:"unreg", sep:false,
+   ich:"trinke", du:"trinkst", er:"trinkt", wir:"trinken", ihr:"trinkt", sie:"trinken",
+   perf:["hat","getrunken"], ex:"Er trinkt Wasser.", exRu:"Он пьёт воду."},
+  {inf:"lesen", ru:"читать", cat:"unreg", sep:false,
+   ich:"lese", du:"liest", er:"liest", wir:"lesen", ihr:"lest", sie:"lesen",
+   perf:["hat","gelesen"], ex:"Ich lese ein Buch.", exRu:"Я читаю книгу."},
+  {inf:"schreiben", ru:"писать", cat:"unreg", sep:false,
+   ich:"schreibe", du:"schreibst", er:"schreibt", wir:"schreiben", ihr:"schreibt", sie:"schreiben",
+   perf:["hat","geschrieben"], ex:"Sie schreibt eine E-Mail.", exRu:"Она пишет письмо."},
+  {inf:"helfen", ru:"помогать", cat:"unreg", sep:false,
+   ich:"helfe", du:"hilfst", er:"hilft", wir:"helfen", ihr:"helft", sie:"helfen",
+   perf:["hat","geholfen"], ex:"Kannst du mir helfen?", exRu:"Можешь мне помочь?"},
+  {inf:"treffen", ru:"встречать(ся)", cat:"unreg", sep:false,
+   ich:"treffe", du:"triffst", er:"trifft", wir:"treffen", ihr:"trefft", sie:"treffen",
+   perf:["hat","getroffen"], ex:"Ich treffe meine Freundin.", exRu:"Я встречаюсь с подругой."},
+  {inf:"fahren", ru:"ехать", cat:"unreg", sep:false,
+   ich:"fahre", du:"fährst", er:"fährt", wir:"fahren", ihr:"fahrt", sie:"fahren",
+   perf:["ist","gefahren"], ex:"Wir fahren nach Berlin.", exRu:"Мы едем в Берлин."},
+  {inf:"bleiben", ru:"оставаться", cat:"unreg", sep:false,
+   ich:"bleibe", du:"bleibst", er:"bleibt", wir:"bleiben", ihr:"bleibt", sie:"bleiben",
+   perf:["ist","geblieben"], ex:"Bleib bitte hier!", exRu:"Останься, пожалуйста, здесь!"},
+  {inf:"denken", ru:"думать", cat:"unreg", sep:false,
+   ich:"denke", du:"denkst", er:"denkt", wir:"denken", ihr:"denkt", sie:"denken",
+   perf:["hat","gedacht"], ex:"Ich denke an dich.", exRu:"Я думаю о тебе."},
+  {inf:"verstehen", ru:"понимать", cat:"unreg", sep:false,
+   ich:"verstehe", du:"verstehst", er:"versteht", wir:"verstehen", ihr:"versteht", sie:"verstehen",
+   perf:["hat","verstanden"], ex:"Verstehst du mich?", exRu:"Ты меня понимаешь?"},
+
+  {inf:"machen", ru:"делать", cat:"reg", sep:false,
+   ich:"mache", du:"machst", er:"macht", wir:"machen", ihr:"macht", sie:"machen",
+   perf:["hat","gemacht"], ex:"Was machst du gerade?", exRu:"Что ты сейчас делаешь?"},
+  {inf:"sagen", ru:"говорить, сказать", cat:"reg", sep:false,
+   ich:"sage", du:"sagst", er:"sagt", wir:"sagen", ihr:"sagt", sie:"sagen",
+   perf:["hat","gesagt"], ex:"Sag mir die Wahrheit.", exRu:"Скажи мне правду."},
+  {inf:"kaufen", ru:"покупать", cat:"reg", sep:false,
+   ich:"kaufe", du:"kaufst", er:"kauft", wir:"kaufen", ihr:"kauft", sie:"kaufen",
+   perf:["hat","gekauft"], ex:"Ich kaufe Brot.", exRu:"Я покупаю хлеб."},
+  {inf:"arbeiten", ru:"работать", cat:"reg", sep:false,
+   ich:"arbeite", du:"arbeitest", er:"arbeitet", wir:"arbeiten", ihr:"arbeitet", sie:"arbeiten",
+   perf:["hat","gearbeitet"], ex:"Er arbeitet viel.", exRu:"Он много работает."},
+  {inf:"wohnen", ru:"жить (проживать)", cat:"reg", sep:false,
+   ich:"wohne", du:"wohnst", er:"wohnt", wir:"wohnen", ihr:"wohnt", sie:"wohnen",
+   perf:["hat","gewohnt"], ex:"Wo wohnst du?", exRu:"Где ты живёшь?"},
+  {inf:"spielen", ru:"играть", cat:"reg", sep:false,
+   ich:"spiele", du:"spielst", er:"spielt", wir:"spielen", ihr:"spielt", sie:"spielen",
+   perf:["hat","gespielt"], ex:"Die Kinder spielen draußen.", exRu:"Дети играют на улице."},
+  {inf:"brauchen", ru:"нуждаться", cat:"reg", sep:false,
+   ich:"brauche", du:"brauchst", er:"braucht", wir:"brauchen", ihr:"braucht", sie:"brauchen",
+   perf:["hat","gebraucht"], ex:"Ich brauche deine Hilfe.", exRu:"Мне нужна твоя помощь."},
+  {inf:"fragen", ru:"спрашивать", cat:"reg", sep:false,
+   ich:"frage", du:"fragst", er:"fragt", wir:"fragen", ihr:"fragt", sie:"fragen",
+   perf:["hat","gefragt"], ex:"Darf ich dich etwas fragen?", exRu:"Могу я тебя кое-что спросить?"},
+  {inf:"glauben", ru:"думать, верить", cat:"reg", sep:false,
+   ich:"glaube", du:"glaubst", er:"glaubt", wir:"glauben", ihr:"glaubt", sie:"glauben",
+   perf:["hat","geglaubt"], ex:"Ich glaube dir.", exRu:"Я тебе верю."},
+  {inf:"hören", ru:"слышать, слушать", cat:"reg", sep:false,
+   ich:"höre", du:"hörst", er:"hört", wir:"hören", ihr:"hört", sie:"hören",
+   perf:["hat","gehört"], ex:"Hörst du mich?", exRu:"Ты меня слышишь?"},
+  {inf:"warten", ru:"ждать", cat:"reg", sep:false,
+   ich:"warte", du:"wartest", er:"wartet", wir:"warten", ihr:"wartet", sie:"warten",
+   perf:["hat","gewartet"], ex:"Ich warte auf dich.", exRu:"Я жду тебя."},
+  {inf:"suchen", ru:"искать", cat:"reg", sep:false,
+   ich:"suche", du:"suchst", er:"sucht", wir:"suchen", ihr:"sucht", sie:"suchen",
+   perf:["hat","gesucht"], ex:"Was suchst du?", exRu:"Что ты ищешь?"},
+  {inf:"zeigen", ru:"показывать", cat:"reg", sep:false,
+   ich:"zeige", du:"zeigst", er:"zeigt", wir:"zeigen", ihr:"zeigt", sie:"zeigen",
+   perf:["hat","gezeigt"], ex:"Zeig mir das, bitte.", exRu:"Покажи мне это, пожалуйста."},
+
+  {inf:"anrufen", ru:"звонить", cat:"trenn", sep:true,
+   ich:"rufe an", du:"rufst an", er:"ruft an", wir:"rufen an", ihr:"ruft an", sie:"rufen an",
+   perf:["hat","angerufen"], ex:"Ich rufe dich morgen an.", exRu:"Я позвоню тебе завтра."},
+  {inf:"aufstehen", ru:"вставать", cat:"trenn", sep:true,
+   ich:"stehe auf", du:"stehst auf", er:"steht auf", wir:"stehen auf", ihr:"steht auf", sie:"stehen auf",
+   perf:["ist","aufgestanden"], ex:"Ich stehe früh auf.", exRu:"Я рано встаю."},
+  {inf:"einkaufen", ru:"делать покупки", cat:"trenn", sep:true,
+   ich:"kaufe ein", du:"kaufst ein", er:"kauft ein", wir:"kaufen ein", ihr:"kauft ein", sie:"kaufen ein",
+   perf:["hat","eingekauft"], ex:"Wir kaufen samstags ein.", exRu:"Мы делаем покупки по субботам."},
+  {inf:"anfangen", ru:"начинать", cat:"trenn", sep:true,
+   ich:"fange an", du:"fängst an", er:"fängt an", wir:"fangen an", ihr:"fangt an", sie:"fangen an",
+   perf:["hat","angefangen"], ex:"Der Film fängt gleich an.", exRu:"Фильм скоро начинается."},
+];
+
+VERBS.forEach((v,i)=>v.id=i);
+
+const CATS = [
+  {key:"all", label:"Alle"},
+  {key:"grund", label:"Grundverben"},
+  {key:"modal", label:"Modalverben"},
+  {key:"unreg", label:"Unregelmäßig"},
+  {key:"reg", label:"Regelmäßig"},
+  {key:"trenn", label:"Trennbar"},
+];
+
+const PERSONS = [
+  {key:"ich", label:"ich"},
+  {key:"du", label:"du"},
+  {key:"er", label:"er/sie/es"},
+  {key:"wir", label:"wir"},
+  {key:"ihr", label:"ihr"},
+  {key:"sie", label:"sie/Sie"},
+];
+
+const LS_KNOWN = "a2verben.known.v1";
+const LS_STATS = "a2verben.stats.v1";
+
+function loadKnown(){
+  try{ return new Set(JSON.parse(localStorage.getItem(LS_KNOWN) || "[]")); }
+  catch(e){ return new Set(); }
+}
+function saveKnown(set){
+  localStorage.setItem(LS_KNOWN, JSON.stringify([...set]));
+}
+function loadStats(){
+  try{ return Object.assign({drillCorrect:0,drillTotal:0,quizCorrect:0,quizTotal:0}, JSON.parse(localStorage.getItem(LS_STATS)||"{}")); }
+  catch(e){ return {drillCorrect:0,drillTotal:0,quizCorrect:0,quizTotal:0}; }
+}
+function saveStats(s){ localStorage.setItem(LS_STATS, JSON.stringify(s)); }
+
+let known = loadKnown();
+let stats = loadStats();
+let activeCat = "all";
+
+function filtered(){
+  return activeCat==="all" ? VERBS.slice() : VERBS.filter(v=>v.cat===activeCat);
+}
+function shuffle(arr){
+  const a = arr.slice();
+  for(let i=a.length-1;i>0;i--){
+    const j = Math.floor(Math.random()*(i+1));
+    [a[i],a[j]] = [a[j],a[i]];
+  }
+  return a;
+}
+function normalize(s){
+  return s.trim().toLowerCase().replace(/ß/g,"ss").replace(/\s+/g," ");
+}
+function updateKnownHeader(){
+  document.getElementById("knownCount").textContent = known.size;
+}
+
+/* ---------------- chips ---------------- */
+const chipsEl = document.getElementById("chips");
+CATS.forEach(c=>{
+  const b = document.createElement("button");
+  b.className = "chip" + (c.key==="all" ? " active" : "");
+  b.textContent = c.label;
+  b.dataset.cat = c.key;
+  b.addEventListener("click", ()=>{
+    activeCat = c.key;
+    [...chipsEl.children].forEach(x=>x.classList.toggle("active", x.dataset.cat===c.key));
+    resetDeck();
+    resetDrill();
+    resetQuiz();
+    renderList();
+  });
+  chipsEl.appendChild(b);
+});
+
+/* ---------------- tabs ---------------- */
+document.querySelectorAll("nav.tabs button").forEach(btn=>{
+  btn.addEventListener("click", ()=>{
+    document.querySelectorAll("nav.tabs button").forEach(b=>b.classList.remove("active"));
+    btn.classList.add("active");
+    document.querySelectorAll(".view").forEach(v=>v.classList.remove("active"));
+    document.getElementById("view-"+btn.dataset.view).classList.add("active");
+  });
+});
+
+/* ================= CARDS ================= */
+let deck = [];
+let deckPtr = 0;
+let cardFlipped = false;
+
+function resetDeck(){
+  deck = shuffle(filtered()).map(v=>v.id);
+  deckPtr = 0;
+  cardFlipped = false;
+  renderCard();
+}
+function currentVerb(){
+  if(deck.length===0) return null;
+  return VERBS[deck[deckPtr % deck.length]];
+}
+function renderCard(){
+  const card = document.getElementById("card");
+  card.classList.remove("flipped");
+  cardFlipped = false;
+  const v = currentVerb();
+  const total = deck.length;
+  document.getElementById("cardsPos").textContent = total ? ((deckPtr%total)+1)+" / "+total : "0 / 0";
+  const knownInDeck = deck.filter(id=>known.has(id)).length;
+  document.getElementById("cardsKnown").textContent = knownInDeck+" знаю";
+  document.getElementById("cardsProgress").style.width = total ? Math.round(knownInDeck/total*100)+"%" : "0%";
+
+  if(!v){
+    document.getElementById("frontWord").textContent = "—";
+    document.getElementById("frontBadges").innerHTML = "";
+    return;
+  }
+  document.getElementById("frontWord").textContent = v.sep ? v.inf.slice(0, v.inf.length) : v.inf;
+  const catLabel = CATS.find(c=>c.key===v.cat).label;
+  let badges = `<span class="badge">${catLabel}</span>`;
+  if(v.sep) badges += `<span class="badge sep">trennbar</span>`;
+  if(known.has(v.id)) badges += `<span class="badge" style="background:var(--good-soft);color:var(--good);">kenne ich</span>`;
+  document.getElementById("frontBadges").innerHTML = badges;
+
+  document.getElementById("backWord").textContent = v.inf;
+  document.getElementById("backRu").textContent = v.ru;
+  document.getElementById("backEx").textContent = v.ex;
+  document.getElementById("backExRu").textContent = v.exRu;
+
+  const conj = document.getElementById("backConj");
+  conj.innerHTML = PERSONS.map(p=>`<tr><td class="pron">${p.label}</td><td>${v[p.key]}</td></tr>`).join("");
+
+  document.getElementById("backPerf").innerHTML = v.perf
+    ? `Perfekt: <b>${v.perf[0]} ${v.perf[1]}</b>`
+    : `Perfekt: — (im Alltag selten verwendet)`;
+}
+
+document.getElementById("card").addEventListener("click", ()=>{
+  const card = document.getElementById("card");
+  cardFlipped = !cardFlipped;
+  card.classList.toggle("flipped", cardFlipped);
+});
+document.getElementById("btnShuffle").addEventListener("click", (e)=>{
+  e.stopPropagation();
+  resetDeck();
+});
+document.getElementById("btnAgain").addEventListener("click", (e)=>{
+  e.stopPropagation();
+  const v = currentVerb();
+  if(!v) return;
+  known.delete(v.id);
+  saveKnown(known);
+  updateKnownHeader();
+  const reinsertAt = Math.min(deckPtr+4, deck.length);
+  deck.splice(reinsertAt, 0, v.id);
+  deckPtr++;
+  if(deckPtr >= deck.length){ deck = shuffle(filtered()).map(x=>x.id); deckPtr = 0; }
+  renderCard();
+});
+document.getElementById("btnKnow").addEventListener("click", (e)=>{
+  e.stopPropagation();
+  const v = currentVerb();
+  if(!v) return;
+  known.add(v.id);
+  saveKnown(known);
+  updateKnownHeader();
+  deckPtr++;
+  if(deckPtr >= deck.length){ deck = shuffle(filtered()).map(x=>x.id); deckPtr = 0; }
+  renderCard();
+});
+
+/* ================= DRILL ================= */
+let drillCurrent = null;
+
+function resetDrill(){
+  document.getElementById("drillScore").textContent = stats.drillCorrect+"/"+stats.drillTotal;
+  nextDrill();
+}
+function nextDrill(){
+  const pool = filtered();
+  if(pool.length===0){
+    document.getElementById("drillVerb").textContent = "—";
+    document.getElementById("drillGloss").textContent = "keine Verben in diesem Filter";
+    drillCurrent = null;
+    return;
+  }
+  const v = pool[Math.floor(Math.random()*pool.length)];
+  const p = PERSONS[Math.floor(Math.random()*PERSONS.length)];
+  drillCurrent = {v, p};
+  document.getElementById("drillVerb").innerHTML = `${v.inf} <span class="pronoun">(${p.label})</span>`;
+  document.getElementById("drillGloss").textContent = v.ru;
+  const input = document.getElementById("drillInput");
+  input.value = "";
+  input.classList.remove("correct","wrong");
+  input.disabled = false;
+  document.getElementById("drillFeedback").textContent = "";
+  document.getElementById("drillFeedback").className = "feedback";
+  document.getElementById("drillCheck").style.display = "";
+  document.getElementById("drillNext").style.display = "none";
+  input.focus();
+}
+function checkDrill(){
+  if(!drillCurrent) return;
+  const input = document.getElementById("drillInput");
+  const correctRaw = drillCurrent.v[drillCurrent.p.key];
+  const ok = normalize(input.value) === normalize(correctRaw) && input.value.trim().length>0;
+  stats.drillTotal++;
+  if(ok) stats.drillCorrect++;
+  saveStats(stats);
+  document.getElementById("drillScore").textContent = stats.drillCorrect+"/"+stats.drillTotal;
+
+  const fb = document.getElementById("drillFeedback");
+  input.classList.add(ok?"correct":"wrong");
+  input.disabled = true;
+  if(ok){
+    fb.textContent = "Richtig!";
+    fb.className = "feedback correct";
+  } else {
+    fb.textContent = "Richtig wäre: „"+correctRaw+"“";
+    fb.className = "feedback wrong";
+  }
+  document.getElementById("drillCheck").style.display = "none";
+  document.getElementById("drillNext").style.display = "";
+  document.getElementById("drillNext").focus();
+}
+document.getElementById("drillCheck").addEventListener("click", checkDrill);
+document.getElementById("drillNext").addEventListener("click", nextDrill);
+document.getElementById("drillInput").addEventListener("keydown", (e)=>{
+  if(e.key==="Enter"){
+    e.preventDefault();
+    if(document.getElementById("drillCheck").style.display !== "none") checkDrill();
+    else nextDrill();
+  }
+});
+
+/* ================= QUIZ ================= */
+let quizCurrent = null;
+
+function resetQuiz(){
+  document.getElementById("quizScore").textContent = stats.quizCorrect+"/"+stats.quizTotal;
+  nextQuiz();
+}
+function nextQuiz(){
+  const pool = filtered();
+  const distractorPool = pool.length>=4 ? pool : VERBS;
+  if(pool.length===0){
+    document.getElementById("quizVerb").textContent = "—";
+    document.getElementById("quizOptions").innerHTML = "";
+    quizCurrent = null;
+    return;
+  }
+  const v = pool[Math.floor(Math.random()*pool.length)];
+  const others = shuffle(distractorPool.filter(x=>x.id!==v.id)).slice(0,3);
+  const options = shuffle([v, ...others]);
+  quizCurrent = v;
+
+  document.getElementById("quizVerb").textContent = v.inf;
+  const optWrap = document.getElementById("quizOptions");
+  optWrap.innerHTML = "";
+  options.forEach(o=>{
+    const btn = document.createElement("button");
+    btn.className = "opt";
+    btn.textContent = o.ru;
+    btn.addEventListener("click", ()=>answerQuiz(btn, o, v));
+    optWrap.appendChild(btn);
+  });
+  document.getElementById("quizNext").classList.remove("show");
+}
+function answerQuiz(btn, chosen, correctVerb){
+  const allBtns = document.querySelectorAll("#quizOptions .opt");
+  allBtns.forEach(b=>b.disabled = true);
+  const ok = chosen.id === correctVerb.id;
+  stats.quizTotal++;
+  if(ok) stats.quizCorrect++;
+  saveStats(stats);
+  document.getElementById("quizScore").textContent = stats.quizCorrect+"/"+stats.quizTotal;
+
+  if(ok){
+    btn.classList.add("correct");
+  } else {
+    btn.classList.add("wrong");
+    allBtns.forEach(b=>{ if(b.textContent===correctVerb.ru) b.classList.add("correct"); });
+  }
+  document.getElementById("quizNext").classList.add("show");
+}
+document.getElementById("quizNext").addEventListener("click", nextQuiz);
+
+/* ================= LIST ================= */
+let listQuery = "";
+document.getElementById("listSearch").addEventListener("input", (e)=>{
+  listQuery = e.target.value.trim().toLowerCase();
+  renderList();
+});
+function renderList(){
+  const rows = filtered().filter(v=>{
+    if(!listQuery) return true;
+    return v.inf.toLowerCase().includes(listQuery) || v.ru.toLowerCase().includes(listQuery);
+  });
+  const body = document.getElementById("listBody");
+  const empty = document.getElementById("listEmpty");
+  if(rows.length===0){
+    body.innerHTML = "";
+    empty.style.display = "";
+    return;
+  }
+  empty.style.display = "none";
+  body.innerHTML = rows.map(v=>{
+    const perf = v.perf ? `${v.perf[0]} ${v.perf[1]}` : "—";
+    return `<tr>
+      <td class="known">${known.has(v.id) ? '<span class="dot-known">●</span>' : ''}</td>
+      <td class="inf">${v.inf}${v.sep ? ' <span class="sep-dot">·</span>' : ''}</td>
+      <td class="ru">${v.ru}</td>
+      <td>${v.ich}</td>
+      <td>${v.du}</td>
+      <td>${v.er}</td>
+      <td>${perf}</td>
+    </tr>`;
+  }).join("");
+}
+
+/* ================= reset ================= */
+document.getElementById("resetProgress").addEventListener("click", ()=>{
+  if(!confirm("Gesamten Fortschritt (Karten + Punkte) wirklich zurücksetzen?")) return;
+  known = new Set();
+  stats = {drillCorrect:0,drillTotal:0,quizCorrect:0,quizTotal:0};
+  saveKnown(known);
+  saveStats(stats);
+  updateKnownHeader();
+  resetDeck();
+  resetDrill();
+  resetQuiz();
+  renderList();
+});
+
+/* ================= init ================= */
+updateKnownHeader();
+resetDeck();
+resetDrill();
+resetQuiz();
+renderList();
+
+})();
+</script>
