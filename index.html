@@ -77,7 +77,7 @@
     padding:28px 20px 64px;
   }
   header.top{
-    position:sticky; top:0; z-index:5;
+    position:sticky; top:53px; z-index:5;
     background:color-mix(in srgb, var(--bg) 88%, transparent);
     backdrop-filter:blur(8px);
     -webkit-backdrop-filter:blur(8px);
@@ -163,6 +163,233 @@
   main{max-width:680px;margin:0 auto;}
   .view{display:none;}
   .view.active{display:block;}
+  .gtab-view{display:none;}
+  .gtab-view.active{display:block;}
+
+  /* ---- App shell / navigation ---- */
+  .appbar{
+    position:sticky; top:0; z-index:10;
+    display:flex; align-items:center; gap:10px;
+    padding:12px 20px;
+    background:color-mix(in srgb, var(--bg) 90%, transparent);
+    backdrop-filter:blur(8px);
+    -webkit-backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--border);
+  }
+  .appbar .back-btn{
+    appearance:none; border:1px solid var(--border); background:var(--surface);
+    color:var(--ink); width:32px; height:32px; border-radius:9px;
+    display:flex; align-items:center; justify-content:center;
+    cursor:pointer; font-size:16px; flex:0 0 auto; font-family:inherit;
+  }
+  .appbar .back-btn[hidden]{display:none;}
+  .appbar .app-title{font-size:15px; font-weight:700; letter-spacing:.2px;}
+
+  .screen{display:none;}
+  .screen.active{display:block;}
+
+  /* ---- Home ---- */
+  .home-wrap{max-width:680px;margin:0 auto;padding:20px 20px 64px;}
+  .home-lead{margin:0 0 22px;}
+  .home-lead h1{margin:0 0 6px;}
+  .home-lead p{margin:0;color:var(--ink-muted);font-size:13.5px;}
+  .home-grid{display:grid; gap:12px;}
+  .home-card{
+    display:flex; align-items:center; gap:14px;
+    text-align:left;
+    color:var(--ink);
+    border:1px solid var(--border);
+    background:var(--surface);
+    border-radius:16px;
+    padding:16px 18px;
+    cursor:pointer;
+    box-shadow:var(--shadow);
+    font-family:inherit;
+    width:100%;
+    transition:border-color .15s ease, transform .05s ease;
+  }
+  .home-card:hover{border-color:var(--accent);}
+  .home-card:active{transform:scale(.99);}
+  .home-card .badge-mono{
+    flex:0 0 auto;
+    width:44px;height:44px;border-radius:12px;
+    display:flex;align-items:center;justify-content:center;
+    font-size:16px; font-weight:700;
+    font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+    background:var(--accent-soft); color:var(--accent-ink);
+  }
+  .home-card .txt{flex:1;min-width:0;}
+  .home-card .txt .t{font-size:15.5px;font-weight:700;margin-bottom:2px;}
+  .home-card .txt .d{font-size:12.5px;color:var(--ink-muted);}
+  .home-card .chevron{color:var(--ink-muted);font-size:18px;flex:0 0 auto;}
+
+  /* ---- Grammatik ---- */
+  .rule-card{margin-bottom:14px;}
+  .rule-card h3{margin:0 0 4px;font-size:16px;}
+  .rule-card .when{font-size:12.5px;color:var(--ink-muted);margin-bottom:10px;}
+  .rule-card .formula{
+    background:var(--surface-2); border-radius:10px; padding:10px 12px;
+    font-size:13.5px; margin-bottom:10px;
+  }
+  .rule-card .formula b{color:var(--accent-ink);}
+  .rule-card .ex-line{font-size:13.5px;margin-bottom:6px;}
+  .rule-card .ex-line .de{margin-bottom:1px;}
+  .rule-card .ex-line .ru{color:var(--ink-muted);}
+  table.gram{width:100%;border-collapse:collapse;font-size:12.5px;margin:4px 0 16px;font-variant-numeric:tabular-nums;}
+  table.gram th,table.gram td{padding:7px 6px;border:1px solid var(--border);text-align:center;}
+  table.gram th{background:var(--surface-2);font-weight:700;font-size:11.5px;text-transform:uppercase;letter-spacing:.3px;color:var(--ink-muted);}
+  table.gram td:first-child, table.gram th:first-child{text-align:left;font-weight:600;background:var(--surface-2);}
+  .prep-list{display:flex;flex-wrap:wrap;gap:6px;margin:2px 0 10px;}
+  .prep-chip{background:var(--accent-soft);color:var(--accent-ink);border-radius:999px;padding:4px 10px;font-size:12.5px;font-weight:600;}
+
+  .compare{background:var(--surface-2); border-radius:10px; padding:10px 12px; margin-bottom:8px;}
+  .compare .crow{display:flex; gap:8px; font-size:13.5px; margin-bottom:5px; align-items:flex-start;}
+  .compare .crow:last-child{margin-bottom:0;}
+  .compare .tag{
+    flex:0 0 auto; font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.3px;
+    color:var(--accent-ink); background:var(--accent-soft); border-radius:5px; padding:2px 6px; margin-top:2px;
+  }
+  .compare .txt{flex:1;}
+
+  .case-tag{
+    display:inline-block; font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.3px;
+    padding:2px 7px; border-radius:5px;
+    background:var(--amber-soft); color:var(--amber);
+  }
+  .prep-list-cards{display:flex;flex-direction:column;gap:8px;}
+  .prep-card{border:1px solid var(--border);background:var(--surface);border-radius:12px;padding:12px 14px;}
+  .prep-card .head{display:flex;align-items:center;gap:8px;margin-bottom:3px;flex-wrap:wrap;}
+  .prep-card .word{font-weight:700;font-size:15.5px;}
+  .prep-card .mean{color:var(--accent-ink);font-size:13.5px;margin-bottom:8px;}
+  .prep-card .pex{font-size:13px;}
+  .prep-card .pex .de{margin-bottom:1px;}
+  .prep-card .pex .ru{color:var(--ink-muted);}
+
+  .u-tag{
+    display:inline-block; font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.3px;
+    padding:2px 6px; border-radius:5px; margin-left:6px; vertical-align:middle;
+    background:var(--good-soft); color:var(--good);
+  }
+  table.gram td.ex{text-align:left;font-size:12.5px;}
+  .lex-intro{margin-bottom:12px;}
+
+  /* ---- Daily Challenge ---- */
+  .home-card.daily-card{background:var(--accent);border-color:var(--accent);color:var(--surface);}
+  .home-card.daily-card:hover{border-color:var(--accent-ink);}
+  .home-card.daily-card .badge-mono{background:color-mix(in srgb, var(--surface) 22%, transparent);color:var(--surface);}
+  .home-card.daily-card .txt .d, .home-card.daily-card .chevron{color:color-mix(in srgb, var(--surface) 82%, transparent);}
+
+  .daily-top{display:flex;justify-content:space-between;align-items:center;font-size:12.5px;color:var(--ink-muted);margin-bottom:8px;font-variant-numeric:tabular-nums;}
+  .daily-block{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--accent-ink);}
+  .progress-track.daily-progress{margin:0 0 16px;}
+  .daily-task .q-label{font-size:12.5px;color:var(--ink-muted);text-align:center;margin-bottom:6px;}
+  .daily-task .q-word{font-size:clamp(22px,7vw,32px);font-weight:500;text-align:center;margin-bottom:18px;overflow-wrap:anywhere;text-wrap:balance;}
+  .daily-task .q-sub{font-size:13px;color:var(--ink-muted);text-align:center;margin:-12px 0 16px;}
+  .daily-task .pronoun{color:var(--accent-ink);font-weight:600;}
+  .d-ex{background:var(--surface-2);border-radius:10px;padding:9px 12px;font-size:13px;margin:0 0 12px;line-height:1.45;}
+  .d-ex span{color:var(--ink-muted);}
+  .umlauts{display:flex;gap:6px;justify-content:center;margin:-4px 0 12px;}
+  .umlauts button{border:1px solid var(--border);background:var(--surface);color:var(--ink);border-radius:8px;width:42px;height:36px;font-size:16px;cursor:pointer;font-family:inherit;}
+  .aux-toggle{display:flex;gap:8px;justify-content:center;margin-bottom:12px;}
+  .aux-toggle button{min-width:96px;border:1px solid var(--border);background:var(--surface);color:var(--ink);border-radius:11px;padding:10px 14px;font-size:15px;font-family:inherit;cursor:pointer;}
+  .aux-toggle button.sel{background:var(--accent-soft);border-color:var(--accent);color:var(--accent-ink);font-weight:700;}
+  .art-btns{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px;}
+  .art-btns .opt{text-align:center;font-weight:600;font-size:16px;}
+  .match-time{text-align:center;font-size:13px;color:var(--ink-muted);margin:-4px 0 12px;font-variant-numeric:tabular-nums;}
+  .match-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px;}
+  .match-col{display:flex;flex-direction:column;gap:8px;}
+  .match-btn{border:1px solid var(--border);background:var(--surface);color:var(--ink);border-radius:11px;padding:10px 8px;font-size:13.5px;font-family:inherit;cursor:pointer;min-height:48px;overflow-wrap:anywhere;transition:background .15s ease,border-color .15s ease,opacity .2s ease;}
+  .match-btn.serif{font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;font-size:15px;}
+  .match-btn.sel{border-color:var(--accent);background:var(--accent-soft);}
+  .match-btn.err{border-color:var(--bad);background:var(--bad-soft);}
+  .match-btn.done{opacity:.35;pointer-events:none;border-color:var(--good);background:var(--good-soft);}
+  .daily-actions{display:flex;gap:8px;}
+  .daily-actions button{flex:1;border:1px solid var(--border);background:var(--surface);color:var(--ink);font-family:inherit;font-size:14px;font-weight:600;padding:12px 10px;border-radius:11px;cursor:pointer;}
+  .daily-actions button.primary{background:var(--accent);border-color:var(--accent);color:var(--surface);}
+  .daily-actions.stack{flex-direction:column;}
+  .daily-stats{display:flex;gap:8px;margin:14px 0;}
+  .daily-stat{flex:1;background:var(--surface-2);border-radius:12px;padding:10px 12px;}
+  .daily-stat .n{font-size:20px;font-weight:700;font-variant-numeric:tabular-nums;}
+  .daily-stat .k{font-size:11.5px;color:var(--ink-muted);}
+  .daily-gram{font-size:13px;color:var(--ink-muted);margin:0 0 10px;}
+  .daily-gram b{color:var(--ink);}
+  .daily-toggle{display:flex;align-items:center;gap:8px;font-size:13px;margin:0 0 16px;cursor:pointer;}
+  .daily-toggle input{width:18px;height:18px;accent-color:var(--accent);}
+  .daily-done{background:var(--good-soft);color:var(--good);border-radius:12px;padding:10px 12px;font-size:13px;margin-bottom:12px;}
+  .daily-len{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+  .daily-len button{border:1px solid var(--border);background:var(--surface);border-radius:14px;padding:14px 6px;cursor:pointer;font-family:inherit;color:var(--ink);box-shadow:var(--shadow);}
+  .daily-len button:hover{border-color:var(--accent);}
+  .daily-len .m{display:block;font-size:24px;font-weight:700;font-variant-numeric:tabular-nums;}
+  .daily-len .l{display:block;font-size:11.5px;color:var(--ink-muted);margin-top:2px;}
+  .end-score{font-size:48px;font-weight:600;text-align:center;font-variant-numeric:tabular-nums;margin:4px 0 2px;}
+
+  /* ---- List / vocab table (shared) ---- */
+  .search{
+    width:100%;
+    font-family:inherit;
+    font-size:14px;
+    padding:10px 13px;
+    border-radius:11px;
+    border:1px solid var(--border);
+    background:var(--surface);
+    color:var(--ink);
+    margin:12px 0 12px;
+  }
+  .search:focus{outline:none;border-color:var(--accent);}
+  .table-scroll{
+    overflow-x:auto;
+    border:1px solid var(--border);
+    border-radius:14px;
+    background:var(--surface);
+  }
+  table.list{
+    width:100%;
+    border-collapse:collapse;
+    font-size:13px;
+  }
+  table.list th{
+    text-align:left;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:.4px;
+    color:var(--ink-muted);
+    padding:10px 10px;
+    border-bottom:1px solid var(--border);
+    position:sticky;
+    top:0;
+    background:var(--surface);
+  }
+  table.list td{
+    padding:9px 10px;
+    border-bottom:1px solid var(--border);
+    vertical-align:top;
+  }
+  table.list tr:last-child td{border-bottom:none;}
+  table.list td.inf{font-weight:600;}
+  table.list td.inf .sep-dot{color:var(--amber);font-weight:700;}
+  table.list td.ru{color:var(--ink-muted);}
+  table.list td.known{width:18px;text-align:center;}
+  .dot-known{color:var(--good);font-size:14px;}
+
+  /* ---- Redewendungen ---- */
+  .phrase-list{display:flex;flex-direction:column;gap:8px;}
+  .phrase-item{
+    border:1px solid var(--border);background:var(--surface);
+    border-radius:12px;padding:12px 14px;
+  }
+  .phrase-item .de{font-weight:600;font-size:14.5px;margin-bottom:2px;}
+  .phrase-item .ru{color:var(--accent-ink);font-size:13.5px;}
+  .phrase-item .note{color:var(--ink-muted);font-size:12px;margin-top:4px;font-style:italic;}
+  .phrase-item .pex{margin-top:6px;font-size:12.5px;}
+  .phrase-item .pex .de{margin-bottom:1px;}
+  .phrase-item .pex .ru{color:var(--ink-muted);}
+
+  .empty{
+    text-align:center;
+    color:var(--ink-muted);
+    font-size:13.5px;
+    padding:30px 0;
+  }
 
   /* ---- Flashcards ---- */
   .deck-meta{
@@ -229,9 +456,6 @@
   }
   .badge.sep{background:var(--amber-soft);color:var(--amber);}
 
-  .inf-word{
-    font-size:15px;
-  }
   .card-front-center{
     flex:1;
     display:flex;
@@ -240,7 +464,8 @@
     text-align:center;
   }
   .big-inf{
-    font-size:42px;
+    font-size:clamp(28px, 9vw, 42px);
+    overflow-wrap:anywhere;
     font-weight:500;
     letter-spacing:.2px;
   }
@@ -400,62 +625,6 @@
   .quiz-next{display:none;}
   .quiz-next.show{display:block;}
 
-  /* ---- List ---- */
-  .search{
-    width:100%;
-    font-family:inherit;
-    font-size:14px;
-    padding:10px 13px;
-    border-radius:11px;
-    border:1px solid var(--border);
-    background:var(--surface);
-    color:var(--ink);
-    margin:12px 0 12px;
-  }
-  .search:focus{outline:none;border-color:var(--accent);}
-  .table-scroll{
-    overflow-x:auto;
-    border:1px solid var(--border);
-    border-radius:14px;
-    background:var(--surface);
-  }
-  table.list{
-    width:100%;
-    border-collapse:collapse;
-    font-size:13px;
-    min-width:560px;
-  }
-  table.list th{
-    text-align:left;
-    font-size:11px;
-    text-transform:uppercase;
-    letter-spacing:.4px;
-    color:var(--ink-muted);
-    padding:10px 10px;
-    border-bottom:1px solid var(--border);
-    position:sticky;
-    top:0;
-    background:var(--surface);
-  }
-  table.list td{
-    padding:9px 10px;
-    border-bottom:1px solid var(--border);
-    vertical-align:top;
-  }
-  table.list tr:last-child td{border-bottom:none;}
-  table.list td.inf{font-weight:600;}
-  table.list td.inf .sep-dot{color:var(--amber);font-weight:700;}
-  table.list td.ru{color:var(--ink-muted);}
-  table.list td.known{width:18px;text-align:center;}
-  .dot-known{color:var(--good);font-size:14px;}
-
-  .empty{
-    text-align:center;
-    color:var(--ink-muted);
-    font-size:13.5px;
-    padding:30px 0;
-  }
-
   footer{
     text-align:center;
     font-size:11.5px;
@@ -471,119 +640,1200 @@
   @media (prefers-reduced-motion: reduce){
     .card{transition:none;}
   }
+
+  .word-tip{
+    position:fixed;
+    z-index:50;
+    max-width:240px;
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:10px;
+    box-shadow:var(--shadow);
+    padding:8px 12px;
+    font-size:13px;
+    line-height:1.35;
+    pointer-events:none;
+    opacity:0;
+    transform:translate(-50%, -100%);
+    transition:opacity .12s ease;
+  }
+  .word-tip.show{opacity:1;}
+  .word-tip .de{font-weight:700;color:var(--ink);margin-bottom:2px;}
+  .word-tip .ru{color:var(--accent-ink);}
+  .word-tip .miss{color:var(--ink-muted);font-style:italic;}
 </style>
 
-<header class="top">
-  <div class="inner">
-    <h1 class="serif">Deutsch A2 — Verben für die Konversation</h1>
-    <p class="sub">150 самых нужных глаголов A2–B1 для устной речи · <b id="knownCount">0</b>/150 отмечены как «знаю»</p>
-    <nav class="tabs" role="tablist">
-      <button class="active" data-view="cards">Karten</button>
-      <button data-view="drill">Konjugation</button>
-      <button data-view="quiz">Quiz</button>
-      <button data-view="list">Liste</button>
-    </nav>
-    <div class="chips" id="chips"></div>
+<div class="appbar">
+  <button class="back-btn" id="backBtn" hidden title="Zurück">←</button>
+  <div class="app-title serif" id="appTitle">Deutsch</div>
+</div>
+
+<!-- ================= HOME ================= -->
+<div class="screen active" id="screen-home">
+  <div class="home-wrap">
+    <div class="home-lead">
+      <h1 class="serif">Deutsch</h1>
+      <p>Выбери раздел, который сегодня учим</p>
+    </div>
+    <div class="home-grid">
+      <button class="home-card daily-card" data-target="screen-daily">
+        <div class="badge-mono">D</div>
+        <div class="txt">
+          <div class="t">Daily Challenge</div>
+          <div class="d" id="dailyHomeSub">Новое и повторение · 5–20 минут</div>
+        </div>
+        <div class="chevron">›</div>
+      </button>
+      <button class="home-card" data-target="screen-grammatik">
+        <div class="badge-mono">G</div>
+        <div class="txt">
+          <div class="t">Grammatik</div>
+          <div class="d">Правила: времена и падежи, с примерами</div>
+        </div>
+        <div class="chevron">›</div>
+      </button>
+      <button class="home-card" data-target="screen-verben">
+        <div class="badge-mono">V</div>
+        <div class="txt">
+          <div class="t">Verben</div>
+          <div class="d"><span class="verb-total">150</span> глаголов: карточки, спряжение, квиз</div>
+        </div>
+        <div class="chevron">›</div>
+      </button>
+      <button class="home-card" data-target="screen-wortschatz">
+        <div class="badge-mono">W</div>
+        <div class="txt">
+          <div class="t">Wortschatz</div>
+          <div class="d">Лексика по темам: семья, еда, дом, работа…</div>
+        </div>
+        <div class="chevron">›</div>
+      </button>
+      <button class="home-card" data-target="screen-redewendungen">
+        <div class="badge-mono">R</div>
+        <div class="txt">
+          <div class="t">Redewendungen</div>
+          <div class="d">Расхожие фразы и идиомы</div>
+        </div>
+        <div class="chevron">›</div>
+      </button>
+    </div>
   </div>
-</header>
+</div>
 
-<main class="wrap" style="padding-top:0;">
-
-  <!-- CARDS -->
-  <section class="view active" id="view-cards">
-    <div class="deck-meta">
-      <span id="cardsPos">1 / 150</span>
-      <div class="progress-track"><div class="progress-fill" id="cardsProgress" style="width:0%"></div></div>
-      <span id="cardsKnown">0 знаю</span>
+<!-- ================= GRAMMATIK ================= -->
+<div class="screen" id="screen-grammatik">
+  <header class="top">
+    <div class="inner">
+      <h1 class="serif">Grammatik</h1>
+      <p class="sub">Времена, падежи и другие темы — с формулами и примерами</p>
+      <div class="chips" id="grammatikChips">
+        <button class="chip active" data-gtab="zeiten">Zeiten</button>
+        <button class="chip" data-gtab="kasus">Kasus</button>
+        <button class="chip" data-gtab="saetze">Sätze</button>
+        <button class="chip" data-gtab="imperativ">Imperativ</button>
+        <button class="chip" data-gtab="adjektive">Adjektive</button>
+        <button class="chip" data-gtab="negation">Negation</button>
+        <button class="chip" data-gtab="konjunktiv">Konjunktiv I</button>
+        <button class="chip" data-gtab="passiv">Passiv</button>
+      </div>
     </div>
-    <div class="card-scene">
-      <div class="card" id="card">
-        <div class="face front">
-          <div class="badges" id="frontBadges"></div>
-          <div class="card-front-center">
-            <div class="big-inf serif" id="frontWord">—</div>
-          </div>
-          <div class="hint-tap">нажми на карточку, чтобы перевернуть</div>
+  </header>
+  <main class="wrap" style="padding-top:0;">
+
+    <section class="gtab-view active" id="gtab-zeiten">
+      <div class="panel rule-card">
+        <h3 class="serif">Präsens — настоящее время</h3>
+        <div class="when">Для действий сейчас, фактов, привычек, а иногда и для будущего (с указанием времени).</div>
+        <div class="formula">Основа глагола + окончание: <b>-e, -st, -t, -en, -t, -en</b><br>machen: ich mache, du machst, er macht, wir machen, ihr macht, sie machen</div>
+        <div class="ex-line"><div class="de">Ich arbeite in Berlin.</div><div class="ru">Я работаю в Берлине.</div></div>
+        <div class="ex-line"><div class="de">Morgen fliege ich nach Rom.</div><div class="ru">Завтра я лечу в Рим.</div></div>
+      </div>
+
+      <div class="panel rule-card">
+        <h3 class="serif">Perfekt — разговорное прошедшее</h3>
+        <div class="when">Самое частое прошедшее время в устной речи и переписке.</div>
+        <div class="formula"><b>haben/sein</b> (в Präsens) + <b>Partizip II</b> в конце предложения<br>sein — для глаголов движения и изменения состояния (gehen, kommen, fahren, aufwachen…), а также sein, bleiben, werden</div>
+        <div class="ex-line"><div class="de">Ich habe gestern gearbeitet.</div><div class="ru">Вчера я работал(а).</div></div>
+        <div class="ex-line"><div class="de">Wir sind ins Kino gegangen.</div><div class="ru">Мы сходили в кино.</div></div>
+      </div>
+
+      <div class="panel rule-card">
+        <h3 class="serif">Präteritum — книжное прошедшее</h3>
+        <div class="when">В письменной речи, рассказах, новостях. В разговоре — почти всегда для haben, sein и модальных глаголов.</div>
+        <div class="formula">Слабые глаголы: основа + <b>-te-</b> + окончание (machte, machtest…)<br>Сильные глаголы меняют корневую гласную (ging, sah, kam…)</div>
+        <div class="ex-line"><div class="de">Ich war müde.</div><div class="ru">Я был(а) уставшим(ей).</div></div>
+        <div class="ex-line"><div class="de">Er hatte keine Zeit.</div><div class="ru">У него не было времени.</div></div>
+      </div>
+
+      <div class="panel rule-card">
+        <h3 class="serif">Plusquamperfekt — предпрошедшее время</h3>
+        <div class="when">Аналог английского Past Perfect: действие, которое произошло раньше другого действия в прошлом — «уже сделал(а) к тому моменту».</div>
+        <div class="formula"><b>hatte/war</b> (Präteritum haben/sein) + <b>Partizip II</b> в конце предложения — тот же выбор вспомогательного глагола, что и в Perfekt</div>
+        <div class="compare">
+          <div class="crow"><span class="tag">Plusquamperfekt</span><span class="txt">Ich hatte schon gegessen,</span></div>
+          <div class="crow"><span class="tag">Präteritum</span><span class="txt">als du ankamst.</span></div>
         </div>
-        <div class="face back">
-          <div class="back-inf serif" id="backWord">—</div>
-          <div class="back-ru" id="backRu">—</div>
-          <div class="example">
-            <div class="de" id="backEx">—</div>
-            <div class="ru" id="backExRu">—</div>
+        <div class="ex-line"><div class="ru">Я уже поел(а), когда ты пришёл/пришла. — сначала «поел», потом «пришёл».</div></div>
+        <div class="ex-line"><div class="de">Nachdem wir gegessen hatten, sind wir spazieren gegangen.</div><div class="ru">После того как мы поели, мы пошли гулять.</div></div>
+        <div class="when">Часто идёт в паре с nachdem (после того как): более раннее действие — в Plusquamperfekt, более позднее — в Perfekt/Präteritum.</div>
+      </div>
+
+      <div class="panel rule-card">
+        <h3 class="serif">Futur I — будущее время</h3>
+        <div class="when">Формально для будущего — в разговоре чаще используют Präsens со словом о времени. Значение при этом не меняется.</div>
+        <div class="formula"><b>werden</b> (в Präsens) + инфинитив в конце предложения</div>
+
+        <div class="compare">
+          <div class="crow"><span class="tag">Futur I</span><span class="txt">Ich werde morgen einkaufen gehen.</span></div>
+          <div class="crow"><span class="tag">Präsens</span><span class="txt">Ich gehe morgen einkaufen.</span></div>
+        </div>
+        <div class="ex-line"><div class="ru">Завтра я пойду за покупками. — оба варианта звучат одинаково естественно.</div></div>
+
+        <div class="compare">
+          <div class="crow"><span class="tag">Futur I</span><span class="txt">Wir werden nächstes Jahr nach Spanien reisen.</span></div>
+          <div class="crow"><span class="tag">Präsens</span><span class="txt">Wir reisen nächstes Jahr nach Spanien.</span></div>
+        </div>
+        <div class="ex-line"><div class="ru">В следующем году мы поедем в Испанию.</div></div>
+
+        <div class="when">Разница появляется, когда нет слова о времени: тогда Futur I чаще выражает не будущее, а <b>предположение</b> о настоящем.</div>
+        <div class="compare">
+          <div class="crow"><span class="tag">Futur I</span><span class="txt">Er wird jetzt zu Hause sein.</span></div>
+          <div class="crow"><span class="tag">Präsens</span><span class="txt">Er ist jetzt zu Hause.</span></div>
+        </div>
+        <div class="ex-line"><div class="ru">Futur: «Он, наверное, сейчас дома» (предположение) — Präsens: «Он сейчас дома» (факт).</div></div>
+      </div>
+
+      <div class="panel rule-card">
+        <h3 class="serif">Futur II — предбудущее время</h3>
+        <div class="when">Аналог английского Future Perfect («will have done»). Два случая: 1) действие завершится к моменту в будущем; 2) (гораздо чаще в разговоре!) предположение о прошлом.</div>
+        <div class="formula"><b>werden</b> (в Präsens) + <b>Partizip II</b> + <b>haben/sein</b> (в конце, в инфинитиве)</div>
+        <div class="ex-line"><div class="de">Bis nächste Woche werde ich das Buch gelesen haben.</div><div class="ru">К следующей неделе я дочитаю эту книгу.</div></div>
+        <div class="compare">
+          <div class="crow"><span class="tag">Futur II</span><span class="txt">Er wird das schon gemacht haben.</span></div>
+          <div class="crow"><span class="tag">Perfekt</span><span class="txt">Er hat das schon gemacht.</span></div>
+        </div>
+        <div class="ex-line"><div class="ru">Futur II: «он, наверное, уже сделал» (предположение) — Perfekt: «он уже сделал» (факт).</div></div>
+      </div>
+    </section>
+
+    <section class="gtab-view" id="gtab-kasus">
+      <div class="panel rule-card">
+        <h3 class="serif">Артикли по падежам</h3>
+        <table class="gram">
+          <tr><th></th><th>Nom.</th><th>Akk.</th><th>Dat.</th><th>Gen.</th></tr>
+          <tr><td>der (m)</td><td>der / ein</td><td>den / einen</td><td>dem / einem</td><td>des / eines</td></tr>
+          <tr><td>die (f)</td><td>die / eine</td><td>die / eine</td><td>der / einer</td><td>der / einer</td></tr>
+          <tr><td>das (n)</td><td>das / ein</td><td>das / ein</td><td>dem / einem</td><td>des / eines</td></tr>
+          <tr><td>die (Pl.)</td><td>die / –</td><td>die / –</td><td>den -n / –</td><td>der / –</td></tr>
+        </table>
+      </div>
+
+      <div class="panel rule-card">
+        <h3 class="serif">Nominativ — именительный</h3>
+        <div class="when">Вопрос <b>Wer?/Was?</b> (кто?/что?) — подлежащее предложения.</div>
+        <div class="ex-line"><div class="de">Der Mann ist nett.</div><div class="ru">Мужчина приятный.</div></div>
+        <div class="ex-line"><div class="de">Die Tasche ist neu.</div><div class="ru">Сумка новая.</div></div>
+      </div>
+
+      <div class="panel rule-card">
+        <h3 class="serif">Akkusativ — винительный</h3>
+        <div class="when">Вопрос <b>Wen?/Was?</b> (кого?/что?) — прямое дополнение. Меняется только мужской род: der→den, ein→einen.</div>
+        <div class="prep-list">
+          <span class="prep-chip">für</span><span class="prep-chip">ohne</span><span class="prep-chip">gegen</span><span class="prep-chip">durch</span><span class="prep-chip">um</span>
+        </div>
+        <div class="ex-line"><div class="de">Ich sehe den Mann.</div><div class="ru">Я вижу мужчину.</div></div>
+        <div class="ex-line"><div class="de">Das Geschenk ist für dich.</div><div class="ru">Этот подарок для тебя.</div></div>
+      </div>
+
+      <div class="panel rule-card">
+        <h3 class="serif">Dativ — дательный</h3>
+        <div class="when">Вопрос <b>Wem?</b> (кому?) — косвенное дополнение.</div>
+        <div class="prep-list">
+          <span class="prep-chip">mit</span><span class="prep-chip">nach</span><span class="prep-chip">bei</span><span class="prep-chip">seit</span><span class="prep-chip">von</span><span class="prep-chip">zu</span><span class="prep-chip">aus</span><span class="prep-chip">gegenüber</span>
+        </div>
+        <div class="ex-line"><div class="de">Ich helfe dem Kind.</div><div class="ru">Я помогаю ребёнку.</div></div>
+        <div class="ex-line"><div class="de">Ich fahre mit dem Bus.</div><div class="ru">Я еду на автобусе.</div></div>
+      </div>
+
+      <div class="panel rule-card">
+        <h3 class="serif">Genitiv — родительный</h3>
+        <div class="when">Вопрос <b>Wessen?</b> (чей?) — принадлежность. В разговорной речи часто заменяется на «von + Dativ».</div>
+        <div class="prep-list">
+          <span class="prep-chip">während</span><span class="prep-chip">trotz</span><span class="prep-chip">wegen</span><span class="prep-chip">statt</span>
+        </div>
+        <div class="ex-line"><div class="de">Das ist das Auto meines Vaters.</div><div class="ru">Это машина моего отца.</div></div>
+        <div class="ex-line"><div class="de">Wegen des Wetters bleiben wir zu Hause.</div><div class="ru">Из-за погоды мы останемся дома.</div></div>
+      </div>
+
+      <div class="panel rule-card">
+        <h3 class="serif">Akkusativ: личные местоимения <span class="u-tag">Unterricht</span></h3>
+        <div class="when">Кого? — прямое дополнение и после предлогов с Akkusativ (für, ohne, gegen, durch, um).</div>
+        <table class="gram">
+          <tr><th>Nom.</th><th>Akk.</th><th>Beispiel</th></tr>
+          <tr><td>ich</td><td>mich</td><td class="ex">Lenken Sie mich bitte nicht ab!</td></tr>
+          <tr><td>du</td><td>dich</td><td class="ex">Ich will dich nicht stören.</td></tr>
+          <tr><td>er</td><td>ihn</td><td class="ex">Ich sehe ihn mit seinem Hund.</td></tr>
+          <tr><td>sie</td><td>sie</td><td class="ex">Ich lade sie zur Geburtstagsparty ein.</td></tr>
+          <tr><td>es</td><td>es</td><td class="ex">Ich mag dieses Fahrrad. Ich möchte es mieten.</td></tr>
+          <tr><td>wir</td><td>uns</td><td class="ex">Möchtest du uns einmal besuchen?</td></tr>
+          <tr><td>ihr</td><td>euch</td><td class="ex">Ich bin stolz auf euch!</td></tr>
+          <tr><td>sie/Sie</td><td>sie/Sie</td><td class="ex">Ich möchte Sie um einen Gefallen bitten.</td></tr>
+        </table>
+      </div>
+
+      <div class="panel rule-card">
+        <h3 class="serif">Akkusativ: артикли и указатели <span class="u-tag">Unterricht</span></h3>
+        <div class="when">Меняется только мужской род: окончание -er/без окончания → <b>-en</b>. Женский, средний род и множественное число остаются как в Nominativ.</div>
+        <table class="gram">
+          <tr><th></th><th>der</th><th>dieser</th><th>ein</th><th>kein</th></tr>
+          <tr><td>m</td><td>den</td><td>diesen</td><td>einen</td><td>keinen</td></tr>
+          <tr><td>n</td><td>das</td><td>dieses</td><td>ein</td><td>kein</td></tr>
+          <tr><td>f</td><td>die</td><td>diese</td><td>eine</td><td>keine</td></tr>
+          <tr><td>Pl.</td><td>die</td><td>diese</td><td>–</td><td>keine</td></tr>
+        </table>
+        <div class="ex-line"><div class="de">Ich möchte diesen Wagen kaufen. (der Wagen)</div><div class="ru">Я хочу купить эту машину.</div></div>
+        <div class="ex-line"><div class="de">Ich hätte gerne einen Hund. (der Hund)</div><div class="ru">Я бы хотел(а) собаку.</div></div>
+        <div class="ex-line"><div class="de">Ich habe kein Brot bei mir. (das Brot)</div><div class="ru">У меня с собой нет хлеба.</div></div>
+        <div class="ex-line"><div class="de">Ich habe keine Lust. (die Lust)</div><div class="ru">Мне не хочется.</div></div>
+        <div class="ex-line"><div class="de">Ich möchte diese Brettspiele kaufen. (Pl.)</div><div class="ru">Я хочу купить эти настольные игры.</div></div>
+        <div class="when">Притяжательные (mein, dein, sein, unser, euer…) меняются так же, как ein: Kannst du mir <b>deinen</b> Kuli leihen? — но <b>dein</b> Messer (das Messer — средний род, поэтому без -en).</div>
+      </div>
+
+      <div class="panel rule-card">
+        <h3 class="serif">Вопросы к падежам <span class="u-tag">Unterricht</span></h3>
+        <table class="gram">
+          <tr><th>Kasus</th><th>Fragen</th></tr>
+          <tr><td>Akkusativ</td><td class="ex"><b>Wen?</b> кого? · <b>Was?</b> что? · <b>Wohin?</b> куда? (с in, auf, an…)</td></tr>
+          <tr><td>Dativ</td><td class="ex"><b>Wem?</b> кому? · <b>Wo?</b> где? (с in, auf, an…) · <b>Woher?</b> откуда? (с aus, von)</td></tr>
+        </table>
+        <div class="when">«Wann?» (когда?) к падежу не привязан: ответ зависит от предлога — <i>am Montag</i> (Dat.), <i>um acht Uhr</i> (Akk.).</div>
+      </div>
+
+      <div class="panel rule-card">
+        <h3 class="serif">Предлоги времени <span class="u-tag">Unterricht</span></h3>
+        <table class="gram">
+          <tr><th></th><th>Значение</th><th>Beispiel</th></tr>
+          <tr><td>seit + Dat.</td><td class="ex">с (и до сих пор)</td><td class="ex">Ich lerne seit zwei Jahren Deutsch.</td></tr>
+          <tr><td>vor + Dat.</td><td class="ex">… назад</td><td class="ex">Ich war vor einem Jahr in Berlin.</td></tr>
+          <tr><td>nach + Dat.</td><td class="ex">после</td><td class="ex">Nach dem Unterricht gehe ich nach Hause.</td></tr>
+          <tr><td>bis + Akk.</td><td class="ex">до</td><td class="ex">Ich arbeite bis Freitag.</td></tr>
+        </table>
+      </div>
+    </section>
+
+    <section class="gtab-view" id="gtab-saetze">
+      <div class="panel rule-card">
+        <h3 class="serif">Hauptsatz — глагол на 2-м месте</h3>
+        <div class="when">В главном предложении спрягаемый глагол всегда стоит на втором месте — независимо от того, что стоит первым.</div>
+        <div class="ex-line"><div class="de">Ich gehe heute ins Kino.</div><div class="ru">Я иду сегодня в кино.</div></div>
+        <div class="ex-line"><div class="de">Heute gehe ich ins Kino.</div><div class="ru">Сегодня я иду в кино. (глагол остаётся вторым!)</div></div>
+      </div>
+
+      <div class="panel rule-card">
+        <h3 class="serif">Nebensatz — глагол в конце</h3>
+        <div class="when">После союзов вроде weil, dass, wenn, obwohl спрягаемый глагол уходит в самый конец предложения.</div>
+        <div class="prep-list">
+          <span class="prep-chip">weil</span><span class="prep-chip">dass</span><span class="prep-chip">wenn</span><span class="prep-chip">obwohl</span><span class="prep-chip">während</span><span class="prep-chip">bevor</span><span class="prep-chip">nachdem</span>
+        </div>
+        <div class="ex-line"><div class="de">Ich bleibe zu Hause, weil ich krank bin.</div><div class="ru">Я остаюсь дома, потому что я болен(льна).</div></div>
+        <div class="ex-line"><div class="de">Ich weiß, dass du recht hast.</div><div class="ru">Я знаю, что ты прав(а).</div></div>
+        <div class="when">Союзы und, oder, aber, denn, sondern порядок слов НЕ меняют — после них глагол остаётся на 2-м месте.</div>
+      </div>
+
+      <div class="panel rule-card">
+        <h3 class="serif">Konditionalsätze — условные предложения</h3>
+        <div class="when">«Wenn»-предложение — тоже Nebensatz: глагол уходит в конец. Если оно стоит первым, главное предложение сразу начинается с глагола.</div>
+        <div class="formula">
+          <b>Реальное условие:</b> wenn + Präsens, ..., Präsens<br>
+          <b>Нереальное (наст./буд.):</b> wenn + Konjunktiv II, ..., würde + Infinitiv<br>
+          <b>Нереальное (прошедшее):</b> wenn + hätte/wäre + Partizip II, ..., hätte/wäre + Partizip II
+        </div>
+        <table class="gram">
+          <tr><th>Verb</th><th>Konjunktiv II</th></tr>
+          <tr><td>sein</td><td>wäre</td></tr>
+          <tr><td>haben</td><td>hätte</td></tr>
+          <tr><td>werden</td><td>würde</td></tr>
+          <tr><td>können</td><td>könnte</td></tr>
+          <tr><td>müssen</td><td>müsste</td></tr>
+          <tr><td>wissen</td><td>wüsste</td></tr>
+        </table>
+        <div class="when">Для остальных глаголов используют würde + Infinitiv.</div>
+        <div class="ex-line"><div class="de">Wenn ich Zeit habe, gehe ich schwimmen.</div><div class="ru">Если у меня будет время, я пойду плавать.</div></div>
+        <div class="ex-line"><div class="de">Wenn ich reich wäre, würde ich reisen.</div><div class="ru">Если бы я был богат, я бы путешествовал.</div></div>
+        <div class="ex-line"><div class="de">Wenn ich das gewusst hätte, hätte ich es dir gesagt.</div><div class="ru">Если бы я это знал, я бы тебе сказал.</div></div>
+      </div>
+    </section>
+
+    <section class="gtab-view" id="gtab-imperativ">
+      <div class="panel rule-card">
+        <h3 class="serif">Imperativ — повелительное наклонение</h3>
+        <div class="when">Просьбы, советы, команды. Форма зависит от того, к кому обращаешься.</div>
+        <div class="formula">
+          <b>du:</b> основа глагола, без «du» — сильные глаголы e→i/ie сохраняют изменение (nimm!, sprich!), а a→ä НЕ добавляется (fahr!, не führ!)<br>
+          <b>ihr:</b> как ihr-Präsens, без «ihr»<br>
+          <b>Sie:</b> Infinitiv + Sie (порядок как в вопросе)<br>
+          <b>wir:</b> Infinitiv + wir («давай(те)»)
+        </div>
+        <table class="gram">
+          <tr><th></th><th>machen</th><th>fahren</th><th>sein</th></tr>
+          <tr><td>du</td><td>Mach!</td><td>Fahr!</td><td>Sei!</td></tr>
+          <tr><td>ihr</td><td>Macht!</td><td>Fahrt!</td><td>Seid!</td></tr>
+          <tr><td>Sie</td><td>Machen Sie!</td><td>Fahren Sie!</td><td>Seien Sie!</td></tr>
+          <tr><td>wir</td><td>Machen wir!</td><td>Fahren wir!</td><td>Seien wir!</td></tr>
+        </table>
+        <div class="ex-line"><div class="de">Mach die Tür zu!</div><div class="ru">Закрой дверь!</div></div>
+        <div class="ex-line"><div class="de">Kommt bitte pünktlich!</div><div class="ru">Приходите вовремя, пожалуйста!</div></div>
+        <div class="ex-line"><div class="de">Setzen Sie sich, bitte.</div><div class="ru">Присаживайтесь, пожалуйста.</div></div>
+        <div class="ex-line"><div class="de">Gehen wir ins Kino!</div><div class="ru">Пойдём в кино!</div></div>
+        <div class="when">У отделяемых глаголов приставка уходит в конец: aufstehen → Steh auf! / Steht auf! / Stehen Sie auf!</div>
+      </div>
+    </section>
+
+    <section class="gtab-view" id="gtab-adjektive">
+      <div class="panel rule-card">
+        <h3 class="serif">Komparativ & Superlativ — степени сравнения</h3>
+        <div class="formula">Komparativ = прилагательное + <b>-er</b><br>Superlativ = <b>am</b> + прилагательное + <b>-sten</b></div>
+        <div class="when">Короткие прилагательные часто получают умлаут: alt→älter→am ältesten; groß→größer→am größten; jung→jünger→am jüngsten.</div>
+        <table class="gram">
+          <tr><th>Grundform</th><th>Komparativ</th><th>Superlativ</th></tr>
+          <tr><td>gut</td><td>besser</td><td>am besten</td></tr>
+          <tr><td>viel</td><td>mehr</td><td>am meisten</td></tr>
+          <tr><td>gern</td><td>lieber</td><td>am liebsten</td></tr>
+          <tr><td>hoch</td><td>höher</td><td>am höchsten</td></tr>
+        </table>
+        <div class="ex-line"><div class="de">Er ist schneller als ich.</div><div class="ru">Он быстрее меня.</div></div>
+        <div class="ex-line"><div class="de">Das ist das beste Restaurant der Stadt.</div><div class="ru">Это лучший ресторан города.</div></div>
+      </div>
+
+      <div class="panel rule-card">
+        <h3 class="serif">Adjektivdeklination — окончания прилагательных</h3>
+        <div class="when">Прилагательное перед существительным получает окончание — оно зависит от артикля и падежа. Тема объёмная, вот база для Nominativ.</div>
+        <table class="gram">
+          <tr><th></th><th>der/die/das</th><th>ein/eine/ein</th><th>без артикля</th></tr>
+          <tr><td>m</td><td>der neue Tisch</td><td>ein neuer Tisch</td><td>neuer Tisch</td></tr>
+          <tr><td>f</td><td>die neue Lampe</td><td>eine neue Lampe</td><td>neue Lampe</td></tr>
+          <tr><td>n</td><td>das neue Auto</td><td>ein neues Auto</td><td>neues Auto</td></tr>
+          <tr><td>Pl.</td><td>die neuen Autos</td><td>–</td><td>neue Autos</td></tr>
+        </table>
+        <div class="when">Это только Nominativ — в остальных падежах окончания меняются дальше, это осваивается постепенно на практике.</div>
+      </div>
+    </section>
+
+    <section class="gtab-view" id="gtab-negation">
+      <div class="panel rule-card">
+        <h3 class="serif">nicht vs kein</h3>
+        <div class="formula">
+          <b>kein</b> — отрицает существительное с неопределённым артиклем или без артикля (склоняется как ein)<br>
+          <b>nicht</b> — отрицает всё остальное: глагол, прилагательное, наречие, существительное с определённым артиклем
+        </div>
+        <div class="ex-line"><div class="de">Ich trinke keinen Kaffee.</div><div class="ru">Я не пью кофе.</div></div>
+        <div class="ex-line"><div class="de">Ich komme nicht.</div><div class="ru">Я не приду.</div></div>
+        <div class="ex-line"><div class="de">Das Auto ist nicht neu.</div><div class="ru">Машина не новая.</div></div>
+        <div class="when">Nicht обычно ставится в конец предложения, но переносится перед конкретным словом, если отрицаем именно его.</div>
+      </div>
+    </section>
+
+    <section class="gtab-view" id="gtab-konjunktiv">
+      <div class="panel rule-card">
+        <h3 class="serif">Konjunktiv I — косвенная речь</h3>
+        <div class="when">Передаёт чужие слова без подтверждения их истинности — говорящий как бы дистанцируется. Используется в новостях, СМИ, пересказе чужой речи.</div>
+        <div class="formula">Основа глагола + <b>-e, -est, -e, -en, -et, -en</b> (близко к Präsens, но без окончания -st/-t у «du/er»)</div>
+        <table class="gram">
+          <tr><th>Verb</th><th>er/sie (Konj. I)</th></tr>
+          <tr><td>sein</td><td>sei</td></tr>
+          <tr><td>haben</td><td>habe</td></tr>
+          <tr><td>werden</td><td>werde</td></tr>
+          <tr><td>können</td><td>könne</td></tr>
+          <tr><td>müssen</td><td>müsse</td></tr>
+          <tr><td>sagen</td><td>sage</td></tr>
+        </table>
+        <div class="compare">
+          <div class="crow"><span class="tag">Direkt</span><span class="txt">„Ich bin müde“, sagt er.</span></div>
+          <div class="crow"><span class="tag">Indirekt</span><span class="txt">Er sagt, er sei müde.</span></div>
+        </div>
+        <div class="ex-line"><div class="ru">«Я устал», — говорит он. → Он говорит, что устал.</div></div>
+        <div class="ex-line"><div class="de">Er sagte, er habe keine Zeit.</div><div class="ru">Он сказал, что у него нет времени.</div></div>
+        <div class="when">Если форма Konjunktiv I совпадает с обычным Präsens (например «ich sage»), её заменяют на Konjunktiv II («ich würde sagen»). Поэтому на практике Konjunktiv I встречается почти только в 3-м лице ед. числа и в текстах СМИ.</div>
+      </div>
+    </section>
+
+    <section class="gtab-view" id="gtab-passiv">
+      <div class="panel rule-card">
+        <h3 class="serif">Passiv — страдательный залог</h3>
+        <div class="when">Используется, когда исполнитель действия неизвестен, неважен или не в фокусе. Объект действия становится подлежащим.</div>
+        <table class="gram">
+          <tr><th>Zeit</th><th>Formel</th><th>Beispiel</th></tr>
+          <tr><td>Präsens</td><td>wird + Partizip II</td><td>wird repariert</td></tr>
+          <tr><td>Präteritum</td><td>wurde + Partizip II</td><td>wurde repariert</td></tr>
+          <tr><td>Perfekt</td><td>ist + Partizip II + worden</td><td>ist repariert worden</td></tr>
+        </table>
+        <div class="ex-line"><div class="de">Das Auto wird repariert.</div><div class="ru">Машину (сейчас) ремонтируют.</div></div>
+        <div class="ex-line"><div class="de">Die Fenster wurden letzte Woche geputzt.</div><div class="ru">Окна помыли на прошлой неделе.</div></div>
+        <div class="when">Исполнитель, если важен, вводится через <b>von + Dativ</b> (человек) или <b>durch + Akkusativ</b> (причина/средство).</div>
+        <div class="ex-line"><div class="de">Das Auto wird von einem Mechaniker repariert.</div><div class="ru">Машину ремонтирует механик.</div></div>
+        <div class="compare">
+          <div class="crow"><span class="tag">Vorgang</span><span class="txt">Das Auto wird repariert.</span></div>
+          <div class="crow"><span class="tag">Zustand</span><span class="txt">Das Auto ist repariert.</span></div>
+        </div>
+        <div class="ex-line"><div class="ru">Vorgangspassiv: машину сейчас ремонтируют (процесс) — Zustandspassiv: машина уже отремонтирована (результат, sein + Partizip II).</div></div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<!-- ================= VERBEN ================= -->
+<div class="screen" id="screen-verben">
+  <header class="top">
+    <div class="inner">
+      <h1 class="serif">Verben</h1>
+      <p class="sub"><span class="verb-total">150</span> глаголов A2–B1 для устной речи · <b id="knownCount">0</b>/<span class="verb-total">150</span> отмечены как «знаю»</p>
+      <nav class="tabs" role="tablist">
+        <button class="active" data-view="cards">Karten</button>
+        <button data-view="drill">Konjugation</button>
+        <button data-view="quiz">Quiz</button>
+        <button data-view="list">Liste</button>
+      </nav>
+      <div class="chips" id="chips"></div>
+    </div>
+  </header>
+
+  <main class="wrap" style="padding-top:0;">
+
+    <!-- CARDS -->
+    <section class="view active" id="view-cards">
+      <div class="deck-meta">
+        <span id="cardsPos">1 / 150</span>
+        <div class="progress-track"><div class="progress-fill" id="cardsProgress" style="width:0%"></div></div>
+        <span id="cardsKnown">0 знаю</span>
+      </div>
+      <div class="card-scene">
+        <div class="card" id="card">
+          <div class="face front">
+            <div class="badges" id="frontBadges"></div>
+            <div class="card-front-center">
+              <div class="big-inf serif" id="frontWord">—</div>
+            </div>
+            <div class="hint-tap">нажми на карточку, чтобы перевернуть</div>
           </div>
-          <table class="conj" id="backConj"></table>
-          <div class="perf-line" id="backPerf"></div>
+          <div class="face back">
+            <div class="back-inf serif" id="backWord">—</div>
+            <div class="back-ru" id="backRu">—</div>
+            <div class="example">
+              <div class="de" id="backEx">—</div>
+              <div class="ru" id="backExRu">—</div>
+            </div>
+            <table class="conj" id="backConj"></table>
+            <div class="perf-line" id="backPerf"></div>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="deck-actions">
-      <button class="shuffle" id="btnShuffle" title="Neu mischen">🔀</button>
-      <button class="again" id="btnAgain">✗ Nochmal üben</button>
-      <button class="know" id="btnKnow">✓ Kann ich</button>
-    </div>
-  </section>
+      <div class="deck-actions">
+        <button class="shuffle" id="btnShuffle" title="Neu mischen">🔀</button>
+        <button class="again" id="btnAgain">✗ Nochmal üben</button>
+        <button class="know" id="btnKnow">✓ Kann ich</button>
+      </div>
+    </section>
 
-  <!-- DRILL -->
-  <section class="view" id="view-drill">
-    <div class="panel">
-      <div class="score-row">
-        <span>Konjugation üben — Präsens</span>
-        <span>Punkte: <b id="drillScore">0/0</b></span>
+    <!-- DRILL -->
+    <section class="view" id="view-drill">
+      <div class="panel">
+        <div class="score-row">
+          <span>Konjugation üben — Präsens</span>
+          <span>Punkte: <b id="drillScore">0/0</b></span>
+        </div>
+        <div class="prompt">
+          <div class="verb serif" id="drillVerb">—</div>
+          <div class="gloss" id="drillGloss">—</div>
+        </div>
+        <input class="answer" id="drillInput" placeholder="Form eingeben, z. B. „mache“" autocomplete="off" autocapitalize="off" spellcheck="false" />
+        <div class="feedback" id="drillFeedback"></div>
+        <div class="drill-actions">
+          <button id="drillCheck">Prüfen</button>
+          <button id="drillNext" style="display:none;">Weiter →</button>
+        </div>
       </div>
-      <div class="prompt">
-        <div class="verb serif" id="drillVerb">—</div>
-        <div class="gloss" id="drillGloss">—</div>
+    </section>
+
+    <!-- QUIZ -->
+    <section class="view" id="view-quiz">
+      <div class="panel">
+        <div class="score-row">
+          <span>Übersetzung erraten</span>
+          <span>Punkte: <b id="quizScore">0/0</b></span>
+        </div>
+        <div class="quiz-verb">
+          <div class="verb serif" id="quizVerb">—</div>
+        </div>
+        <div class="options" id="quizOptions"></div>
+        <button class="quiz-next" id="quizNext">Weiter →</button>
       </div>
-      <input class="answer" id="drillInput" placeholder="Form eingeben, z. B. „mache“" autocomplete="off" autocapitalize="off" spellcheck="false" />
-      <div class="feedback" id="drillFeedback"></div>
-      <div class="drill-actions">
-        <button id="drillCheck">Prüfen</button>
-        <button id="drillNext" style="display:none;">Weiter →</button>
+    </section>
+
+    <!-- LIST -->
+    <section class="view" id="view-list">
+      <input class="search" id="listSearch" placeholder="Suchen … (Deutsch oder Russisch)" autocomplete="off" />
+      <div class="table-scroll">
+        <table class="list">
+          <thead>
+            <tr><th></th><th>Verb</th><th>Übersetzung</th><th>ich</th><th>du</th><th>er/sie/es</th><th>Perfekt</th></tr>
+          </thead>
+          <tbody id="listBody"></tbody>
+        </table>
+      </div>
+      <div class="empty" id="listEmpty" style="display:none;">Nichts gefunden.</div>
+    </section>
+
+    <footer>
+      <span id="footerNote">Fortschritt wird lokal in diesem Browser gespeichert.</span>
+      · <button id="resetProgress">Fortschritt zurücksetzen</button>
+    </footer>
+  </main>
+</div>
+
+<!-- ================= WORTSCHATZ ================= -->
+<div class="screen" id="screen-wortschatz">
+  <header class="top">
+    <div class="inner">
+      <h1 class="serif">Wortschatz</h1>
+      <p class="sub">Полезная лексика по темам A2–B1</p>
+      <div class="chips" id="lexChips"></div>
+    </div>
+  </header>
+  <main class="wrap" style="padding-top:0;">
+    <input class="search" id="lexSearch" placeholder="Suchen … (Deutsch oder Russisch)" autocomplete="off" />
+    <div id="lexIntro"></div>
+    <div id="lexTableWrap">
+      <div class="table-scroll">
+        <table class="list">
+          <thead><tr><th>Wort</th><th>Übersetzung</th></tr></thead>
+          <tbody id="lexBody"></tbody>
+        </table>
       </div>
     </div>
-  </section>
+    <div class="prep-list-cards" id="lexPrepList" style="display:none;"></div>
+    <div class="prep-list-cards" id="lexVerbPrepList" style="display:none;"></div>
+    <div class="empty" id="lexEmpty" style="display:none;">Nichts gefunden.</div>
+  </main>
+</div>
 
-  <!-- QUIZ -->
-  <section class="view" id="view-quiz">
-    <div class="panel">
-      <div class="score-row">
-        <span>Übersetzung erraten</span>
-        <span>Punkte: <b id="quizScore">0/0</b></span>
-      </div>
-      <div class="quiz-verb">
-        <div class="verb serif" id="quizVerb">—</div>
-      </div>
-      <div class="options" id="quizOptions"></div>
-      <button class="quiz-next" id="quizNext">Weiter →</button>
+<!-- ================= REDEWENDUNGEN ================= -->
+<div class="screen" id="screen-redewendungen">
+  <header class="top">
+    <div class="inner">
+      <h1 class="serif">Redewendungen</h1>
+      <p class="sub">Расхожие фразы и идиомы для разговора</p>
+      <div class="chips" id="phraseChips"></div>
     </div>
-  </section>
+  </header>
+  <main class="wrap" style="padding-top:0;">
+    <input class="search" id="phraseSearch" placeholder="Suchen … (Deutsch oder Russisch)" autocomplete="off" />
+    <div class="phrase-list" id="phraseList"></div>
+    <div class="empty" id="phraseEmpty" style="display:none;">Nichts gefunden.</div>
+  </main>
+</div>
 
-  <!-- LIST -->
-  <section class="view" id="view-list">
-    <input class="search" id="listSearch" placeholder="Suchen … (Deutsch oder Russisch)" autocomplete="off" />
-    <div class="table-scroll">
-      <table class="list">
-        <thead>
-          <tr><th></th><th>Verb</th><th>Übersetzung</th><th>ich</th><th>du</th><th>er/sie/es</th><th>Perfekt</th></tr>
-        </thead>
-        <tbody id="listBody"></tbody>
-      </table>
-    </div>
-    <div class="empty" id="listEmpty" style="display:none;">Nichts gefunden.</div>
-  </section>
+<!-- ================= DAILY CHALLENGE ================= -->
+<div class="screen" id="screen-daily">
+  <main class="wrap">
+    <section id="dailyStart"></section>
+    <section id="dailyRun" hidden>
+      <div class="daily-top"><span class="daily-block" id="dBlock"></span><span id="dCount"></span></div>
+      <div class="progress-track daily-progress"><div class="progress-fill" id="dProg" style="width:0%"></div></div>
+      <div class="panel daily-task" id="dTask"></div>
+    </section>
+    <section id="dailyEnd" hidden></section>
+  </main>
+</div>
 
-  <footer>
-    <span id="footerNote">Fortschritt wird lokal in diesem Browser gespeichert.</span>
-    · <button id="resetProgress">Fortschritt zurücksetzen</button>
-  </footer>
-</main>
+<div class="word-tip" id="wordTip"></div>
 
 <script>
 (function(){
 "use strict";
 
-// inf, ru, cat(grund|modal|unreg|reg|trenn), sep(bool),
+/* ================= NAVIGATION ================= */
+const SCREEN_TITLES = {
+  "screen-home": "Deutsch",
+  "screen-grammatik": "Grammatik",
+  "screen-verben": "Verben",
+  "screen-wortschatz": "Wortschatz",
+  "screen-redewendungen": "Redewendungen",
+  "screen-daily": "Daily Challenge",
+};
+function showScreen(id){
+  document.querySelectorAll(".screen").forEach(s=>s.classList.toggle("active", s.id===id));
+  document.getElementById("backBtn").hidden = (id==="screen-home");
+  document.getElementById("appTitle").textContent = SCREEN_TITLES[id] || "Deutsch";
+  window.scrollTo(0,0);
+  hideTip();
+  if(id==="screen-daily") dRenderStart();
+  if(id==="screen-home") dUpdateHome();
+}
+document.querySelectorAll(".home-card").forEach(card=>{
+  card.addEventListener("click", ()=> showScreen(card.dataset.target));
+});
+document.getElementById("backBtn").addEventListener("click", ()=> showScreen("screen-home"));
+
+/* ================= GRAMMATIK sub-tabs ================= */
+document.querySelectorAll("#grammatikChips button").forEach(btn=>{
+  btn.addEventListener("click", ()=>{
+    document.querySelectorAll("#grammatikChips button").forEach(b=>b.classList.remove("active"));
+    btn.classList.add("active");
+    document.querySelectorAll("#screen-grammatik .gtab-view").forEach(v=>v.classList.remove("active"));
+    document.getElementById("gtab-"+btn.dataset.gtab).classList.add("active");
+    document.querySelector("#screen-grammatik main").scrollIntoView({block:"start"});
+  });
+});
+
+/* ================= WORTSCHATZ data ================= */
+const LEX_TOPICS = [
+  {key:"familie", label:"Familie", words:[
+    {de:"die Mutter", ru:"мама"}, {de:"der Vater", ru:"папа"}, {de:"die Eltern", ru:"родители"},
+    {de:"das Kind", ru:"ребёнок"}, {de:"der Bruder", ru:"брат"}, {de:"die Schwester", ru:"сестра"},
+    {de:"die Geschwister", ru:"братья и сёстры"}, {de:"die Großmutter", ru:"бабушка"}, {de:"der Großvater", ru:"дедушка"},
+    {de:"die Tante", ru:"тётя"}, {de:"der Onkel", ru:"дядя"}, {de:"der Sohn", ru:"сын"},
+    {de:"die Tochter", ru:"дочь"}, {de:"der Ehemann", ru:"муж"}, {de:"die Ehefrau", ru:"жена"},
+  ]},
+  {key:"essen", label:"Essen & Trinken", words:[
+    {de:"das Brot", ru:"хлеб"}, {de:"die Butter", ru:"масло"}, {de:"der Käse", ru:"сыр"},
+    {de:"das Ei", ru:"яйцо"}, {de:"das Gemüse", ru:"овощи"}, {de:"das Obst", ru:"фрукты"},
+    {de:"das Fleisch", ru:"мясо"}, {de:"der Fisch", ru:"рыба"}, {de:"der Reis", ru:"рис"},
+    {de:"die Nudeln", ru:"макароны"}, {de:"das Wasser", ru:"вода"}, {de:"der Kaffee", ru:"кофе"},
+    {de:"der Tee", ru:"чай"}, {de:"der Saft", ru:"сок"}, {de:"das Frühstück", ru:"завтрак"},
+    {de:"das Mittagessen", ru:"обед"}, {de:"das Abendessen", ru:"ужин"},
+  ]},
+  {key:"wohnen", label:"Zuhause & Wohnen", words:[
+    {de:"die Wohnung", ru:"квартира"}, {de:"das Haus", ru:"дом"}, {de:"das Zimmer", ru:"комната"},
+    {de:"die Küche", ru:"кухня"}, {de:"das Badezimmer", ru:"ванная"}, {de:"das Schlafzimmer", ru:"спальня"},
+    {de:"das Wohnzimmer", ru:"гостиная"}, {de:"der Balkon", ru:"балкон"}, {de:"der Tisch", ru:"стол"},
+    {de:"der Stuhl", ru:"стул"}, {de:"das Bett", ru:"кровать"}, {de:"der Schrank", ru:"шкаф"},
+    {de:"das Fenster", ru:"окно"}, {de:"die Tür", ru:"дверь"}, {de:"die Miete", ru:"аренда"},
+  ]},
+  {key:"kleidung", label:"Kleidung", words:[
+    {de:"die Hose", ru:"брюки"}, {de:"das Hemd", ru:"рубашка"}, {de:"das T-Shirt", ru:"футболка"},
+    {de:"der Pullover", ru:"свитер"}, {de:"die Jacke", ru:"куртка"}, {de:"das Kleid", ru:"платье"},
+    {de:"der Rock", ru:"юбка"}, {de:"die Schuhe", ru:"обувь"}, {de:"die Socken", ru:"носки"},
+    {de:"die Mütze", ru:"шапка"}, {de:"der Schal", ru:"шарф"}, {de:"die Handschuhe", ru:"перчатки"},
+  ]},
+  {key:"koerper", label:"Körper & Gesundheit", words:[
+    {de:"der Kopf", ru:"голова"}, {de:"das Auge", ru:"глаз"}, {de:"die Nase", ru:"нос"},
+    {de:"der Mund", ru:"рот"}, {de:"das Ohr", ru:"ухо"}, {de:"der Arm", ru:"рука (от плеча)"},
+    {de:"die Hand", ru:"кисть руки"}, {de:"das Bein", ru:"нога"}, {de:"der Bauch", ru:"живот"},
+    {de:"der Rücken", ru:"спина"}, {de:"das Herz", ru:"сердце"}, {de:"die Erkältung", ru:"простуда"},
+    {de:"die Schmerzen", ru:"боль"}, {de:"der Arzt", ru:"врач"}, {de:"das Krankenhaus", ru:"больница"},
+    {de:"die Apotheke", ru:"аптека"},
+  ]},
+  {key:"arbeit", label:"Arbeit & Beruf", words:[
+    {de:"der Beruf", ru:"профессия"}, {de:"die Firma", ru:"фирма"}, {de:"das Büro", ru:"офис"},
+    {de:"der Kollege", ru:"коллега"}, {de:"der Chef", ru:"начальник"}, {de:"das Gehalt", ru:"зарплата"},
+    {de:"die Besprechung", ru:"совещание"}, {de:"die Bewerbung", ru:"заявление о приёме на работу"},
+    {de:"der Lebenslauf", ru:"резюме"}, {de:"der Urlaub", ru:"отпуск"}, {de:"die Kündigung", ru:"увольнение"},
+    {de:"der Termin", ru:"назначенная встреча"},
+  ]},
+  {key:"freizeit", label:"Freizeit & Hobbys", words:[
+    {de:"das Buch", ru:"книга"}, {de:"der Film", ru:"фильм"}, {de:"die Musik", ru:"музыка"},
+    {de:"das Spiel", ru:"игра"}, {de:"der Sport", ru:"спорт"}, {de:"das Fahrrad", ru:"велосипед"},
+    {de:"der Ausflug", ru:"прогулка, вылазка"}, {de:"die Party", ru:"вечеринка"}, {de:"das Konzert", ru:"концерт"},
+    {de:"das Museum", ru:"музей"}, {de:"der Garten", ru:"сад"}, {de:"das Hobby", ru:"хобби"},
+  ]},
+  {key:"reisen", label:"Reisen & Verkehr", words:[
+    {de:"der Zug", ru:"поезд"}, {de:"der Bus", ru:"автобус"}, {de:"das Flugzeug", ru:"самолёт"},
+    {de:"das Auto", ru:"машина"}, {de:"das Ticket", ru:"билет"}, {de:"der Bahnhof", ru:"вокзал"},
+    {de:"der Flughafen", ru:"аэропорт"}, {de:"das Gepäck", ru:"багаж"}, {de:"der Koffer", ru:"чемодан"},
+    {de:"die Fahrkarte", ru:"проездной билет"}, {de:"die Ankunft", ru:"прибытие"}, {de:"die Abfahrt", ru:"отправление"},
+    {de:"das Hotel", ru:"отель"},
+  ]},
+  {key:"wetter", label:"Wetter & Jahreszeiten", words:[
+    {de:"die Sonne", ru:"солнце"}, {de:"der Regen", ru:"дождь"}, {de:"der Schnee", ru:"снег"},
+    {de:"der Wind", ru:"ветер"}, {de:"die Wolke", ru:"облако"}, {de:"warm", ru:"тёплый"},
+    {de:"kalt", ru:"холодный"}, {de:"der Frühling", ru:"весна"}, {de:"der Sommer", ru:"лето"},
+    {de:"der Herbst", ru:"осень"}, {de:"der Winter", ru:"зима"},
+  ]},
+];
+
+/* ---- Слова из урока (u:1 = «Aus dem Unterricht») ---- */
+const LEX_LESSON_ADD = {
+  koerper:[
+    {de:"der Finger", ru:"палец (руки)"}, {de:"der Fuß", ru:"стопа, нога (ниже щиколотки)"},
+    {de:"die Zähne", ru:"зубы (ед. der Zahn)"}, {de:"die Zehen", ru:"пальцы ног (ед. die Zehe)"},
+    {de:"die Haare", ru:"волосы (ед. das Haar)"}, {de:"die Schulter", ru:"плечо"},
+    {de:"das Knie", ru:"колено"}, {de:"der Ellenbogen", ru:"локоть"},
+    {de:"die Stirn", ru:"лоб"}, {de:"der Hals", ru:"шея; горло"},
+    {de:"die Brust", ru:"грудь, грудная клетка"}, {de:"die Wange", ru:"щека"},
+    {de:"der Hausarzt", ru:"семейный врач"}, {de:"der Husten", ru:"кашель"},
+    {de:"das Fieber", ru:"температура, жар"}, {de:"der Schnupfen", ru:"насморк"},
+    {de:"das Rezept", ru:"рецепт (от врача)"}, {de:"der Hustensaft", ru:"сироп от кашля"},
+    {de:"die Salbe", ru:"мазь"}, {de:"die Tropfen", ru:"капли"},
+    {de:"die Tablette", ru:"таблетка"}, {de:"die Verletzung", ru:"травма, ранение"},
+    {de:"die Wunde", ru:"рана"}, {de:"gesund", ru:"здоровый"},
+    {de:"krank", ru:"больной"}, {de:"die Gesundheit", ru:"здоровье"},
+    {de:"blass", ru:"бледный"}, {de:"hartnäckig", ru:"упорный; затяжной (о болезни)"},
+  ],
+  kleidung:[
+    {de:"die Unterwäsche", ru:"нижнее бельё"}, {de:"der Strumpf", ru:"чулок, гольф"},
+    {de:"der Anzug", ru:"(мужской) костюм"}, {de:"die Kapuze", ru:"капюшон"},
+    {de:"der Kragen", ru:"воротник"}, {de:"der Knopf", ru:"пуговица"},
+    {de:"der Ärmel", ru:"рукав"}, {de:"der Reißverschluss", ru:"молния (застёжка)"},
+    {de:"die Schnalle", ru:"пряжка"}, {de:"der Schnürsenkel", ru:"шнурок"},
+    {de:"der Absatz", ru:"каблук"}, {de:"die Sohle", ru:"подошва"},
+    {de:"die Umkleidekabine", ru:"примерочная"}, {de:"eng", ru:"узкий, тесный"},
+    {de:"nackt", ru:"голый"}, {de:"das Muster", ru:"узор"},
+    {de:"kariert", ru:"в клетку"}, {de:"gestreift", ru:"в полоску"},
+    {de:"gepunktet", ru:"в горошек"}, {de:"einfarbig", ru:"однотонный"},
+  ],
+  arbeit:[
+    {de:"die Stelle", ru:"место работы, вакансия"}, {de:"die Erfahrung", ru:"опыт"},
+    {de:"die Kenntnisse", ru:"знания"}, {de:"der Beratungstermin", ru:"консультация (по записи)"},
+    {de:"der Aushilfsjob", ru:"временная подработка"}, {de:"der Verwalter", ru:"управляющий, администратор"},
+    {de:"die Verwaltung", ru:"администрация, управление"}, {de:"verantwortlich", ru:"ответственный"},
+    {de:"die Geschäftsreise", ru:"командировка"}, {de:"die Leistung", ru:"достижение, результат"},
+    {de:"die Veröffentlichung", ru:"публикация"}, {de:"die Zubereitung", ru:"приготовление"},
+    {de:"die Pflege", ru:"уход (за больными, пожилыми)"}, {de:"der Arbeitsanfang", ru:"начало рабочего дня"},
+  ],
+};
+Object.keys(LEX_LESSON_ADD).forEach(k=>{
+  LEX_TOPICS.find(t=>t.key===k).words.push(...LEX_LESSON_ADD[k].map(w=>({...w, u:1})));
+});
+
+const LEX_LESSON_TOPICS = [
+  {key:"geld", label:"Geld & Bank", words:[
+    {de:"ausgeben für", ru:"тратить на"}, {de:"abheben", ru:"снимать (деньги)"},
+    {de:"einzahlen", ru:"вносить (на счёт)"}, {de:"überweisen", ru:"переводить (деньги)"},
+    {de:"wechseln", ru:"менять, обменивать"}, {de:"die Gebühr", ru:"сбор, плата"},
+    {de:"der Gewinn", ru:"выигрыш; прибыль"}, {de:"die Versicherung", ru:"страховка (от sicher — надёжный)"},
+    {de:"reich", ru:"богатый"}, {de:"arm", ru:"бедный"},
+  ]},
+  {key:"schule", label:"Schule & Prüfungen", words:[
+    {de:"die Prüfung", ru:"экзамен"}, {de:"eine Prüfung bestehen", ru:"сдать экзамен"},
+    {de:"die Note", ru:"оценка (в школе)"}, {de:"die Bewertung", ru:"оценка, отзыв"},
+    {de:"das Niveau", ru:"уровень"}, {de:"der Einstufungstest", ru:"тест на определение уровня"},
+    {de:"das Abitur", ru:"выпускные экзамены в гимназии"}, {de:"die Realschule", ru:"реальная школа (5–10 класс)"},
+    {de:"das Studium", ru:"учёба в вузе"}, {de:"die Ausbildung", ru:"профессиональное обучение"},
+    {de:"der Abschluss", ru:"окончание учёбы; диплом"}, {de:"die Zulassung", ru:"допуск, зачисление"},
+    {de:"der Kurs", ru:"курс"}, {de:"der Wortschatz", ru:"словарный запас"},
+  ]},
+  {key:"gefuehle", label:"Gefühle & Beziehungen", words:[
+    {de:"die Beziehung", ru:"отношения"}, {de:"das Vertrauen", ru:"доверие"},
+    {de:"stolz sein auf", ru:"гордиться (кем-то)"}, {de:"treu", ru:"верный"},
+    {de:"zärtlich", ru:"нежный, ласковый"}, {de:"genervt", ru:"раздражённый"},
+    {de:"ehrlich", ru:"честный"}, {de:"der Mut", ru:"смелость"},
+    {de:"die Kraft", ru:"сила"}, {de:"die Schuld", ru:"вина"},
+    {de:"schuldig sein", ru:"быть виноватым"}, {de:"gegenseitig", ru:"взаимный"},
+    {de:"gemeinsam", ru:"вместе, сообща"}, {de:"schmerzhaft", ru:"болезненный"},
+    {de:"das Vergnügen", ru:"удовольствие"}, {de:"die Bedingung", ru:"условие"},
+    {de:"das Gegenteil", ru:"противоположность"}, {de:"das Pech", ru:"невезение, неудача"},
+  ]},
+  {key:"geschichten", label:"Geschichten & Abenteuer", words:[
+    {de:"der Held", ru:"герой"}, {de:"der Bösewicht", ru:"злодей"},
+    {de:"die Figur", ru:"персонаж"}, {de:"der Riese", ru:"великан"},
+    {de:"der Feind", ru:"враг"}, {de:"der Schatz", ru:"сокровище"},
+    {de:"der Wert", ru:"ценность"}, {de:"das Schicksal", ru:"судьба"},
+    {de:"der Tod", ru:"смерть"}, {de:"das Sterben", ru:"умирание, смерть"},
+    {de:"der Frieden", ru:"мир"}, {de:"der Sieg", ru:"победа"},
+    {de:"das Hindernis", ru:"препятствие"}, {de:"die Versuchung", ru:"соблазн"},
+    {de:"das Raubtier", ru:"хищник"}, {de:"die Spur", ru:"след"},
+    {de:"die Schaufel", ru:"лопата"}, {de:"die Falle", ru:"ловушка"},
+    {de:"der Wettbewerb", ru:"соревнование, конкурс"}, {de:"ewig", ru:"вечный"},
+    {de:"böse", ru:"злой"}, {de:"gierig", ru:"жадный"},
+    {de:"begabt", ru:"одарённый"}, {de:"talentiert", ru:"талантливый"},
+    {de:"berühmt", ru:"известный"}, {de:"erfolgreich", ru:"успешный"},
+  ]},
+  {key:"adjektive", label:"Adjektive & Adverbien", words:[
+    {de:"nass", ru:"мокрый"}, {de:"trocken", ru:"сухой"},
+    {de:"ruhig", ru:"спокойный, тихий"}, {de:"regelmäßig", ru:"регулярно"},
+    {de:"tief", ru:"глубокий"}, {de:"riesig", ru:"огромный"},
+    {de:"schlau", ru:"хитрый, сообразительный"}, {de:"seltsam", ru:"странный"},
+    {de:"schlimm", ru:"плохой, тяжёлый"}, {de:"furchtbar", ru:"ужасный, страшный"},
+    {de:"spannend", ru:"захватывающий"}, {de:"kraftvoll", ru:"мощный"},
+    {de:"flauschig", ru:"пушистый"}, {de:"süchtig", ru:"зависимый (от алкоголя, наркотиков)"},
+    {de:"abhängig von", ru:"зависимый от"}, {de:"unabhängig von", ru:"независимый от; независимо от"},
+    {de:"plötzlich", ru:"внезапно"}, {de:"hoffentlich", ru:"надеюсь, что…"},
+    {de:"bald", ru:"скоро"}, {de:"sogar", ru:"даже"},
+    {de:"manche", ru:"некоторые"}, {de:"verschieden", ru:"разный, различный"},
+    {de:"unterschiedlich", ru:"неодинаковый, разный"}, {de:"vielfältig", ru:"разнообразный"},
+    {de:"zweifellos", ru:"несомненно"}, {de:"normalerweise", ru:"обычно"},
+    {de:"gewöhnlich", ru:"обычно; обычный"}, {de:"dazu", ru:"к этому, вдобавок"},
+  ]},
+  {key:"sonstiges", label:"Alltag & Sonstiges", words:[
+    {de:"der Laden", ru:"магазин, лавка"}, {de:"das Geschäft", ru:"магазин; дело, бизнес"},
+    {de:"die Lieferung", ru:"доставка"}, {de:"die Veranstaltung", ru:"мероприятие"},
+    {de:"das Ereignis", ru:"событие"}, {de:"die Umwelt", ru:"окружающая среда"},
+    {de:"die Decke", ru:"потолок; одеяло, покрывало"}, {de:"das Loch", ru:"дыра"},
+    {de:"der Ast", ru:"ветка"}, {de:"der Bahnsteig", ru:"платформа (на вокзале)"},
+    {de:"der Wagen", ru:"машина, автомобиль"}, {de:"das Messer", ru:"нож"},
+    {de:"der Welpe", ru:"щенок"}, {de:"der Schwanz", ru:"хвост"},
+    {de:"das Futter", ru:"корм"}, {de:"die Biene", ru:"пчела"},
+    {de:"der Blumenstrauß", ru:"букет цветов"}, {de:"das Brettspiel", ru:"настольная игра"},
+    {de:"der Sonnenstrahl", ru:"солнечный луч"}, {de:"das Lehrbuch", ru:"учебник"},
+    {de:"der Sänger", ru:"певец"}, {de:"der Komponist", ru:"композитор"},
+    {de:"der Klang", ru:"звучание, звук"}, {de:"die Rede", ru:"речь, выступление"},
+    {de:"die Ansprache", ru:"обращение, речь"}, {de:"der Gefallen", ru:"услуга, одолжение"},
+    {de:"die Lust", ru:"желание, охота"},
+  ]},
+];
+LEX_LESSON_TOPICS.forEach(t=>{ t.words = t.words.map(w=>({...w, u:1})); LEX_TOPICS.push(t); });
+
+// Слова, которые уже были на сайте и тоже звучали на уроке
+const LEX_LESSON_EXISTING = ["der Kopf","der Bauch","das Bein","der Arm","die Hand","das Auge","die Nase","der Mund",
+  "das Ohr","der Rücken","die Erkältung","die Schmerzen","der Arzt","die Bewerbung","der Lebenslauf"];
+LEX_TOPICS.forEach(t=> t.words.forEach(w=>{ if(LEX_LESSON_EXISTING.includes(w.de)) w.u = 1; }));
+
+LEX_TOPICS.find(t=>t.key==="koerper").intro = `
+  <div class="panel rule-card lex-intro">
+    <h3 class="serif">Was tut weh? — Что болит? <span class="u-tag">Unterricht</span></h3>
+    <div class="formula">
+      Mein Kopf <b>tut weh</b> / Meine Zähne <b>tun weh</b> (ед./мн. число)<br>
+      Mein Hals <b>schmerzt</b> / Meine Knie <b>schmerzen</b><br>
+      Ich habe <b>Kopfschmerzen</b> (Kopf + Schmerzen): Bauchschmerzen, Knieschmerzen, Zahnschmerzen…
+    </div>
+    <div class="ex-line"><div class="de">Mein Rücken tut weh. Ich soll nicht lange sitzen.</div><div class="ru">У меня болит спина. Мне нельзя долго сидеть.</div></div>
+    <div class="ex-line"><div class="de">Meine Zähne tun weh. Ich soll nicht so viele Süßigkeiten essen.</div><div class="ru">Болят зубы. Мне не стоит есть столько сладкого.</div></div>
+    <div class="ex-line"><div class="de">Seine Zehen tun weh. Er hat sich die Zehen erfroren.</div><div class="ru">У него болят пальцы ног. Он их отморозил.</div></div>
+    <div class="ex-line"><div class="de">Ihre Knie schmerzen. Sie ist von einem Baum gestürzt.</div><div class="ru">У неё болят колени. Она упала с дерева.</div></div>
+    <div class="ex-line"><div class="de">Ihr Hals tut weh. Sie hat zu viel Eis gegessen.</div><div class="ru">У неё болит горло. Она съела слишком много мороженого.</div></div>
+    <div class="ex-line"><div class="de">Meine Ellenbogen tun weh. Ich habe lange in der Plank-Position gestanden.</div><div class="ru">Болят локти. Я долго стоял(а) в планке.</div></div>
+    <div class="ex-line"><div class="de">Schmerzt deine Brust? Du solltest zum Arzt gehen!</div><div class="ru">Болит грудь? Тебе стоит сходить к врачу!</div></div>
+    <div class="when">Совет звучит мягче через <b>solltest</b> (Konjunktiv II от sollen): Du solltest mehr Wasser trinken. «Du sollst…» — это скорее указание: «тебе велено / тебе нужно».</div>
+  </div>`;
+
+const PREPOSITIONS = [
+  {de:"für", case:"Akkusativ", ru:"для", ex:"Das Geschenk ist für dich.", exRu:"Этот подарок для тебя."},
+  {de:"ohne", case:"Akkusativ", ru:"без", ex:"Ich trinke Kaffee ohne Zucker.", exRu:"Я пью кофе без сахара."},
+  {de:"gegen", case:"Akkusativ", ru:"против / около (о времени)", ex:"Er ist gegen das Rauchen.", exRu:"Он против курения."},
+  {de:"durch", case:"Akkusativ", ru:"через, посредством", ex:"Wir gehen durch den Park.", exRu:"Мы идём через парк."},
+  {de:"um", case:"Akkusativ", ru:"вокруг / в (время)", ex:"Der Unterricht beginnt um acht Uhr.", exRu:"Урок начинается в восемь часов."},
+  {de:"bis", case:"Akkusativ", ru:"до", ex:"Ich bleibe bis Freitag.", exRu:"Я останусь до пятницы."},
+
+  {de:"mit", case:"Dativ", ru:"с", ex:"Ich fahre mit dem Bus.", exRu:"Я еду на автобусе."},
+  {de:"nach", case:"Dativ", ru:"после / в направлении", ex:"Nach der Arbeit gehe ich nach Hause.", exRu:"После работы я иду домой."},
+  {de:"bei", case:"Dativ", ru:"у, при", ex:"Ich wohne bei meinen Eltern.", exRu:"Я живу у родителей."},
+  {de:"seit", case:"Dativ", ru:"с (какого-то момента)", ex:"Ich lerne seit einem Jahr Deutsch.", exRu:"Я учу немецкий уже год."},
+  {de:"von", case:"Dativ", ru:"от, из", ex:"Das Geschenk ist von meiner Mutter.", exRu:"Этот подарок от моей мамы."},
+  {de:"zu", case:"Dativ", ru:"к", ex:"Ich gehe zu meinem Freund.", exRu:"Я иду к своему другу."},
+  {de:"aus", case:"Dativ", ru:"из", ex:"Ich komme aus Russland.", exRu:"Я из России."},
+  {de:"außer", case:"Dativ", ru:"кроме", ex:"Alle waren da außer ihm.", exRu:"Все были там, кроме него."},
+  {de:"gegenüber", case:"Dativ", ru:"напротив", ex:"Die Bank ist gegenüber dem Bahnhof.", exRu:"Банк напротив вокзала."},
+
+  {de:"während", case:"Genitiv", ru:"во время, пока", ex:"Während des Urlaubs habe ich viel gelesen.", exRu:"Во время отпуска я много читал(а)."},
+  {de:"trotz", case:"Genitiv", ru:"несмотря на", ex:"Trotz des Regens gehen wir spazieren.", exRu:"Несмотря на дождь, мы идём гулять."},
+  {de:"wegen", case:"Genitiv", ru:"из-за", ex:"Wegen des Wetters bleiben wir zu Hause.", exRu:"Из-за погоды мы останемся дома."},
+  {de:"statt", case:"Genitiv", ru:"вместо", ex:"Statt eines Anrufs schreibt er eine SMS.", exRu:"Вместо звонка он пишет смс."},
+
+  {de:"in", case:"Wechsel", ru:"в", exAkk:"Ich gehe in die Schule.", exAkkRu:"Я иду в школу. (куда?)", exDat:"Ich bin in der Schule.", exDatRu:"Я в школе. (где?)"},
+  {de:"an", case:"Wechsel", ru:"у, к, на (вертикальная поверхность)", exAkk:"Ich hänge das Bild an die Wand.", exAkkRu:"Я вешаю картину на стену. (куда?)", exDat:"Das Bild hängt an der Wand.", exDatRu:"Картина висит на стене. (где?)"},
+  {de:"auf", case:"Wechsel", ru:"на (горизонтальная поверхность)", exAkk:"Ich lege das Buch auf den Tisch.", exAkkRu:"Я кладу книгу на стол. (куда?)", exDat:"Das Buch liegt auf dem Tisch.", exDatRu:"Книга лежит на столе. (где?)"},
+  {de:"über", case:"Wechsel", ru:"над, через", exAkk:"Der Vogel fliegt über das Haus.", exAkkRu:"Птица летит над домом. (куда?)", exDat:"Die Lampe hängt über dem Tisch.", exDatRu:"Лампа висит над столом. (где?)"},
+  {de:"unter", case:"Wechsel", ru:"под", exAkk:"Die Katze läuft unter den Tisch.", exAkkRu:"Кошка бежит под стол. (куда?)", exDat:"Die Katze liegt unter dem Tisch.", exDatRu:"Кошка лежит под столом. (где?)"},
+  {de:"vor", case:"Wechsel", ru:"перед", exAkk:"Ich stelle das Auto vor das Haus.", exAkkRu:"Я ставлю машину перед домом. (куда?)", exDat:"Das Auto steht vor dem Haus.", exDatRu:"Машина стоит перед домом. (где?)"},
+  {de:"hinter", case:"Wechsel", ru:"за, позади", exAkk:"Er stellt sich hinter die Tür.", exAkkRu:"Он встаёт за дверью. (куда?)", exDat:"Er steht hinter der Tür.", exDatRu:"Он стоит за дверью. (где?)"},
+  {de:"neben", case:"Wechsel", ru:"рядом, около", exAkk:"Ich setze mich neben dich.", exAkkRu:"Я сажусь рядом с тобой. (куда?)", exDat:"Ich sitze neben dir.", exDatRu:"Я сижу рядом с тобой. (где?)"},
+  {de:"zwischen", case:"Wechsel", ru:"между", exAkk:"Ich stelle den Stuhl zwischen die Tische.", exAkkRu:"Я ставлю стул между столами. (куда?)", exDat:"Der Stuhl steht zwischen den Tischen.", exDatRu:"Стул стоит между столами. (где?)"},
+];
+
+const VERB_PREPS = [
+  {verb:"sich freuen auf", case:"Akkusativ", ru:"радоваться (предстоящему)", ex:"Ich freue mich auf die Ferien.", exRu:"Я радуюсь предстоящим каникулам."},
+  {verb:"sich freuen über", case:"Akkusativ", ru:"радоваться (случившемуся)", ex:"Ich freue mich über das Geschenk.", exRu:"Я рад(а) подарку."},
+  {verb:"sich interessieren für", case:"Akkusativ", ru:"интересоваться", ex:"Ich interessiere mich für Musik.", exRu:"Я интересуюсь музыкой."},
+  {verb:"warten auf", case:"Akkusativ", ru:"ждать", ex:"Ich warte auf den Bus.", exRu:"Я жду автобус."},
+  {verb:"denken an", case:"Akkusativ", ru:"думать о", ex:"Ich denke oft an dich.", exRu:"Я часто думаю о тебе."},
+  {verb:"sich kümmern um", case:"Akkusativ", ru:"заботиться о", ex:"Sie kümmert sich um die Kinder.", exRu:"Она заботится о детях."},
+  {verb:"sich erinnern an", case:"Akkusativ", ru:"вспоминать", ex:"Ich erinnere mich an den Urlaub.", exRu:"Я вспоминаю отпуск."},
+  {verb:"sich ärgern über", case:"Akkusativ", ru:"злиться из-за", ex:"Ich ärgere mich über den Lärm.", exRu:"Я злюсь из-за шума."},
+  {verb:"sich beschäftigen mit", case:"Dativ", ru:"заниматься чем-л.", ex:"Er beschäftigt sich mit Politik.", exRu:"Он занимается политикой."},
+  {verb:"träumen von", case:"Dativ", ru:"мечтать о", ex:"Ich träume von einer Weltreise.", exRu:"Я мечтаю о кругосветном путешествии."},
+  {verb:"sprechen über", case:"Akkusativ", ru:"говорить о", ex:"Wir sprechen über das Wetter.", exRu:"Мы говорим о погоде."},
+  {verb:"sich verlassen auf", case:"Akkusativ", ru:"полагаться на", ex:"Ich verlasse mich auf dich.", exRu:"Я полагаюсь на тебя."},
+  {verb:"teilnehmen an", case:"Dativ", ru:"участвовать в", ex:"Ich nehme an dem Kurs teil.", exRu:"Я участвую в курсе."},
+  {verb:"sich entschuldigen für", case:"Akkusativ", ru:"извиняться за", ex:"Ich entschuldige mich für die Verspätung.", exRu:"Я извиняюсь за опоздание."},
+  {verb:"sich bedanken für", case:"Akkusativ", ru:"благодарить за", ex:"Ich bedanke mich für die Hilfe.", exRu:"Я благодарю за помощь."},
+  {verb:"Angst haben vor", case:"Dativ", ru:"бояться", ex:"Ich habe Angst vor Spinnen.", exRu:"Я боюсь пауков."},
+  {verb:"sich gewöhnen an", case:"Akkusativ", ru:"привыкать к", ex:"Ich gewöhne mich an das Wetter.", exRu:"Я привыкаю к погоде."},
+  {verb:"bestehen aus", case:"Dativ", ru:"состоять из", ex:"Die Gruppe besteht aus zehn Leuten.", exRu:"Группа состоит из десяти человек."},
+  {verb:"bestehen auf", case:"Dativ", ru:"настаивать на", ex:"Er besteht auf seiner Meinung.", exRu:"Он настаивает на своём мнении."},
+  {verb:"sich verabschieden von", case:"Dativ", ru:"прощаться с", ex:"Ich verabschiede mich von meinen Freunden.", exRu:"Я прощаюсь с друзьями."},
+  {verb:"gehören zu", case:"Dativ", ru:"относиться к, входить в", ex:"Das gehört zu meinen Aufgaben.", exRu:"Это входит в мои обязанности."},
+  {verb:"achten auf", case:"Akkusativ", ru:"обращать внимание на, беречь", ex:"Achte auf deine Gesundheit!", exRu:"Береги своё здоровье!"},
+  {verb:"sich bewerben um", case:"Akkusativ", ru:"подавать заявку на", ex:"Ich bewerbe mich um die Stelle.", exRu:"Я подаю заявку на должность."},
+  {verb:"sich vorbereiten auf", case:"Akkusativ", ru:"готовиться к", ex:"Ich bereite mich auf die Prüfung vor.", exRu:"Я готовлюсь к экзамену."},
+];
+
+let activeLex = "all";
+const lexChipsEl = document.getElementById("lexChips");
+function buildLexChips(){
+  const all = [{key:"all",label:"Alle"}, {key:"unterricht",label:"Aus dem Unterricht"}]
+    .concat(LEX_TOPICS.map(t=>({key:t.key,label:t.label})))
+    .concat([{key:"praep",label:"Präpositionen"}, {key:"verbprep",label:"Verben mit Präpositionen"}]);
+  all.forEach(c=>{
+    const b = document.createElement("button");
+    b.className = "chip" + (c.key==="all" ? " active" : "");
+    b.textContent = c.label;
+    b.dataset.key = c.key;
+    b.addEventListener("click", ()=>{
+      activeLex = c.key;
+      [...lexChipsEl.children].forEach(x=>x.classList.toggle("active", x.dataset.key===c.key));
+      renderLexOrPrep();
+    });
+    lexChipsEl.appendChild(b);
+  });
+}
+let lexQuery = "";
+document.getElementById("lexSearch").addEventListener("input", (e)=>{
+  lexQuery = e.target.value.trim().toLowerCase();
+  renderLexOrPrep();
+});
+function lexWords(){
+  let words;
+  if(activeLex==="unterricht"){
+    words = LEX_TOPICS.flatMap(t=>t.words).filter(w=>w.u);
+  } else {
+    const topics = activeLex==="all" ? LEX_TOPICS : LEX_TOPICS.filter(t=>t.key===activeLex);
+    words = topics.flatMap(t=>t.words);
+  }
+  if(lexQuery){
+    words = words.filter(w=> w.de.toLowerCase().includes(lexQuery) || w.ru.toLowerCase().includes(lexQuery));
+  }
+  return words;
+}
+function renderLex(){
+  const words = lexWords();
+  const body = document.getElementById("lexBody");
+  const empty = document.getElementById("lexEmpty");
+  if(words.length===0){ body.innerHTML=""; empty.style.display=""; return; }
+  empty.style.display = "none";
+  const showTag = activeLex !== "unterricht";
+  body.innerHTML = words.map(w=>`<tr><td class="inf">${w.de}${w.u && showTag ? '<span class="u-tag">Unterricht</span>' : ''}</td><td class="ru">${w.ru}</td></tr>`).join("");
+}
+function prepItems(){
+  if(!lexQuery) return PREPOSITIONS;
+  return PREPOSITIONS.filter(p=> p.de.toLowerCase().includes(lexQuery) || p.ru.toLowerCase().includes(lexQuery));
+}
+function renderPreps(){
+  const items = prepItems();
+  const list = document.getElementById("lexPrepList");
+  const empty = document.getElementById("lexEmpty");
+  if(items.length===0){ list.innerHTML=""; empty.style.display=""; return; }
+  empty.style.display = "none";
+  list.innerHTML = items.map(p=>{
+    if(p.case === "Wechsel"){
+      return `<div class="prep-card">
+        <div class="head"><span class="word">${p.de}</span><span class="case-tag">Akk. / Dat.</span></div>
+        <div class="mean">${p.ru}</div>
+        <div class="compare">
+          <div class="crow"><span class="tag">Akk.</span><span class="txt">${p.exAkk}</span></div>
+          <div class="crow"><span class="tag">Dat.</span><span class="txt">${p.exDat}</span></div>
+        </div>
+        <div class="pex"><div class="ru">${p.exAkkRu} — ${p.exDatRu}</div></div>
+      </div>`;
+    }
+    return `<div class="prep-card">
+      <div class="head"><span class="word">${p.de}</span><span class="case-tag">${p.case}</span></div>
+      <div class="mean">${p.ru}</div>
+      <div class="pex"><div class="de">${p.ex}</div><div class="ru">${p.exRu}</div></div>
+    </div>`;
+  }).join("");
+}
+function verbPrepItems(){
+  if(!lexQuery) return VERB_PREPS;
+  return VERB_PREPS.filter(v=> v.verb.toLowerCase().includes(lexQuery) || v.ru.toLowerCase().includes(lexQuery));
+}
+function renderVerbPreps(){
+  const items = verbPrepItems();
+  const list = document.getElementById("lexVerbPrepList");
+  const empty = document.getElementById("lexEmpty");
+  const intro = `<div class="panel rule-card">
+    <h3 class="serif">Da- и wo-конструкции</h3>
+    <div class="when">Если после такого глагола нужно сказать «об этом / на это» (без повтора существительного) или ввести придаточное — предлог сливается с da(r)-: auf→darauf, über→darüber, von→davon, mit→damit, für→dafür, an→daran, um→darum.</div>
+    <div class="ex-line"><div class="de">Ich habe mich darauf gefreut, dich zu sehen.</div><div class="ru">Я радовался(ась) тому, что увижу тебя.</div></div>
+  </div>`;
+  if(items.length===0){ list.innerHTML = lexQuery ? "" : intro; empty.style.display = lexQuery ? "" : "none"; return; }
+  empty.style.display = "none";
+  list.innerHTML = intro + items.map(v=>`
+    <div class="prep-card">
+      <div class="head"><span class="word">${v.verb}</span><span class="case-tag">${v.case}</span></div>
+      <div class="mean">${v.ru}</div>
+      <div class="pex"><div class="de">${v.ex}</div><div class="ru">${v.exRu}</div></div>
+    </div>
+  `).join("");
+}
+function renderLexOrPrep(){
+  const isPrep = activeLex === "praep";
+  const isVerbPrep = activeLex === "verbprep";
+  document.getElementById("lexTableWrap").style.display = (isPrep||isVerbPrep) ? "none" : "";
+  document.getElementById("lexPrepList").style.display = isPrep ? "" : "none";
+  document.getElementById("lexVerbPrepList").style.display = isVerbPrep ? "" : "none";
+  const topic = LEX_TOPICS.find(t=>t.key===activeLex);
+  document.getElementById("lexIntro").innerHTML = (topic && topic.intro && !lexQuery) ? topic.intro : "";
+  if(isPrep) renderPreps();
+  else if(isVerbPrep) renderVerbPreps();
+  else renderLex();
+}
+buildLexChips();
+renderLexOrPrep();
+
+/* ================= REDEWENDUNGEN data ================= */
+const PHRASE_CATS = [
+  {key:"alltag", label:"Alltag & Höflichkeit"},
+  {key:"meinung", label:"Gefühle & Meinung"},
+  {key:"idiome", label:"Redewendungen"},
+  {key:"slang", label:"Jugendsprache & Slang"},
+  {key:"konnektoren", label:"Konnektoren"},
+  {key:"hoeflich", label:"Höflich & am Telefon"},
+];
+const PHRASES = [
+  {de:"Wie geht's?", ru:"Как дела?", cat:"alltag"},
+  {de:"Alles klar!", ru:"Всё понятно! / Всё ок!", cat:"alltag"},
+  {de:"Kein Problem.", ru:"Без проблем.", cat:"alltag"},
+  {de:"Macht nichts.", ru:"Ничего страшного.", cat:"alltag"},
+  {de:"Viel Glück!", ru:"Удачи!", cat:"alltag"},
+  {de:"Viel Spaß!", ru:"Хорошо провести время!", cat:"alltag"},
+  {de:"Gute Besserung!", ru:"Выздоравливай!", cat:"alltag"},
+  {de:"Herzlichen Glückwunsch!", ru:"Поздравляю!", cat:"alltag"},
+  {de:"Herzlich willkommen!", ru:"Добро пожаловать!", cat:"alltag"},
+  {de:"Wie bitte?", ru:"Простите, что?", cat:"alltag"},
+
+  {de:"Schade!", ru:"Жаль!", cat:"meinung"},
+  {de:"Kein Wunder.", ru:"Неудивительно.", cat:"meinung"},
+  {de:"Auf jeden Fall.", ru:"В любом случае / Точно.", cat:"meinung"},
+  {de:"Auf keinen Fall.", ru:"Ни в коем случае.", cat:"meinung"},
+  {de:"Es tut mir leid.", ru:"Мне жаль / Извините.", cat:"meinung"},
+  {de:"Ich habe keine Ahnung.", ru:"Понятия не имею.", cat:"meinung"},
+  {de:"Das ist mir egal.", ru:"Мне всё равно.", cat:"meinung"},
+  {de:"Mach dir keine Sorgen.", ru:"Не переживай.", cat:"meinung"},
+  {de:"Ich bin mir nicht sicher.", ru:"Я не уверен(а).", cat:"meinung"},
+  {de:"Es kommt darauf an.", ru:"Это зависит (от обстоятельств).", cat:"meinung"},
+
+  {de:"Die Daumen drücken", ru:"держать кулачки, желать удачи", cat:"idiome", note:"дословно: «прижимать большие пальцы»"},
+  {de:"Unter vier Augen", ru:"с глазу на глаз, наедине", cat:"idiome", note:"дословно: «под четырьмя глазами»"},
+  {de:"Ich verstehe nur Bahnhof.", ru:"Я вообще ничего не понимаю.", cat:"idiome", note:"дословно: «я понимаю только вокзал»"},
+  {de:"Das ist nicht mein Bier.", ru:"Это не моё дело.", cat:"idiome", note:"дословно: «это не моё пиво»"},
+  {de:"Die Nase voll haben", ru:"быть сытым по горло", cat:"idiome", note:"дословно: «иметь полный нос»"},
+  {de:"Auf den Punkt kommen", ru:"переходить к сути", cat:"idiome"},
+  {de:"Zeit totschlagen", ru:"убивать время", cat:"idiome"},
+  {de:"Das ist mir Wurst.", ru:"Мне без разницы (разг.)", cat:"idiome", note:"дословно: «это мне колбаса»"},
+  {de:"Ins Blaue fahren", ru:"ехать неизвестно куда", cat:"idiome", note:"дословно: «ехать в синее»"},
+  {de:"Guten Rutsch (ins neue Jahr)!", ru:"С Новым годом!", cat:"idiome", note:"говорят перед Новым годом"},
+
+  {de:"Genau!", ru:"Точно! Именно!", cat:"slang", note:"словечко-подтверждение, вставляют почти в каждом разговоре"},
+  {de:"Alter!", ru:"Чувак! / Блин!", cat:"slang", note:"обращение к другу или восклицание удивления/досады"},
+  {de:"Digga!", ru:"Братан! Чувак!", cat:"slang", note:"берлинский молодёжный сленг, синоним Alter"},
+  {de:"Krass!", ru:"Жёстко! Офигеть!", cat:"slang", note:"сильная реакция — и в плюс, и в минус"},
+  {de:"Geil!", ru:"Круто!", cat:"slang", note:"очень частое разговорное слово, аналог cool"},
+  {de:"Ich hab keinen Bock.", ru:"Мне неохота. Не хочется.", cat:"slang"},
+  {de:"Lass uns chillen.", ru:"Давай почилим, расслабимся.", cat:"slang"},
+  {de:"Läuft bei dir!", ru:"Красава! У тебя всё ок!", cat:"slang", note:"часто говорят с иронией"},
+  {de:"Was geht?", ru:"Как дела? Что как?", cat:"slang", note:"очень неформальное приветствие"},
+  {de:"Jein.", ru:"И да, и нет.", cat:"slang", note:"смесь ja + nein"},
+  {de:"Boah!", ru:"Ого! Вау!", cat:"slang", note:"восклицание удивления"},
+  {de:"Das ist mega!", ru:"Это супер!", cat:"slang", note:"mega/voll — модные усилители вместо sehr"},
+  {de:"Das ist voll cool.", ru:"Это реально круто.", cat:"slang"},
+  {de:"Gut, ne?", ru:"Хорошо, да?", cat:"slang", note:"ne — короткий разговорный хвостик-вопрос, как «да?»/«не так ли?»"},
+  {de:"Passt.", ru:"Норм. Подходит.", cat:"slang"},
+  {de:"Läuft.", ru:"Всё путём.", cat:"slang"},
+  {de:"Ehrlich?", ru:"Серьёзно? Правда?", cat:"slang"},
+  {de:"Ach so!", ru:"А, вот оно что!", cat:"slang"},
+  {de:"Mann!", ru:"Блин!", cat:"slang", note:"восклицание досады, не буквальное «мужчина»"},
+  {de:"Easy.", ru:"Легко, без проблем.", cat:"slang"},
+  {de:"Nice!", ru:"Классно!", cat:"slang", note:"заимствовано из английского, очень ходовое"},
+
+  {de:"außerdem", ru:"кроме того, к тому же", cat:"konnektoren", ex:"Ich habe keine Zeit, außerdem bin ich müde.", exRu:"У меня нет времени, к тому же я устал(а)."},
+  {de:"darüber hinaus", ru:"более того, сверх этого", cat:"konnektoren", ex:"Er spricht Englisch und darüber hinaus auch Französisch.", exRu:"Он говорит по-английски, а сверх того ещё и по-французски."},
+  {de:"trotzdem", ru:"тем не менее, всё же", cat:"konnektoren", ex:"Es regnet, trotzdem gehen wir spazieren.", exRu:"Идёт дождь, но мы всё равно идём гулять."},
+  {de:"allerdings", ru:"однако, правда", cat:"konnektoren", ex:"Das Restaurant ist gut, allerdings etwas teuer.", exRu:"Ресторан хороший, правда, немного дорогой."},
+  {de:"jedoch", ru:"однако", cat:"konnektoren", ex:"Ich wollte kommen, jedoch hatte ich keine Zeit.", exRu:"Я хотел(а) прийти, однако у меня не было времени."},
+  {de:"deshalb", ru:"поэтому", cat:"konnektoren", ex:"Ich bin krank, deshalb bleibe ich zu Hause.", exRu:"Я болен, поэтому остаюсь дома."},
+  {de:"daher", ru:"поэтому, отсюда", cat:"konnektoren", ex:"Er hat viel geübt, daher spricht er gut Deutsch.", exRu:"Он много практиковался, поэтому хорошо говорит по-немецки."},
+  {de:"also", ru:"итак, значит", cat:"konnektoren", ex:"Also, fangen wir an!", exRu:"Итак, начнём!"},
+  {de:"sozusagen", ru:"так сказать", cat:"konnektoren", ex:"Er ist sozusagen mein bester Freund.", exRu:"Он, так сказать, мой лучший друг."},
+  {de:"übrigens", ru:"кстати", cat:"konnektoren", ex:"Übrigens, hast du das neue Café gesehen?", exRu:"Кстати, ты видел новое кафе?"},
+  {de:"immerhin", ru:"по крайней мере, всё же", cat:"konnektoren", ex:"Es hat nicht geklappt, aber immerhin haben wir es versucht.", exRu:"Не получилось, но по крайней мере мы попробовали."},
+  {de:"schließlich", ru:"в конце концов, наконец", cat:"konnektoren", ex:"Schließlich haben wir eine Lösung gefunden.", exRu:"В конце концов мы нашли решение."},
+  {de:"insgesamt", ru:"в целом", cat:"konnektoren", ex:"Insgesamt war die Reise sehr schön.", exRu:"В целом поездка была очень хорошей."},
+  {de:"einerseits … andererseits", ru:"с одной стороны … с другой стороны", cat:"konnektoren", ex:"Einerseits will ich reisen, andererseits fehlt mir das Geld.", exRu:"С одной стороны, я хочу путешествовать, с другой — мне не хватает денег."},
+  {de:"zum Beispiel", ru:"например", cat:"konnektoren", ex:"Ich mag viele Sportarten, zum Beispiel Schwimmen.", exRu:"Мне нравится много видов спорта, например плавание."},
+  {de:"das heißt", ru:"то есть", cat:"konnektoren", ex:"Ich bin Frühaufsteher, das heißt, ich stehe um sechs auf.", exRu:"Я жаворонок, то есть встаю в шесть."},
+  {de:"im Gegenteil", ru:"наоборот", cat:"konnektoren", ex:"Ich bin nicht müde, im Gegenteil, ich fühle mich super.", exRu:"Я не устал, наоборот, чувствую себя отлично."},
+  {de:"letztendlich", ru:"в конечном счёте", cat:"konnektoren", ex:"Letztendlich haben wir uns für Berlin entschieden.", exRu:"В конечном счёте мы выбрали Берлин."},
+  {de:"meiner Meinung nach", ru:"по-моему, на мой взгляд", cat:"konnektoren", ex:"Meiner Meinung nach ist das eine gute Idee.", exRu:"По-моему, это хорошая идея."},
+  {de:"sowieso", ru:"так или иначе, всё равно", cat:"konnektoren", ex:"Ich wollte sowieso zu Hause bleiben.", exRu:"Я всё равно хотел(а) остаться дома."},
+];
+
+/* ---- Фразы из урока ---- */
+PHRASES.push(...[
+  {de:"Ich rufe Sie an, um mich nach Ihrer Wohnung zu erkundigen.", ru:"Я звоню вам, чтобы узнать о вашей квартире.", cat:"hoeflich", note:"um … zu + Infinitiv — «чтобы»"},
+  {de:"Ich möchte Ihre Wohnung mieten. Könnten Sie mir bitte weitere Informationen geben?", ru:"Я хотел(а) бы снять вашу квартиру. Не могли бы вы дать больше информации?", cat:"hoeflich", note:"Könnten Sie … — вежливая просьба через Konjunktiv II"},
+  {de:"Ich möchte Sie um einen Gefallen bitten.", ru:"Я хотел(а) бы попросить вас об одолжении.", cat:"hoeflich", note:"jemanden um etwas bitten — просить кого-то о чём-то"},
+  {de:"Lenken Sie mich bitte nicht ab!", ru:"Не отвлекайте меня, пожалуйста!", cat:"hoeflich"},
+  {de:"Ich will dich nicht stören.", ru:"Не хочу тебя беспокоить.", cat:"hoeflich"},
+  {de:"Möchtest du mal vorbeikommen?", ru:"Не хочешь как-нибудь зайти?", cat:"hoeflich"},
+  {de:"Kannst du mir dein Handy leihen?", ru:"Можешь одолжить мне свой телефон?", cat:"hoeflich", note:"leihen — давать на время; mir — «мне» (Dativ)"},
+  {de:"Trag bitte meine Tasche.", ru:"Понеси, пожалуйста, мою сумку.", cat:"hoeflich"},
+  {de:"Pass bitte auf meine Blumen auf.", ru:"Присмотри, пожалуйста, за моими цветами.", cat:"hoeflich"},
+  {de:"Kannst du meine Tabletten holen?", ru:"Можешь принести мои таблетки?", cat:"hoeflich"},
+  {de:"Ich bin stolz auf dich!", ru:"Я горжусь тобой!", cat:"meinung", note:"stolz sein auf + Akkusativ"},
+  {de:"Ich habe keine Lust.", ru:"Мне не хочется.", cat:"meinung"},
+  {de:"Es hat sich gelohnt.", ru:"Оно того стоило.", cat:"meinung"},
+  {de:"Es lohnt sich nicht.", ru:"Оно того не стоит.", cat:"meinung"},
+  {de:"Das hängt davon ab.", ru:"Это зависит (от обстоятельств).", cat:"meinung"},
+  {de:"Ich bin gerade beschäftigt.", ru:"Я сейчас занят(а).", cat:"meinung", note:"mit etwas beschäftigt sein — быть занятым чем-то"},
+  {de:"Sei gesund!", ru:"Будь здоров(а)!", cat:"alltag", note:"пожелание; когда чихают, говорят «Gesundheit!»"},
+  {de:"Pech gehabt!", ru:"Не повезло!", cat:"alltag"},
+].map(p=>({...p, u:1})));
+const PHRASE_LESSON_EXISTING = ["außerdem","deshalb","trotzdem","sowieso","im Gegenteil"];
+PHRASES.forEach(p=>{ if(PHRASE_LESSON_EXISTING.includes(p.de)) p.u = 1; });
+
+let activePhrase = "all";
+const phraseChipsEl = document.getElementById("phraseChips");
+function buildPhraseChips(){
+  const all = [{key:"all",label:"Alle"}, {key:"unterricht",label:"Aus dem Unterricht"}].concat(PHRASE_CATS);
+  all.forEach(c=>{
+    const b = document.createElement("button");
+    b.className = "chip" + (c.key==="all" ? " active" : "");
+    b.textContent = c.label;
+    b.dataset.key = c.key;
+    b.addEventListener("click", ()=>{
+      activePhrase = c.key;
+      [...phraseChipsEl.children].forEach(x=>x.classList.toggle("active", x.dataset.key===c.key));
+      renderPhrases();
+    });
+    phraseChipsEl.appendChild(b);
+  });
+}
+let phraseQuery = "";
+document.getElementById("phraseSearch").addEventListener("input", (e)=>{
+  phraseQuery = e.target.value.trim().toLowerCase();
+  renderPhrases();
+});
+function phraseItems(){
+  let items = activePhrase==="all" ? PHRASES
+    : activePhrase==="unterricht" ? PHRASES.filter(p=>p.u)
+    : PHRASES.filter(p=>p.cat===activePhrase);
+  if(phraseQuery){
+    items = items.filter(p=> p.de.toLowerCase().includes(phraseQuery) || p.ru.toLowerCase().includes(phraseQuery));
+  }
+  return items;
+}
+function renderPhrases(){
+  const items = phraseItems();
+  const list = document.getElementById("phraseList");
+  const empty = document.getElementById("phraseEmpty");
+  if(items.length===0){ list.innerHTML=""; empty.style.display=""; return; }
+  empty.style.display = "none";
+  list.innerHTML = items.map(p=>`
+    <div class="phrase-item">
+      <div class="de">${p.de}${p.u && activePhrase!=="unterricht" ? '<span class="u-tag">Unterricht</span>' : ''}</div>
+      <div class="ru">${p.ru}</div>
+      ${p.note ? `<div class="note">${p.note}</div>` : ""}
+      ${p.ex ? `<div class="pex"><div class="de">${p.ex}</div><div class="ru">${p.exRu}</div></div>` : ""}
+    </div>
+  `).join("");
+}
+buildPhraseChips();
+renderPhrases();
+
+/* ================= VERBEN (module) ================= */
+
+// inf, ru, cat(grund|modal|unreg|reg|trenn|refl), sep(bool),
 // ich,du,er,wir,ihr,sie — Präsens; perf: [Hilfsverb, Partizip] or null
 const VERBS = [
   {inf:"sein", ru:"быть", cat:"grund", sep:false,
@@ -1050,6 +2300,269 @@ const VERBS = [
    perf:["hat","sich erkältet"], ex:"Ich erkälte mich schnell im Winter.", exRu:"Зимой я быстро простужаюсь."},
 ];
 
+/* ---- Глаголы из урока (добавлены в конец, чтобы id старых не сдвинулись) ---- */
+const VERBS_LESSON = [
+  // Regelmäßig
+  {inf:"heiraten", ru:"жениться, выходить замуж", cat:"reg", sep:false,
+   ich:"heirate", du:"heiratest", er:"heiratet", wir:"heiraten", ihr:"heiratet", sie:"heiraten",
+   perf:["hat","geheiratet"], ex:"Er will sie heiraten.", exRu:"Он хочет на ней жениться."},
+  {inf:"stürzen", ru:"упасть, рухнуть", cat:"reg", sep:false,
+   ich:"stürze", du:"stürzt", er:"stürzt", wir:"stürzen", ihr:"stürzt", sie:"stürzen",
+   perf:["ist","gestürzt"], ex:"Sie ist vom Fahrrad gestürzt.", exRu:"Она упала с велосипеда."},
+  {inf:"zucken", ru:"дёргать(ся); пожимать (плечами)", cat:"reg", sep:false,
+   ich:"zucke", du:"zuckst", er:"zuckt", wir:"zucken", ihr:"zuckt", sie:"zucken",
+   perf:["hat","gezuckt"], ex:"Maria zuckt mit den Schultern.", exRu:"Мария пожимает плечами."},
+  {inf:"schütteln", ru:"трясти; качать (головой)", cat:"reg", sep:false,
+   ich:"schüttle", du:"schüttelst", er:"schüttelt", wir:"schütteln", ihr:"schüttelt", sie:"schütteln",
+   perf:["hat","geschüttelt"], ex:"Sie schüttelt den Kopf.", exRu:"Она качает головой."},
+  {inf:"stören", ru:"мешать, беспокоить", cat:"reg", sep:false,
+   ich:"störe", du:"störst", er:"stört", wir:"stören", ihr:"stört", sie:"stören",
+   perf:["hat","gestört"], ex:"Ich will dich nicht stören.", exRu:"Не хочу тебя беспокоить."},
+  {inf:"holen", ru:"принести, сходить за", cat:"reg", sep:false,
+   ich:"hole", du:"holst", er:"holt", wir:"holen", ihr:"holt", sie:"holen",
+   perf:["hat","geholt"], ex:"Kannst du meine Tabletten holen?", exRu:"Можешь принести мои таблетки?"},
+  {inf:"begleiten", ru:"сопровождать, провожать", cat:"reg", sep:false,
+   ich:"begleite", du:"begleitest", er:"begleitet", wir:"begleiten", ihr:"begleitet", sie:"begleiten",
+   perf:["hat","begleitet"], ex:"Ich begleite dich nach Hause.", exRu:"Я провожу тебя домой."},
+  {inf:"führen", ru:"вести", cat:"reg", sep:false,
+   ich:"führe", du:"führst", er:"führt", wir:"führen", ihr:"führt", sie:"führen",
+   perf:["hat","geführt"], ex:"Der Weg führt durch den Wald.", exRu:"Дорога ведёт через лес."},
+  {inf:"bedecken", ru:"покрывать, укрывать", cat:"reg", sep:false,
+   ich:"bedecke", du:"bedeckst", er:"bedeckt", wir:"bedecken", ihr:"bedeckt", sie:"bedecken",
+   perf:["hat","bedeckt"], ex:"Schnee bedeckt die Straße.", exRu:"Снег покрывает улицу."},
+  {inf:"entdecken", ru:"открывать, обнаруживать", cat:"reg", sep:false,
+   ich:"entdecke", du:"entdeckst", er:"entdeckt", wir:"entdecken", ihr:"entdeckt", sie:"entdecken",
+   perf:["hat","entdeckt"], ex:"Wir haben ein tolles Café entdeckt.", exRu:"Мы нашли классное кафе."},
+  {inf:"bedauern", ru:"сожалеть", cat:"reg", sep:false,
+   ich:"bedauere", du:"bedauerst", er:"bedauert", wir:"bedauern", ihr:"bedauert", sie:"bedauern",
+   perf:["hat","bedauert"], ex:"Ich bedauere das sehr.", exRu:"Я очень об этом сожалею."},
+  {inf:"trennen", ru:"разделять; (sich) расставаться", cat:"reg", sep:false,
+   ich:"trenne", du:"trennst", er:"trennt", wir:"trennen", ihr:"trennt", sie:"trennen",
+   perf:["hat","getrennt"], ex:"Nichts kann uns trennen.", exRu:"Ничто не может нас разлучить."},
+  {inf:"lösen", ru:"решать (задачу, проблему)", cat:"reg", sep:false,
+   ich:"löse", du:"löst", er:"löst", wir:"lösen", ihr:"löst", sie:"lösen",
+   perf:["hat","gelöst"], ex:"Wir lösen das Problem zusammen.", exRu:"Мы решим проблему вместе."},
+  {inf:"unterstützen", ru:"поддерживать", cat:"reg", sep:false,
+   ich:"unterstütze", du:"unterstützt", er:"unterstützt", wir:"unterstützen", ihr:"unterstützt", sie:"unterstützen",
+   perf:["hat","unterstützt"], ex:"Meine Familie unterstützt mich.", exRu:"Моя семья меня поддерживает."},
+  {inf:"verursachen", ru:"вызывать, причинять", cat:"reg", sep:false,
+   ich:"verursache", du:"verursachst", er:"verursacht", wir:"verursachen", ihr:"verursacht", sie:"verursachen",
+   perf:["hat","verursacht"], ex:"Der Sturm hat große Schäden verursacht.", exRu:"Буря причинила большой ущерб."},
+  {inf:"schätzen", ru:"ценить; оценивать", cat:"reg", sep:false,
+   ich:"schätze", du:"schätzt", er:"schätzt", wir:"schätzen", ihr:"schätzt", sie:"schätzen",
+   perf:["hat","geschätzt"], ex:"Ich schätze deine Hilfe sehr.", exRu:"Я очень ценю твою помощь."},
+  {inf:"beleidigen", ru:"оскорблять, обижать", cat:"reg", sep:false,
+   ich:"beleidige", du:"beleidigst", er:"beleidigt", wir:"beleidigen", ihr:"beleidigt", sie:"beleidigen",
+   perf:["hat","beleidigt"], ex:"Ich wollte dich nicht beleidigen.", exRu:"Я не хотел(а) тебя обидеть."},
+  {inf:"zittern", ru:"дрожать", cat:"reg", sep:false,
+   ich:"zittere", du:"zitterst", er:"zittert", wir:"zittern", ihr:"zittert", sie:"zittern",
+   perf:["hat","gezittert"], ex:"Ich zittere vor Kälte.", exRu:"Я дрожу от холода."},
+  {inf:"dienen", ru:"служить", cat:"reg", sep:false,
+   ich:"diene", du:"dienst", er:"dient", wir:"dienen", ihr:"dient", sie:"dienen",
+   perf:["hat","gedient"], ex:"Wozu dient das?", exRu:"Для чего это служит?"},
+  {inf:"berühren", ru:"касаться, трогать", cat:"reg", sep:false,
+   ich:"berühre", du:"berührst", er:"berührt", wir:"berühren", ihr:"berührt", sie:"berühren",
+   perf:["hat","berührt"], ex:"Bitte berühr das Bild nicht!", exRu:"Пожалуйста, не трогай картину!"},
+  {inf:"versäumen", ru:"упускать, пропускать", cat:"reg", sep:false,
+   ich:"versäume", du:"versäumst", er:"versäumt", wir:"versäumen", ihr:"versäumt", sie:"versäumen",
+   perf:["hat","versäumt"], ex:"Ich habe den Unterricht versäumt.", exRu:"Я пропустил(а) урок."},
+  {inf:"verpassen", ru:"пропускать, опаздывать на", cat:"reg", sep:false,
+   ich:"verpasse", du:"verpasst", er:"verpasst", wir:"verpassen", ihr:"verpasst", sie:"verpassen",
+   perf:["hat","verpasst"], ex:"Ich habe den Bus verpasst.", exRu:"Я опоздал(а) на автобус."},
+  {inf:"wecken", ru:"будить", cat:"reg", sep:false,
+   ich:"wecke", du:"weckst", er:"weckt", wir:"wecken", ihr:"weckt", sie:"wecken",
+   perf:["hat","geweckt"], ex:"Weck mich bitte um sieben.", exRu:"Разбуди меня, пожалуйста, в семь."},
+  {inf:"verstecken", ru:"прятать", cat:"reg", sep:false,
+   ich:"verstecke", du:"versteckst", er:"versteckt", wir:"verstecken", ihr:"versteckt", sie:"verstecken",
+   perf:["hat","versteckt"], ex:"Das Kind versteckt sich hinter dem Baum.", exRu:"Ребёнок прячется за деревом."},
+  {inf:"erreichen", ru:"достигать", cat:"reg", sep:false,
+   ich:"erreiche", du:"erreichst", er:"erreicht", wir:"erreichen", ihr:"erreicht", sie:"erreichen",
+   perf:["hat","erreicht"], ex:"Ich will mein Ziel erreichen.", exRu:"Я хочу достичь своей цели."},
+  {inf:"zerstören", ru:"разрушать, уничтожать", cat:"reg", sep:false,
+   ich:"zerstöre", du:"zerstörst", er:"zerstört", wir:"zerstören", ihr:"zerstört", sie:"zerstören",
+   perf:["hat","zerstört"], ex:"Der Sturm hat das Haus zerstört.", exRu:"Буря разрушила дом."},
+  {inf:"kämpfen", ru:"бороться, сражаться", cat:"reg", sep:false,
+   ich:"kämpfe", du:"kämpfst", er:"kämpft", wir:"kämpfen", ihr:"kämpft", sie:"kämpfen",
+   perf:["hat","gekämpft"], ex:"Wir kämpfen für unsere Freiheit.", exRu:"Мы боремся за свою свободу."},
+  {inf:"begehren", ru:"жаждать, страстно желать", cat:"reg", sep:false,
+   ich:"begehre", du:"begehrst", er:"begehrt", wir:"begehren", ihr:"begehrt", sie:"begehren",
+   perf:["hat","begehrt"], ex:"Der Drache begehrt den Schatz.", exRu:"Дракон жаждет сокровища."},
+  {inf:"wechseln", ru:"менять (на другое), обменивать", cat:"reg", sep:false,
+   ich:"wechsle", du:"wechselst", er:"wechselt", wir:"wechseln", ihr:"wechselt", sie:"wechseln",
+   perf:["hat","gewechselt"], ex:"Ich möchte Geld wechseln.", exRu:"Я хотел(а) бы обменять деньги."},
+  {inf:"tauschen", ru:"меняться, обмениваться", cat:"reg", sep:false,
+   ich:"tausche", du:"tauschst", er:"tauscht", wir:"tauschen", ihr:"tauscht", sie:"tauschen",
+   perf:["hat","getauscht"], ex:"Wollen wir die Plätze tauschen?", exRu:"Поменяемся местами?"},
+  {inf:"ändern", ru:"менять, изменять (что-то)", cat:"reg", sep:false,
+   ich:"ändere", du:"änderst", er:"ändert", wir:"ändern", ihr:"ändert", sie:"ändern",
+   perf:["hat","geändert"], ex:"Ich ändere meinen Plan.", exRu:"Я меняю свой план."},
+  {inf:"verändern", ru:"изменять, преображать", cat:"reg", sep:false,
+   ich:"verändere", du:"veränderst", er:"verändert", wir:"verändern", ihr:"verändert", sie:"verändern",
+   perf:["hat","verändert"], ex:"Die Stadt hat sich sehr verändert.", exRu:"Город очень изменился."},
+  {inf:"übernachten", ru:"переночевать", cat:"reg", sep:false,
+   ich:"übernachte", du:"übernachtest", er:"übernachtet", wir:"übernachten", ihr:"übernachtet", sie:"übernachten",
+   perf:["hat","übernachtet"], ex:"Wir übernachten im Hotel.", exRu:"Мы переночуем в отеле."},
+  {inf:"erstellen", ru:"создавать, составлять (тексты, программы)", cat:"reg", sep:false,
+   ich:"erstelle", du:"erstellst", er:"erstellt", wir:"erstellen", ihr:"erstellt", sie:"erstellen",
+   perf:["hat","erstellt"], ex:"Ich erstelle eine Liste.", exRu:"Я составляю список."},
+  {inf:"entwickeln", ru:"развивать; разрабатывать", cat:"reg", sep:false,
+   ich:"entwickle", du:"entwickelst", er:"entwickelt", wir:"entwickeln", ihr:"entwickelt", sie:"entwickeln",
+   perf:["hat","entwickelt"], ex:"Die Firma entwickelt eine neue App.", exRu:"Фирма разрабатывает новое приложение."},
+  {inf:"erledigen", ru:"выполнять, улаживать (дела)", cat:"reg", sep:false,
+   ich:"erledige", du:"erledigst", er:"erledigt", wir:"erledigen", ihr:"erledigt", sie:"erledigen",
+   perf:["hat","erledigt"], ex:"Ich muss heute noch viel erledigen.", exRu:"Мне сегодня ещё многое нужно сделать."},
+  {inf:"verschütten", ru:"пролить", cat:"reg", sep:false,
+   ich:"verschütte", du:"verschüttest", er:"verschüttet", wir:"verschütten", ihr:"verschüttet", sie:"verschütten",
+   perf:["hat","verschüttet"], ex:"Ich habe den Kaffee verschüttet.", exRu:"Я пролил(а) кофе."},
+  {inf:"schütten", ru:"сыпать, лить", cat:"reg", sep:false,
+   ich:"schütte", du:"schüttest", er:"schüttet", wir:"schütten", ihr:"schüttet", sie:"schütten",
+   perf:["hat","geschüttet"], ex:"Schütte das Wasser in den Topf.", exRu:"Вылей воду в кастрюлю."},
+  {inf:"beschuldigen", ru:"обвинять", cat:"reg", sep:false,
+   ich:"beschuldige", du:"beschuldigst", er:"beschuldigt", wir:"beschuldigen", ihr:"beschuldigt", sie:"beschuldigen",
+   perf:["hat","beschuldigt"], ex:"Er beschuldigt mich, aber ich bin nicht schuld.", exRu:"Он обвиняет меня, но я не виноват(а)."},
+  {inf:"faszinieren", ru:"восхищать, увлекать", cat:"reg", sep:false,
+   ich:"fasziniere", du:"faszinierst", er:"fasziniert", wir:"faszinieren", ihr:"fasziniert", sie:"faszinieren",
+   perf:["hat","fasziniert"], ex:"Die Natur fasziniert mich.", exRu:"Природа меня восхищает."},
+  {inf:"besuchen", ru:"навещать, посещать", cat:"reg", sep:false,
+   ich:"besuche", du:"besuchst", er:"besucht", wir:"besuchen", ihr:"besucht", sie:"besuchen",
+   perf:["hat","besucht"], ex:"Möchtest du uns einmal besuchen?", exRu:"Не хочешь как-нибудь нас навестить?"},
+  {inf:"säumen", ru:"окаймлять, обрамлять", cat:"reg", sep:false,
+   ich:"säume", du:"säumst", er:"säumt", wir:"säumen", ihr:"säumt", sie:"säumen",
+   perf:["hat","gesäumt"], ex:"Bäume säumen die Straße.", exRu:"Деревья обрамляют улицу."},
+
+  // Unregelmäßig
+  {inf:"erfrieren", ru:"замёрзнуть; отморозить", cat:"unreg", sep:false,
+   ich:"erfriere", du:"erfrierst", er:"erfriert", wir:"erfrieren", ihr:"erfriert", sie:"erfrieren",
+   perf:["ist","erfroren"], ex:"Ohne Jacke erfrierst du!", exRu:"Без куртки ты замёрзнешь!"},
+  {inf:"leihen", ru:"одалживать, давать на время", cat:"unreg", sep:false,
+   ich:"leihe", du:"leihst", er:"leiht", wir:"leihen", ihr:"leiht", sie:"leihen",
+   perf:["hat","geliehen"], ex:"Kannst du mir dein Handy leihen?", exRu:"Можешь одолжить мне свой телефон?"},
+  {inf:"graben", ru:"копать", cat:"unreg", sep:false,
+   ich:"grabe", du:"gräbst", er:"gräbt", wir:"graben", ihr:"grabt", sie:"graben",
+   perf:["hat","gegraben"], ex:"Der Hund gräbt ein Loch.", exRu:"Собака роет яму."},
+  {inf:"überwinden", ru:"преодолевать", cat:"unreg", sep:false,
+   ich:"überwinde", du:"überwindest", er:"überwindet", wir:"überwinden", ihr:"überwindet", sie:"überwinden",
+   perf:["hat","überwunden"], ex:"Gemeinsam überwinden wir jedes Hindernis.", exRu:"Вместе мы преодолеем любое препятствие."},
+  {inf:"überstehen", ru:"пережить, выдержать", cat:"unreg", sep:false,
+   ich:"überstehe", du:"überstehst", er:"übersteht", wir:"überstehen", ihr:"übersteht", sie:"überstehen",
+   perf:["hat","überstanden"], ex:"Wir haben die schwere Zeit überstanden.", exRu:"Мы пережили трудное время."},
+  {inf:"lassen", ru:"оставлять; позволять; давай(те)", cat:"unreg", sep:false,
+   ich:"lasse", du:"lässt", er:"lässt", wir:"lassen", ihr:"lasst", sie:"lassen",
+   perf:["hat","gelassen"], ex:"Lass uns gehen!", exRu:"Давай пойдём!"},
+  {inf:"genießen", ru:"наслаждаться", cat:"unreg", sep:false,
+   ich:"genieße", du:"genießt", er:"genießt", wir:"genießen", ihr:"genießt", sie:"genießen",
+   perf:["hat","genossen"], ex:"Wir genießen den Urlaub.", exRu:"Мы наслаждаемся отпуском."},
+  {inf:"leiden", ru:"страдать (unter — от)", cat:"unreg", sep:false,
+   ich:"leide", du:"leidest", er:"leidet", wir:"leiden", ihr:"leidet", sie:"leiden",
+   perf:["hat","gelitten"], ex:"Ich leide unter dem Lärm.", exRu:"Я страдаю от шума."},
+  {inf:"schreien", ru:"кричать", cat:"unreg", sep:false,
+   ich:"schreie", du:"schreist", er:"schreit", wir:"schreien", ihr:"schreit", sie:"schreien",
+   perf:["hat","geschrien"], ex:"Warum schreist du so?", exRu:"Почему ты так кричишь?"},
+  {inf:"schwören", ru:"клясться", cat:"unreg", sep:false,
+   ich:"schwöre", du:"schwörst", er:"schwört", wir:"schwören", ihr:"schwört", sie:"schwören",
+   perf:["hat","geschworen"], ex:"Ich schwöre, ich sage die Wahrheit.", exRu:"Клянусь, я говорю правду."},
+  {inf:"überweisen", ru:"переводить (деньги)", cat:"unreg", sep:false,
+   ich:"überweise", du:"überweist", er:"überweist", wir:"überweisen", ihr:"überweist", sie:"überweisen",
+   perf:["hat","überwiesen"], ex:"Ich überweise dir das Geld morgen.", exRu:"Я переведу тебе деньги завтра."},
+  {inf:"entstehen", ru:"возникать", cat:"unreg", sep:false,
+   ich:"entstehe", du:"entstehst", er:"entsteht", wir:"entstehen", ihr:"entsteht", sie:"entstehen",
+   perf:["ist","entstanden"], ex:"So entsteht ein Problem.", exRu:"Так возникает проблема."},
+  {inf:"gießen", ru:"поливать (цветы); лить", cat:"unreg", sep:false,
+   ich:"gieße", du:"gießt", er:"gießt", wir:"gießen", ihr:"gießt", sie:"gießen",
+   perf:["hat","gegossen"], ex:"Ich gieße die Blumen.", exRu:"Я поливаю цветы."},
+  {inf:"bestehen", ru:"сдать (экзамен); выдержать", cat:"unreg", sep:false,
+   ich:"bestehe", du:"bestehst", er:"besteht", wir:"bestehen", ihr:"besteht", sie:"bestehen",
+   perf:["hat","bestanden"], ex:"Ich habe die Prüfung bestanden!", exRu:"Я сдал(а) экзамен!"},
+  {inf:"bitten", ru:"просить (um — о)", cat:"unreg", sep:false,
+   ich:"bitte", du:"bittest", er:"bittet", wir:"bitten", ihr:"bittet", sie:"bitten",
+   perf:["hat","gebeten"], ex:"Ich möchte Sie um einen Gefallen bitten.", exRu:"Я хотел(а) бы попросить вас об одолжении."},
+  {inf:"schlagen", ru:"бить; биться (о сердце)", cat:"unreg", sep:false,
+   ich:"schlage", du:"schlägst", er:"schlägt", wir:"schlagen", ihr:"schlagt", sie:"schlagen",
+   perf:["hat","geschlagen"], ex:"Mein Herz schlägt schnell.", exRu:"Моё сердце бьётся быстро."},
+
+  // Trennbar
+  {inf:"ablenken", ru:"отвлекать", cat:"trenn", sep:true,
+   ich:"lenke ab", du:"lenkst ab", er:"lenkt ab", wir:"lenken ab", ihr:"lenkt ab", sie:"lenken ab",
+   perf:["hat","abgelenkt"], ex:"Lenken Sie mich bitte nicht ab!", exRu:"Не отвлекайте меня, пожалуйста!"},
+  {inf:"aufpassen", ru:"присматривать (auf — за); быть внимательным", cat:"trenn", sep:true,
+   ich:"passe auf", du:"passt auf", er:"passt auf", wir:"passen auf", ihr:"passt auf", sie:"passen auf",
+   perf:["hat","aufgepasst"], ex:"Pass bitte auf meine Blumen auf!", exRu:"Присмотри, пожалуйста, за моими цветами!"},
+  {inf:"einschätzen", ru:"оценивать (ситуацию)", cat:"trenn", sep:true,
+   ich:"schätze ein", du:"schätzt ein", er:"schätzt ein", wir:"schätzen ein", ihr:"schätzt ein", sie:"schätzen ein",
+   perf:["hat","eingeschätzt"], ex:"Wie schätzt du die Situation ein?", exRu:"Как ты оцениваешь ситуацию?"},
+  {inf:"wegwerfen", ru:"выбрасывать", cat:"trenn", sep:true,
+   ich:"werfe weg", du:"wirfst weg", er:"wirft weg", wir:"werfen weg", ihr:"werft weg", sie:"werfen weg",
+   perf:["hat","weggeworfen"], ex:"Wirf das bitte nicht weg!", exRu:"Пожалуйста, не выбрасывай это!"},
+  {inf:"stattfinden", ru:"состояться, проходить", cat:"trenn", sep:true,
+   ich:"finde statt", du:"findest statt", er:"findet statt", wir:"finden statt", ihr:"findet statt", sie:"finden statt",
+   perf:["hat","stattgefunden"], ex:"Die Veranstaltung findet am Samstag statt.", exRu:"Мероприятие пройдёт в субботу."},
+  {inf:"umtauschen", ru:"обменять (товар)", cat:"trenn", sep:true,
+   ich:"tausche um", du:"tauschst um", er:"tauscht um", wir:"tauschen um", ihr:"tauscht um", sie:"tauschen um",
+   perf:["hat","umgetauscht"], ex:"Ich möchte diese Schuhe umtauschen.", exRu:"Я хотел(а) бы обменять эти туфли."},
+  {inf:"ausgeben", ru:"тратить (für — на)", cat:"trenn", sep:true,
+   ich:"gebe aus", du:"gibst aus", er:"gibt aus", wir:"geben aus", ihr:"gebt aus", sie:"geben aus",
+   perf:["hat","ausgegeben"], ex:"Ich gebe viel Geld für Bücher aus.", exRu:"Я трачу много денег на книги."},
+  {inf:"abheben", ru:"снимать (деньги)", cat:"trenn", sep:true,
+   ich:"hebe ab", du:"hebst ab", er:"hebt ab", wir:"heben ab", ihr:"hebt ab", sie:"heben ab",
+   perf:["hat","abgehoben"], ex:"Ich hebe Geld am Automaten ab.", exRu:"Я снимаю деньги в банкомате."},
+  {inf:"einzahlen", ru:"вносить (на счёт)", cat:"trenn", sep:true,
+   ich:"zahle ein", du:"zahlst ein", er:"zahlt ein", wir:"zahlen ein", ihr:"zahlt ein", sie:"zahlen ein",
+   perf:["hat","eingezahlt"], ex:"Ich zahle Geld auf mein Konto ein.", exRu:"Я вношу деньги на свой счёт."},
+  {inf:"abhängen", ru:"зависеть (von — от)", cat:"trenn", sep:true,
+   ich:"hänge ab", du:"hängst ab", er:"hängt ab", wir:"hängen ab", ihr:"hängt ab", sie:"hängen ab",
+   perf:["hat","abgehangen"], ex:"Das hängt vom Wetter ab.", exRu:"Это зависит от погоды."},
+  {inf:"wiedergutmachen", ru:"исправить, загладить (вину)", cat:"trenn", sep:true,
+   ich:"mache wieder gut", du:"machst wieder gut", er:"macht wieder gut", wir:"machen wieder gut", ihr:"macht wieder gut", sie:"machen wieder gut",
+   perf:["hat","wiedergutgemacht"], ex:"Wie kann ich das wiedergutmachen?", exRu:"Как я могу это исправить?"},
+  {inf:"einschenken", ru:"наливать (напиток)", cat:"trenn", sep:true,
+   ich:"schenke ein", du:"schenkst ein", er:"schenkt ein", wir:"schenken ein", ihr:"schenkt ein", sie:"schenken ein",
+   perf:["hat","eingeschenkt"], ex:"Darf ich dir Tee einschenken?", exRu:"Можно налить тебе чаю?"},
+  {inf:"vorbeikommen", ru:"заходить, заглядывать", cat:"trenn", sep:true,
+   ich:"komme vorbei", du:"kommst vorbei", er:"kommt vorbei", wir:"kommen vorbei", ihr:"kommt vorbei", sie:"kommen vorbei",
+   perf:["ist","vorbeigekommen"], ex:"Möchtest du mal vorbeikommen?", exRu:"Не хочешь как-нибудь зайти?"},
+  {inf:"umbinden", ru:"повязывать (фартук, шарф)", cat:"trenn", sep:true,
+   ich:"binde um", du:"bindest um", er:"bindet um", wir:"binden um", ihr:"bindet um", sie:"binden um",
+   perf:["hat","umgebunden"], ex:"Ich binde mir eine Schürze um.", exRu:"Я повязываю фартук."},
+  {inf:"zulassen", ru:"допускать; оставлять закрытым", cat:"trenn", sep:true,
+   ich:"lasse zu", du:"lässt zu", er:"lässt zu", wir:"lassen zu", ihr:"lasst zu", sie:"lassen zu",
+   perf:["hat","zugelassen"], ex:"Lass bitte die Tür zu!", exRu:"Оставь, пожалуйста, дверь закрытой!"},
+  {inf:"anprobieren", ru:"примерять", cat:"trenn", sep:true,
+   ich:"probiere an", du:"probierst an", er:"probiert an", wir:"probieren an", ihr:"probiert an", sie:"probieren an",
+   perf:["hat","anprobiert"], ex:"Kann ich die Hose anprobieren?", exRu:"Можно примерить брюки?"},
+
+  // Reflexiv
+  {inf:"sich melden", ru:"дать о себе знать; записаться", cat:"refl", sep:false, refl:true,
+   ich:"melde mich", du:"meldest dich", er:"meldet sich", wir:"melden uns", ihr:"meldet euch", sie:"melden sich",
+   perf:["hat","sich gemeldet"], ex:"Ich melde mich morgen bei dir.", exRu:"Я дам о себе знать завтра."},
+  {inf:"sich beschweren", ru:"жаловаться (über — на)", cat:"refl", sep:false, refl:true,
+   ich:"beschwere mich", du:"beschwerst dich", er:"beschwert sich", wir:"beschweren uns", ihr:"beschwert euch", sie:"beschweren sich",
+   perf:["hat","sich beschwert"], ex:"Er beschwert sich über die Lieferung.", exRu:"Он жалуется на доставку."},
+  {inf:"sich blamieren", ru:"опозориться", cat:"refl", sep:false, refl:true,
+   ich:"blamiere mich", du:"blamierst dich", er:"blamiert sich", wir:"blamieren uns", ihr:"blamiert euch", sie:"blamieren sich",
+   perf:["hat","sich blamiert"], ex:"Ich will mich nicht blamieren.", exRu:"Не хочу опозориться."},
+  {inf:"sich anschnallen", ru:"пристёгиваться", cat:"refl", sep:true, refl:true,
+   ich:"schnalle mich an", du:"schnallst dich an", er:"schnallt sich an", wir:"schnallen uns an", ihr:"schnallt euch an", sie:"schnallen sich an",
+   perf:["hat","sich angeschnallt"], ex:"Schnall dich bitte an!", exRu:"Пристегнись, пожалуйста!"},
+  {inf:"sich verwandeln", ru:"превращаться (in — в)", cat:"refl", sep:false, refl:true,
+   ich:"verwandle mich", du:"verwandelst dich", er:"verwandelt sich", wir:"verwandeln uns", ihr:"verwandelt euch", sie:"verwandeln sich",
+   perf:["hat","sich verwandelt"], ex:"Der Frosch verwandelt sich in einen Prinzen.", exRu:"Лягушка превращается в принца."},
+  {inf:"sich erkundigen", ru:"справляться, узнавать (nach — о)", cat:"refl", sep:false, refl:true,
+   ich:"erkundige mich", du:"erkundigst dich", er:"erkundigt sich", wir:"erkundigen uns", ihr:"erkundigt euch", sie:"erkundigen sich",
+   perf:["hat","sich erkundigt"], ex:"Ich möchte mich nach der Wohnung erkundigen.", exRu:"Я хотел(а) бы узнать о квартире."},
+  {inf:"sich vorstellen", ru:"представиться; (sich etwas) представлять себе", cat:"refl", sep:true, refl:true,
+   ich:"stelle mich vor", du:"stellst dich vor", er:"stellt sich vor", wir:"stellen uns vor", ihr:"stellt euch vor", sie:"stellen sich vor",
+   perf:["hat","sich vorgestellt"], ex:"Darf ich mich vorstellen? — Ich kann mir das gut vorstellen.", exRu:"Позвольте представиться. — Я хорошо могу себе это представить."},
+];
+VERBS.push(...VERBS_LESSON.map(v=>({...v, u:1})));
+
+// Глаголы, которые уже были на сайте и звучали на уроке
+const VERBS_LESSON_EXISTING = ["atmen","verlieren","sich beeilen","sich bewerben","versuchen","sich ausruhen",
+  "sich entspannen","husten","schaffen","dauern","denken","verdienen","anfangen","mieten","einladen",
+  "tragen","fallen","putzen","sterben","gewinnen","kaufen"];
+VERBS.forEach(v=>{ if(VERBS_LESSON_EXISTING.includes(v.inf)) v.u = 1; });
+VERBS.find(v=>v.inf==="verdienen").ru = "зарабатывать; заслуживать";
+VERBS.find(v=>v.inf==="schaffen").ru = "справляться, успевать; создавать (schuf, geschaffen)";
+
 VERBS.forEach((v,i)=>v.id=i);
 
 const CATS = [
@@ -1060,6 +2573,7 @@ const CATS = [
   {key:"reg", label:"Regelmäßig"},
   {key:"trenn", label:"Trennbar"},
   {key:"refl", label:"Reflexiv"},
+  {key:"unterricht", label:"Aus dem Unterricht"},
 ];
 
 const PERSONS = [
@@ -1092,7 +2606,9 @@ let stats = loadStats();
 let activeCat = "all";
 
 function filtered(){
-  return activeCat==="all" ? VERBS.slice() : VERBS.filter(v=>v.cat===activeCat);
+  if(activeCat==="all") return VERBS.slice();
+  if(activeCat==="unterricht") return VERBS.filter(v=>v.u);
+  return VERBS.filter(v=>v.cat===activeCat);
 }
 function shuffle(arr){
   const a = arr.slice();
@@ -1127,12 +2643,12 @@ CATS.forEach(c=>{
   chipsEl.appendChild(b);
 });
 
-/* ---------------- tabs ---------------- */
-document.querySelectorAll("nav.tabs button").forEach(btn=>{
+/* ---------------- verben tabs ---------------- */
+document.querySelectorAll("#screen-verben nav.tabs button").forEach(btn=>{
   btn.addEventListener("click", ()=>{
-    document.querySelectorAll("nav.tabs button").forEach(b=>b.classList.remove("active"));
+    document.querySelectorAll("#screen-verben nav.tabs button").forEach(b=>b.classList.remove("active"));
     btn.classList.add("active");
-    document.querySelectorAll(".view").forEach(v=>v.classList.remove("active"));
+    document.querySelectorAll("#screen-verben .view").forEach(v=>v.classList.remove("active"));
     document.getElementById("view-"+btn.dataset.view).classList.add("active");
   });
 });
@@ -1168,10 +2684,11 @@ function renderCard(){
     document.getElementById("frontBadges").innerHTML = "";
     return;
   }
-  document.getElementById("frontWord").textContent = v.sep ? v.inf.slice(0, v.inf.length) : v.inf;
+  document.getElementById("frontWord").textContent = v.inf;
   const catLabel = CATS.find(c=>c.key===v.cat).label;
   let badges = `<span class="badge">${catLabel}</span>`;
-  if(v.sep) badges += `<span class="badge sep">trennbar</span>`;
+  if(v.sep && v.cat!=="trenn") badges += `<span class="badge sep">trennbar</span>`;
+  if(v.u) badges += `<span class="badge" style="background:var(--good-soft);color:var(--good);">Unterricht</span>`;
   if(known.has(v.id)) badges += `<span class="badge" style="background:var(--good-soft);color:var(--good);">kenne ich</span>`;
   document.getElementById("frontBadges").innerHTML = badges;
 
@@ -1250,7 +2767,6 @@ function nextDrill(){
   document.getElementById("drillFeedback").className = "feedback";
   document.getElementById("drillCheck").style.display = "";
   document.getElementById("drillNext").style.display = "none";
-  input.focus();
 }
 function checkDrill(){
   if(!drillCurrent) return;
@@ -1274,7 +2790,6 @@ function checkDrill(){
   }
   document.getElementById("drillCheck").style.display = "none";
   document.getElementById("drillNext").style.display = "";
-  document.getElementById("drillNext").focus();
 }
 document.getElementById("drillCheck").addEventListener("click", checkDrill);
 document.getElementById("drillNext").addEventListener("click", nextDrill);
@@ -1361,7 +2876,7 @@ function renderList(){
     const perf = v.perf ? `${v.perf[0]} ${v.perf[1]}` : "—";
     return `<tr>
       <td class="known">${known.has(v.id) ? '<span class="dot-known">●</span>' : ''}</td>
-      <td class="inf">${v.inf}${v.sep ? ' <span class="sep-dot">·</span>' : ''}</td>
+      <td class="inf">${v.inf}${v.sep ? ' <span class="sep-dot">·</span>' : ''}${v.u && activeCat!=="unterricht" ? '<span class="u-tag">Unterricht</span>' : ''}</td>
       <td class="ru">${v.ru}</td>
       <td>${v.ich}</td>
       <td>${v.du}</td>
@@ -1386,11 +2901,568 @@ document.getElementById("resetProgress").addEventListener("click", ()=>{
 });
 
 /* ================= init ================= */
+document.querySelectorAll(".verb-total").forEach(el=> el.textContent = VERBS.length);
 updateKnownHeader();
 resetDeck();
 resetDrill();
 resetQuiz();
 renderList();
+
+/* ================= WORD TRANSLATION ON SELECT ================= */
+const TRANSLATIONS = {};
+function addTrans(de, ru){
+  const key = de.trim().toLowerCase();
+  if(key && !TRANSLATIONS[key]) TRANSLATIONS[key] = ru;
+}
+VERBS.forEach(v=>{
+  addTrans(v.inf, v.ru);
+  if(v.inf.startsWith("sich ")) addTrans(v.inf.slice(5), v.ru);
+});
+LEX_TOPICS.forEach(t=> t.words.forEach(w=>{
+  addTrans(w.de, w.ru);
+  addTrans(w.de.replace(/^(der|die|das)\s+/i, ""), w.ru);
+}));
+PHRASES.forEach(p=> addTrans(p.de.replace(/[!?.]+$/,""), p.ru));
+
+// Служебные слова и лексика из примеров в Grammatik, не входящая в Verben/Wortschatz
+const GRAMMAR_GLOSSARY = {
+  "weil":"потому что", "dass":"что (союз)", "wenn":"если / когда", "obwohl":"хотя",
+  "während":"пока, в то время как / в течение", "bevor":"прежде чем", "nachdem":"после того как",
+  "trotz":"несмотря на", "wegen":"из-за", "statt":"вместо",
+  "für":"для", "ohne":"без", "gegen":"против", "durch":"через, посредством", "um":"вокруг / в (время)",
+  "mit":"с", "nach":"после / в направлении", "bei":"у, при", "seit":"с (какого-то момента)",
+  "von":"от, из", "zu":"к", "aus":"из", "gegenüber":"напротив",
+  "und":"и", "oder":"или", "aber":"но", "denn":"так как", "sondern":"а (после отрицания)",
+  "als":"чем / когда (в прошлом)", "ne":"да? (разговорный хвостик)",
+  "nett":"приятный, милый", "neu":"новый", "tasche":"сумка", "mann":"мужчина",
+  "kind":"ребёнок", "lampe":"лампа", "tisch":"стол", "restaurant":"ресторан",
+  "stadt":"город", "wetter":"погода", "krank":"больной", "müde":"уставший",
+  "reich":"богатый", "schnell":"быстрый", "gut":"хороший", "besser":"лучше",
+  "beste":"лучший", "mehr":"больше", "meisten":"больше всего", "gern":"охотно, с удовольствием",
+  "lieber":"охотнее", "liebsten":"больше всего (нравится)", "hoch":"высокий",
+  "höher":"выше", "höchsten":"выше всего", "alt":"старый", "älter":"старше",
+  "ältesten":"самый старый", "groß":"большой", "größer":"больше",
+  "größten":"самый большой", "jung":"молодой", "jünger":"моложе",
+  "jüngsten":"самый молодой", "wahrheit":"правда", "frage":"вопрос", "zeit":"время",
+  "film":"фильм", "kino":"кино", "recht":"прав(а) (в „recht haben“)", "regnen":"идти (о дожде)",
+  "wichtig":"важный", "rechnung":"счёт",
+};
+Object.keys(GRAMMAR_GLOSSARY).forEach(k=> addTrans(k, GRAMMAR_GLOSSARY[k]));
+
+function escapeHtml(s){
+  return s.replace(/[&<>"']/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+}
+function lookupWord(raw){
+  const key = raw.trim().toLowerCase().replace(/^[„"«»(),.!?;:]+|[„"«»(),.!?;:]+$/g, "");
+  if(!key) return undefined;
+  if(TRANSLATIONS[key]) return TRANSLATIONS[key];
+  const bare = key.replace(/^(der|die|das|ein|eine)\s+/, "");
+  return TRANSLATIONS[bare];
+}
+
+const wordTip = document.getElementById("wordTip");
+function hideTip(){ wordTip.classList.remove("show"); }
+function showTip(text, rect){
+  const ru = lookupWord(text);
+  wordTip.innerHTML = ru
+    ? `<div class="de">${escapeHtml(text.trim())}</div><div class="ru">${escapeHtml(ru)}</div>`
+    : `<div class="de">${escapeHtml(text.trim())}</div><div class="miss">нет в словаре</div>`;
+  const x = Math.min(Math.max(rect.left + rect.width/2, 90), window.innerWidth-90);
+  const y = Math.max(rect.top - 8, 46);
+  wordTip.style.left = x+"px";
+  wordTip.style.top = y+"px";
+  wordTip.classList.add("show");
+}
+function handleSelection(){
+  const sel = window.getSelection();
+  if(!sel || sel.isCollapsed || sel.rangeCount===0){ hideTip(); return; }
+  const text = sel.toString();
+  if(!text.trim() || text.trim().length>40 || /\n/.test(text)){ hideTip(); return; }
+  const rect = sel.getRangeAt(0).getBoundingClientRect();
+  if(!rect || (rect.width===0 && rect.height===0)){ hideTip(); return; }
+  showTip(text, rect);
+}
+document.addEventListener("mouseup", ()=> setTimeout(handleSelection, 0));
+document.addEventListener("touchend", ()=> setTimeout(handleSelection, 0));
+document.addEventListener("selectionchange", ()=>{
+  const sel = window.getSelection();
+  if(!sel || sel.isCollapsed) hideTip();
+});
+document.addEventListener("scroll", hideTip, true);
+
+/* ================= DAILY CHALLENGE ================= */
+// Интервальное повторение: уровень 1–5, после верного ответа элемент возвращается через D_INTERVALS[уровень] дней.
+const D_SRS_KEY = "daily.srs.v1", D_STATS_KEY = "daily.stats.v1", D_PREF_KEY = "daily.pref.v1";
+const D_INTERVALS = [0, 1, 3, 7, 14, 30];
+function dLoad(key, def){ try{ return Object.assign(def, JSON.parse(localStorage.getItem(key) || "{}")); } catch(e){ return def; } }
+function dSave(key, val){ try{ localStorage.setItem(key, JSON.stringify(val)); } catch(e){} }
+let dSrs = dLoad(D_SRS_KEY, {});
+let dStats = dLoad(D_STATS_KEY, {lastDone:null, streak:0, history:{}});
+let dPref = dLoad(D_PREF_KEY, {focusU:false});
+let dS = null; // текущая сессия
+
+function dEl(id){ return document.getElementById(id); }
+function dToday(){ return new Date().toLocaleDateString("sv-SE"); }
+function dAddDays(date, n){ const d = new Date(date+"T12:00:00"); d.setDate(d.getDate()+n); return d.toLocaleDateString("sv-SE"); }
+function dStreakNow(){
+  const t = dToday();
+  return (dStats.lastDone===t || dStats.lastDone===dAddDays(t,-1)) ? dStats.streak : 0;
+}
+
+// Детерминированный генератор: у всех в один день одинаковые «Грамматика дня» и «Финал»
+function dHash(s){ let h = 2166136261; for(let i=0;i<s.length;i++){ h ^= s.charCodeAt(i); h = Math.imul(h, 16777619); } return h>>>0; }
+function dRng(seed){ let a = seed; return function(){ a |= 0; a = a + 0x6D2B79F5 | 0; let t = Math.imul(a ^ a>>>15, 1 | a); t = t + Math.imul(t ^ t>>>7, 61 | t) ^ t; return ((t ^ t>>>14)>>>0) / 4294967296; }; }
+function dShuffle(arr, rnd){ const a = arr.slice(); for(let i=a.length-1;i>0;i--){ const j = Math.floor(rnd()*(i+1)); [a[i],a[j]] = [a[j],a[i]]; } return a; }
+function dPick(arr, rnd){ return arr[Math.floor(rnd()*arr.length)]; }
+
+const D_PLURALS = new Set(["die Eltern","die Geschwister","die Nudeln","die Schuhe","die Socken","die Handschuhe",
+  "die Schmerzen","die Zähne","die Zehen","die Haare","die Tropfen","die Kenntnisse"]);
+const D_POOL = [];
+VERBS.forEach(v=> D_POOL.push({key:"v:"+v.inf, kind:"verb", de:v.inf, ru:v.ru, ex:v.ex, exRu:v.exRu, verb:v, u:!!v.u}));
+LEX_TOPICS.forEach(t=> t.words.forEach(w=> D_POOL.push({key:"w:"+w.de, kind:"word", de:w.de, ru:w.ru, u:!!w.u})));
+PHRASES.forEach(p=> D_POOL.push({key:"p:"+p.de, kind:"phrase", de:p.de, ru:p.ru, ex:p.ex, exRu:p.exRu, u:!!p.u}));
+const D_BYKEY = Object.fromEntries(D_POOL.map(i=>[i.key, i]));
+const D_NOUNS = D_POOL.filter(i=> i.kind==="word" && /^(der|die|das) \S+$/.test(i.de) && !D_PLURALS.has(i.de));
+const D_VERBS = D_POOL.filter(i=> i.kind==="verb");
+const D_PERF_VERBS = D_VERBS.filter(i=> i.verb.perf);
+
+const D_LEN = {
+  5:  {warm:2, neu:2, review:3,  gram:1},
+  10: {warm:3, neu:4, review:6,  gram:3},
+  20: {warm:4, neu:8, review:12, gram:5},
+};
+const D_GRAM_TYPES = [
+  {type:"conj", label:"Präsens — спряжение"},
+  {type:"perf", label:"Perfekt"},
+  {type:"art",  label:"Артикли der / die / das"},
+];
+function dGramOfDay(date){ return D_GRAM_TYPES[Math.floor(new Date(date+"T12:00:00").getTime()/86400000) % D_GRAM_TYPES.length]; }
+function dDueKeys(today){ return Object.keys(dSrs).filter(k=> D_BYKEY[k] && dSrs[k].due <= today); }
+function dNewItems(){ return D_POOL.filter(i=> !dSrs[i.key]); }
+
+function dMakeMC(it, dir, block, rnd){
+  const others = dShuffle(D_POOL.filter(x=> x.kind===it.kind && x.key!==it.key && x.ru!==it.ru && x.de!==it.de), rnd).slice(0,3);
+  return {type:"mc", dir, item:it, opts:dShuffle([it, ...others], rnd), block};
+}
+function dMakeTask(ty, it, block, rnd, dir){
+  if(ty==="mc") return dMakeMC(it, dir, block, rnd);
+  if(ty==="conj") return {type:"conj", item:it, person:dPick(PERSONS, rnd), block};
+  return {type:ty, item:it, block};
+}
+function dTypesFor(it){
+  if(it.kind==="verb") return it.verb.perf ? ["conj","input","perf","mc"] : ["conj","input","mc"];
+  if(it.kind==="word") return D_NOUNS.includes(it) ? ["art","input","mc"] : ["input","mc"];
+  return ["mc"];
+}
+function dTypeKey(t){ return t.type==="mc" ? "mc-"+t.dir : t.type; }
+
+// Общая часть дня: одинакова на всех устройствах (зависит только от даты)
+function dSharedTasks(today){
+  const g = dGramOfDay(today), rnd = dRng(dHash("deutsch-daily-"+today));
+  const src = g.type==="art" ? D_NOUNS : (g.type==="perf" ? D_PERF_VERBS : D_VERBS);
+  const gram = dShuffle(src, rnd).slice(0,5).map(it=> g.type==="conj"
+    ? {type:"conj", item:it, person:dPick(PERSONS, rnd), block:"gram"}
+    : {type:g.type, item:it, block:"gram"});
+  const gramKeys = new Set(gram.map(t=>t.item.key));
+  const pairs = [], usedRu = new Set();
+  for(const i of dShuffle(D_POOL.filter(i=> i.kind!=="phrase" && !gramKeys.has(i.key) && i.ru.length<=26 && i.de.length<=18), rnd)){
+    if(usedRu.has(i.ru)) continue;
+    usedRu.add(i.ru); pairs.push({de:i.de, ru:i.ru});
+    if(pairs.length===6) break;
+  }
+  return {g, gram, match:{type:"match", pairs, block:"match"}};
+}
+
+function dBuildSession(len){
+  const cfg = D_LEN[len], today = dToday(), rnd = Math.random;
+  const shared = dSharedTasks(today);
+  const gram = shared.gram.slice(0, cfg.gram);
+  const reserved = new Set(gram.map(t=>t.item.key));
+
+  const due = dShuffle(dDueKeys(today), rnd).sort((a,b)=> dSrs[a].due.localeCompare(dSrs[b].due))
+    .filter(k=>!reserved.has(k)).map(k=>D_BYKEY[k]);
+  let fresh = dNewItems().filter(i=>!reserved.has(i.key));
+  fresh = dPref.focusU
+    ? dShuffle(fresh.filter(i=>i.u), rnd).concat(dShuffle(fresh.filter(i=>!i.u), rnd))
+    : dShuffle(fresh, rnd);
+  const newItems = fresh.slice(0, cfg.neu);
+  // В первые дни повторять ещё нечего — добираем непройденным («проверка, что уже знаешь»)
+  const reviewPool = due.slice();
+  const filler = fresh.slice(cfg.neu);
+  while(reviewPool.length < cfg.warm + cfg.review && filler.length) reviewPool.push(filler.shift());
+  const warmItems = reviewPool.slice(0, cfg.warm);
+  const revItems = reviewPool.slice(cfg.warm, cfg.warm + cfg.review);
+
+  const tasks = [];
+  warmItems.forEach((it,i)=> tasks.push(dMakeMC(it, i%2 ? "ru-de" : "de-ru", "warm", rnd)));
+  newItems.forEach(it=>{
+    tasks.push({type:"intro", item:it, block:"neu"});
+    tasks.push(dMakeMC(it, "ru-de", "neu", rnd));
+  });
+  let prevKey = tasks.length ? dTypeKey(tasks[tasks.length-1]) : "";
+  revItems.forEach((it, idx)=>{
+    const types = dTypesFor(it);
+    let task = null;
+    for(let k=0; k<types.length && !task; k++){
+      const ty = types[(idx+k) % types.length];
+      const dir = prevKey==="mc-de-ru" ? "ru-de" : prevKey==="mc-ru-de" ? "de-ru" : (idx%2 ? "de-ru" : "ru-de");
+      const key = ty==="mc" ? "mc-"+dir : ty;
+      if(key!==prevKey) task = dMakeTask(ty, it, "review", rnd, dir);
+    }
+    task = task || dMakeTask(types[0], it, "review", rnd, "de-ru");
+    tasks.push(task);
+    prevKey = dTypeKey(task);
+  });
+  tasks.push(...gram, shared.match);
+  return {tasks, gramLabel: shared.g.label};
+}
+
+function dSrsUpdate(it, ok){
+  const today = dToday(), cur = dSrs[it.key];
+  const first = !dS.touched.has(it.key);
+  dS.touched.add(it.key);
+  if(!ok){
+    dSrs[it.key] = {lvl:1, due:dAddDays(today,1)};
+  } else if(first){
+    if(!cur){
+      const lvl = dS.introduced.has(it.key) ? 1 : 2; // знакомое без подсказки — сразу уровень 2
+      dSrs[it.key] = {lvl, due:dAddDays(today, D_INTERVALS[lvl])};
+      dS.newLearned++;
+    } else if(cur.due <= today){
+      const lvl = Math.min(5, cur.lvl+1);
+      dSrs[it.key] = {lvl, due:dAddDays(today, D_INTERVALS[lvl])};
+      if(lvl > cur.lvl) dS.levelUps++;
+    }
+  }
+  dSave(D_SRS_KEY, dSrs);
+}
+function dAnswer(t, ok){
+  if(t.block==="retry"){ dS.retryTotal++; if(ok) dS.retryOk++; }
+  else { dS.scored++; if(ok) dS.correct++; else if(t.type!=="match") dS.wrongTasks.push(t); }
+  if(t.item) dSrsUpdate(t.item, ok);
+}
+function dMakeRetry(t){
+  const it = t.item;
+  if(t.type==="conj") return {type:"conj", item:it, person:dPick(PERSONS.filter(p=>p.key!==t.person.key), Math.random), block:"retry"};
+  if(t.type==="perf" || t.type==="art") return {type:t.type, item:it, block:"retry"};
+  if(t.type==="input") return dMakeMC(it, "ru-de", "retry", Math.random);
+  if(it.kind!=="phrase") return {type:"input", item:it, block:"retry"};
+  return dMakeMC(it, t.dir==="de-ru" ? "ru-de" : "de-ru", "retry", Math.random);
+}
+function dBuildRetries(){
+  const seen = new Set(), out = [];
+  dS.wrongTasks.forEach(t=>{ if(out.length<3 && !seen.has(t.item.key)){ seen.add(t.item.key); out.push(dMakeRetry(t)); } });
+  return out;
+}
+
+function dView(v){ ["dailyStart","dailyRun","dailyEnd"].forEach(id=> dEl(id).hidden = (id!==v)); window.scrollTo(0,0); }
+function dBlockLabel(t){
+  return {warm:"Разминка", neu:"Новое", review:"Повторение", gram:"Грамматика дня · "+dS.gramLabel,
+    match:"Финал · на скорость", retry:"Работа над ошибками"}[t.block];
+}
+function dStart(len){
+  const built = dBuildSession(len);
+  dS = {len, tasks:built.tasks, gramLabel:built.gramLabel, i:0, correct:0, scored:0, wrongTasks:[],
+    touched:new Set(), introduced:new Set(), retryOk:0, retryTotal:0, retriesAdded:false,
+    newLearned:0, levelUps:0, matchTime:null, matchMistakes:0};
+  dView("dailyRun");
+  dRenderTask();
+}
+function dNext(){
+  dS.i++;
+  const t = dS.tasks[dS.i];
+  // Ошибки возвращаются перед финальным раундом
+  if(!dS.retriesAdded && (!t || t.type==="match")){
+    dS.retriesAdded = true;
+    const r = dBuildRetries();
+    if(r.length) dS.tasks.splice(dS.i, 0, ...r);
+  }
+  if(dS.i >= dS.tasks.length){ dFinish(); return; }
+  dRenderTask();
+}
+function dRenderTask(){
+  const t = dS.tasks[dS.i], total = dS.tasks.length;
+  dEl("dCount").textContent = (dS.i+1)+" / "+total;
+  dEl("dProg").style.width = Math.round(dS.i/total*100)+"%";
+  dEl("dBlock").textContent = dBlockLabel(t);
+  const box = dEl("dTask");
+  ({intro:dRIntro, mc:dRMC, input:dRInput, conj:dRConj, perf:dRPerf, art:dRArt, match:dRMatch})[t.type](t, box);
+  window.scrollTo(0,0);
+}
+
+const D_ACTIONS = `<div class="d-fb feedback"></div>
+  <div class="daily-actions"><button class="primary d-check">Prüfen</button><button class="primary d-next" style="display:none">Weiter →</button></div>`;
+const D_UMLAUTS = `<div class="umlauts">${["ä","ö","ü","ß"].map(c=>`<button type="button" data-c="${c}">${c}</button>`).join("")}</div>`;
+const D_INPUT = `<input class="answer d-in" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="…" />`;
+function dWireUmlauts(box){
+  const inp = box.querySelector(".d-in");
+  box.querySelectorAll(".umlauts button").forEach(b=> b.onclick = ()=>{
+    if(inp.disabled) return;
+    const s = inp.selectionStart ?? inp.value.length, e = inp.selectionEnd ?? inp.value.length;
+    inp.value = inp.value.slice(0,s) + b.dataset.c + inp.value.slice(e);
+    inp.focus(); inp.setSelectionRange(s+1, s+1);
+  });
+}
+function dExample(it){ return it && it.ex ? `<div class="d-ex">${escapeHtml(it.ex)}<br><span>${escapeHtml(it.exRu)}</span></div>` : ""; }
+function dAfter(box, ok, correctText, it){
+  const fb = box.querySelector(".d-fb");
+  fb.className = "d-fb feedback " + (ok ? "correct" : "wrong");
+  fb.textContent = ok ? "Richtig!" : (correctText ? "Richtig wäre: „"+correctText+"“" : "Не совсем — правильный ответ выделен");
+  fb.insertAdjacentHTML("afterend", dExample(it));
+  const c = box.querySelector(".d-check"); if(c) c.style.display = "none";
+  const nb = box.querySelector(".d-next"); nb.style.display = ""; nb.onclick = dNext; nb.focus();
+}
+function dWireInputCheck(box, check){
+  const inp = box.querySelector(".d-in");
+  dWireUmlauts(box);
+  box.querySelector(".d-check").onclick = ()=>{ if(!inp.value.trim()) { inp.focus(); return; } check(inp); };
+  inp.focus();
+}
+
+function dRIntro(t, box){
+  const it = t.item;
+  dS.introduced.add(it.key);
+  const v = it.verb;
+  box.innerHTML = `
+    <div class="q-label">Новое ${it.kind==="verb" ? "слово — глагол" : it.kind==="phrase" ? "выражение" : "слово"}</div>
+    <div class="q-word serif">${escapeHtml(it.de)}${it.u ? '<span class="u-tag">Unterricht</span>' : ''}</div>
+    <div class="q-sub">${escapeHtml(it.ru)}</div>
+    ${v ? `<div class="d-ex">ich ${escapeHtml(v.ich)} · du ${escapeHtml(v.du)} · er ${escapeHtml(v.er)}${v.perf ? "<br><span>Perfekt: "+escapeHtml(v.perf.join(" "))+"</span>" : ""}</div>` : ""}
+    ${dExample(it)}
+    <div class="daily-actions"><button class="primary d-next">Запомнил(а) →</button></div>`;
+  box.querySelector(".d-next").onclick = dNext;
+}
+function dRMC(t, box){
+  const it = t.item, deRu = t.dir==="de-ru";
+  box.innerHTML = `
+    <div class="q-label">${deRu ? "Выбери перевод" : "Как это по-немецки?"}</div>
+    <div class="q-word ${deRu ? "serif" : ""}">${escapeHtml(deRu ? it.de : it.ru)}</div>
+    <div class="options">${t.opts.map((o,i)=>`<button class="opt" data-i="${i}">${escapeHtml(deRu ? o.ru : o.de)}</button>`).join("")}</div>
+    ${D_ACTIONS}`;
+  box.querySelector(".d-check").style.display = "none";
+  box.querySelectorAll(".opt").forEach(b=> b.onclick = ()=>{
+    const ok = t.opts[+b.dataset.i].key === it.key;
+    box.querySelectorAll(".opt").forEach(x=>{ x.disabled = true; if(t.opts[+x.dataset.i].key===it.key) x.classList.add("correct"); });
+    if(!ok) b.classList.add("wrong");
+    dAnswer(t, ok);
+    dAfter(box, ok, null, it);
+  });
+}
+function dRInput(t, box){
+  const it = t.item;
+  const hasArt = /^(der|die|das) /.test(it.de);
+  box.innerHTML = `
+    <div class="q-label">Напиши по-немецки</div>
+    <div class="q-word">${escapeHtml(it.ru)}</div>
+    ${hasArt ? '<div class="q-sub">артикль можно не писать</div>' : ''}
+    ${D_INPUT}${D_UMLAUTS}${D_ACTIONS}`;
+  dWireInputCheck(box, inp=>{
+    const acc = [it.de, it.de.replace(/^(der|die|das)\s+/, ""), it.de.replace(/^sich\s+/, "")];
+    const sg = it.ru.match(/ед\. ((?:der|die|das) \S+)\)/);
+    if(sg) acc.push(sg[1], sg[1].replace(/^(der|die|das)\s+/, ""));
+    const ok = acc.map(normalize).includes(normalize(inp.value));
+    inp.disabled = true; inp.classList.add(ok ? "correct" : "wrong");
+    dAnswer(t, ok);
+    dAfter(box, ok, it.de, it);
+  });
+}
+function dRConj(t, box){
+  const v = t.item.verb, p = t.person;
+  box.innerHTML = `
+    <div class="q-label">Präsens · поставь глагол в нужную форму</div>
+    <div class="q-word serif">${escapeHtml(v.inf)} <span class="pronoun">(${p.label})</span></div>
+    <div class="q-sub">${escapeHtml(v.ru)}</div>
+    ${D_INPUT}${D_UMLAUTS}${D_ACTIONS}`;
+  dWireInputCheck(box, inp=>{
+    const form = v[p.key];
+    const acc = [form].concat(p.label.split("/").map(pr=> pr.toLowerCase()+" "+form));
+    const ok = acc.map(normalize).includes(normalize(inp.value));
+    inp.disabled = true; inp.classList.add(ok ? "correct" : "wrong");
+    dAnswer(t, ok);
+    dAfter(box, ok, (p.label.split("/")[0])+" "+form, t.item);
+  });
+}
+function dRPerf(t, box){
+  const v = t.item.verb;
+  box.innerHTML = `
+    <div class="q-label">Perfekt · выбери hat или ist и впиши Partizip II</div>
+    <div class="q-word serif">${escapeHtml(v.inf)}</div>
+    <div class="q-sub">${escapeHtml(v.ru)}</div>
+    <div class="aux-toggle"><button type="button" data-a="hat">hat</button><button type="button" data-a="ist">ist</button></div>
+    ${D_INPUT}${D_UMLAUTS}${D_ACTIONS}`;
+  let aux = null;
+  box.querySelectorAll(".aux-toggle button").forEach(b=> b.onclick = ()=>{
+    if(box.querySelector(".d-in").disabled) return;
+    aux = b.dataset.a;
+    box.querySelectorAll(".aux-toggle button").forEach(x=> x.classList.toggle("sel", x===b));
+    box.querySelector(".d-in").focus();
+  });
+  box.querySelector(".d-in").placeholder = "Partizip II";
+  dWireInputCheck(box, inp=>{
+    const fb = box.querySelector(".d-fb");
+    if(!aux){ fb.className = "d-fb feedback wrong"; fb.textContent = "Сначала выбери hat или ist"; return; }
+    const typed = normalize(inp.value).replace(/^(hat|ist)\s+/, "");
+    const part = v.perf[1];
+    const partOk = [part, part.replace(/^sich\s+/, "")].map(normalize).includes(typed);
+    const ok = partOk && aux===v.perf[0];
+    inp.disabled = true; inp.classList.add(ok ? "correct" : "wrong");
+    box.querySelectorAll(".aux-toggle button").forEach(x=>{ x.disabled = true; });
+    dAnswer(t, ok);
+    dAfter(box, ok, v.perf.join(" "), t.item);
+  });
+}
+function dRArt(t, box){
+  const it = t.item, art = it.de.split(" ")[0], noun = it.de.slice(art.length+1);
+  box.innerHTML = `
+    <div class="q-label">Какой артикль?</div>
+    <div class="q-word serif">___ ${escapeHtml(noun)}</div>
+    <div class="q-sub">${escapeHtml(it.ru)}</div>
+    <div class="art-btns">${["der","die","das"].map(a=>`<button class="opt" data-a="${a}">${a}</button>`).join("")}</div>
+    ${D_ACTIONS}`;
+  box.querySelector(".d-check").style.display = "none";
+  box.querySelectorAll(".art-btns .opt").forEach(b=> b.onclick = ()=>{
+    const ok = b.dataset.a === art;
+    box.querySelectorAll(".art-btns .opt").forEach(x=>{ x.disabled = true; if(x.dataset.a===art) x.classList.add("correct"); });
+    if(!ok) b.classList.add("wrong");
+    dAnswer(t, ok);
+    dAfter(box, ok, it.de, it);
+  });
+}
+function dRMatch(t, box){
+  const left = t.pairs, right = dShuffle(t.pairs, Math.random);
+  box.innerHTML = `
+    <div class="q-label">Соедини пары как можно быстрее</div>
+    <div class="match-time" id="dTimer">0 с</div>
+    <div class="match-grid">
+      <div class="match-col">${left.map((p,i)=>`<button class="match-btn serif" data-side="l" data-k="${i}">${escapeHtml(p.de)}</button>`).join("")}</div>
+      <div class="match-col">${right.map(p=>`<button class="match-btn" data-side="r" data-k="${left.indexOf(p)}">${escapeHtml(p.ru)}</button>`).join("")}</div>
+    </div>
+    ${D_ACTIONS}`;
+  box.querySelector(".d-check").style.display = "none";
+  let selL = null, selR = null, done = 0, mistakes = 0;
+  const t0 = Date.now();
+  const timer = setInterval(()=>{
+    const el = dEl("dTimer");
+    if(!el){ clearInterval(timer); return; }
+    el.textContent = Math.floor((Date.now()-t0)/1000)+" с";
+  }, 250);
+  box.querySelectorAll(".match-btn").forEach(b=> b.onclick = ()=>{
+    const side = b.dataset.side;
+    box.querySelectorAll(`.match-btn[data-side="${side}"]`).forEach(x=> x.classList.remove("sel"));
+    b.classList.add("sel");
+    if(side==="l") selL = b; else selR = b;
+    if(!selL || !selR) return;
+    const a = selL, c = selR;
+    selL = selR = null;
+    [a,c].forEach(x=> x.classList.remove("sel"));
+    if(a.dataset.k === c.dataset.k){
+      [a,c].forEach(x=> x.classList.add("done"));
+      done++;
+    } else {
+      mistakes++;
+      [a,c].forEach(x=> x.classList.add("err"));
+      setTimeout(()=> [a,c].forEach(x=> x.classList.remove("err")), 450);
+    }
+    if(done === left.length){
+      clearInterval(timer);
+      const secs = Math.round((Date.now()-t0)/1000);
+      dS.matchTime = secs; dS.matchMistakes = mistakes;
+      const ok = mistakes <= 1;
+      dAnswer(t, ok);
+      const fb = box.querySelector(".d-fb");
+      fb.className = "d-fb feedback " + (ok ? "correct" : "wrong");
+      fb.textContent = `Готово за ${secs} с · ошибок: ${mistakes}`;
+      const nb = box.querySelector(".d-next"); nb.style.display = ""; nb.onclick = dNext; nb.focus();
+    }
+  });
+}
+
+function dFinish(){
+  const today = dToday();
+  if(dStats.lastDone !== today){
+    dStats.streak = (dStats.lastDone === dAddDays(today,-1)) ? dStats.streak+1 : 1;
+    dStats.lastDone = today;
+  }
+  const res = {score:dS.correct, total:dS.scored, len:dS.len, time:dS.matchTime};
+  const prev = dStats.history[today];
+  if(!prev || res.score/res.total >= prev.score/prev.total) dStats.history[today] = res;
+  dSave(D_STATS_KEY, dStats);
+  dEl("dProg").style.width = "100%";
+  const pct = res.total ? Math.round(res.score/res.total*100) : 0;
+  dEl("dailyEnd").innerHTML = `
+    <div class="panel">
+      <div class="q-label" style="text-align:center;color:var(--ink-muted);font-size:12.5px;">Daily Challenge пройден</div>
+      <div class="end-score serif">${res.score}/${res.total}</div>
+      <p class="sub" style="text-align:center;">${pct}% правильных с первой попытки</p>
+      <div class="daily-stats">
+        <div class="daily-stat"><div class="n">🔥 ${dStats.streak}</div><div class="k">дней подряд</div></div>
+        <div class="daily-stat"><div class="n">${dS.newLearned}</div><div class="k">новых в изучении</div></div>
+        <div class="daily-stat"><div class="n">${dS.levelUps}</div><div class="k">уровней вверх</div></div>
+      </div>
+      ${dS.retryTotal ? `<p class="sub">Работа над ошибками: исправлено ${dS.retryOk} из ${dS.retryTotal}</p>` : ""}
+      ${res.time!=null ? `<p class="sub">Финальный раунд: ${res.time} с, ошибок ${dS.matchMistakes}</p>` : ""}
+      <div class="daily-actions stack">
+        <button class="primary" id="dShareBtn">Поделиться результатом</button>
+        <button id="dAgainBtn">Ещё одна сессия</button>
+        <button id="dHomeBtn">На главную</button>
+      </div>
+    </div>`;
+  dEl("dShareBtn").onclick = ()=> dShare(dEl("dShareBtn"), res);
+  dEl("dAgainBtn").onclick = dRenderStart;
+  dEl("dHomeBtn").onclick = ()=> showScreen("screen-home");
+  dView("dailyEnd");
+  dUpdateHome();
+}
+function dShareText(res){
+  const d = new Date().toLocaleDateString("de-DE", {day:"2-digit", month:"2-digit"});
+  const st = dStats.streak;
+  return `Deutsch Daily ${d} (${res.len} Min.)\n✅ ${res.score}/${res.total}`
+    + (res.time!=null ? ` · ⚡ Paare in ${res.time} s` : "")
+    + `\n🔥 ${st} ${st===1 ? "Tag" : "Tage"} in Folge\n${location.origin+location.pathname}`;
+}
+async function dShare(btn, res){
+  const text = dShareText(res);
+  if(navigator.share){
+    try{ await navigator.share({text}); return; }
+    catch(e){ if(e && e.name==="AbortError") return; }
+  }
+  try{ await navigator.clipboard.writeText(text); btn.textContent = "Скопировано — вставь в чат ✓"; }
+  catch(e){ window.prompt("Скопируй результат:", text); }
+}
+
+function dRenderStart(){
+  dS = null;
+  const today = dToday(), g = dGramOfDay(today), done = dStats.history[today];
+  dEl("dailyStart").innerHTML = `
+    <h1 class="serif">Daily Challenge</h1>
+    <p class="sub">Новое и повторение на сегодня. «Грамматика дня» и финальный раунд у всех одинаковые — можно сравнить результат.</p>
+    ${done ? `<div class="daily-done">Сегодня уже пройдено: <b>${done.score}/${done.total}</b>. Можно ещё раз — повторение подберётся заново.</div>` : ""}
+    <div class="daily-stats">
+      <div class="daily-stat"><div class="n">🔥 ${dStreakNow()}</div><div class="k">дней подряд</div></div>
+      <div class="daily-stat"><div class="n">${dDueKeys(today).length}</div><div class="k">к повторению</div></div>
+      <div class="daily-stat"><div class="n">${dNewItems().length}</div><div class="k">ещё не начато</div></div>
+    </div>
+    <div class="daily-gram">Грамматика дня: <b>${g.label}</b></div>
+    <label class="daily-toggle"><input type="checkbox" id="dFocus" ${dPref.focusU ? "checked" : ""}> Чаще слова с урока (Aus dem Unterricht)</label>
+    <div class="daily-len">
+      ${[[5,"быстро"],[10,"обычно"],[20,"подольше"]].map(([m,l])=>`<button data-len="${m}"><span class="m">${m}</span><span class="l">мин · ${l}</span></button>`).join("")}
+    </div>`;
+  dEl("dFocus").onchange = e=>{ dPref.focusU = e.target.checked; dSave(D_PREF_KEY, dPref); };
+  dEl("dailyStart").querySelectorAll(".daily-len button").forEach(b=> b.onclick = ()=> dStart(+b.dataset.len));
+  dView("dailyStart");
+}
+function dUpdateHome(){
+  const el = dEl("dailyHomeSub"), done = dStats.history[dToday()], st = dStreakNow();
+  el.textContent = done ? `Сегодня: ${done.score}/${done.total} ✓ · 🔥 ${st}`
+    : st ? `🔥 ${st} дн. подряд — не прерывай серию!` : "Новое и повторение · 5–20 минут";
+}
+document.addEventListener("keydown", e=>{
+  if(e.key!=="Enter" || !dS || dEl("dailyRun").hidden || !dEl("screen-daily").classList.contains("active")) return;
+  const box = dEl("dTask"), nb = box.querySelector(".d-next"), ch = box.querySelector(".d-check");
+  if(nb && nb.style.display!=="none"){ e.preventDefault(); nb.click(); }
+  else if(ch && ch.style.display!=="none"){ e.preventDefault(); ch.click(); }
+});
+dUpdateHome();
 
 })();
 </script>
